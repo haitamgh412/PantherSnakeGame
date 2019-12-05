@@ -1,4 +1,4 @@
-package View;
+package Controller;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -12,8 +12,8 @@ import java.awt.geom.Rectangle2D;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-import Controller.InputManger;
 import Model.Snake;
+import View.SoundManger;
 import Model.Apple;
 import Model.Pear;
 import Model.Banana;
@@ -21,7 +21,7 @@ import Model.Mouse;
 
 
 @SuppressWarnings("serial")
-public class GameBoardPanel extends JPanel implements ActionListener {
+public class sysData extends JPanel implements ActionListener {
 
 	/** Creates a new instance of GameBoard */
 
@@ -44,7 +44,7 @@ public class GameBoardPanel extends JPanel implements ActionListener {
 
 	private String soundFilePath = "start.wav";
 
-	public GameBoardPanel(int level) {
+	public sysData(int level) {
 
 		setBackground(Color.BLACK);
 		setFocusable(true);
