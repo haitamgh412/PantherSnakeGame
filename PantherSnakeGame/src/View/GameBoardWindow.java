@@ -31,7 +31,7 @@ public class GameBoardWindow extends JFrame implements ActionListener {
 		
 		setTitle("Snake Game - Panther");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(200, 50, 1100, 700);
+		setBounds(200, 50, 1200, 700);
 		setResizable(false);
 
 		getContentPane().add(new sysData(level));

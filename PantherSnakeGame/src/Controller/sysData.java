@@ -187,12 +187,16 @@ public class sysData extends JPanel implements ActionListener {
 		g2.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
 		g2.drawString("Time: ", 210, 100);
 		g2.drawString("Your Score: ", 680, 100);
-		g2.drawString("Lifes: ", 880, 600);
-		g2.drawString("Hight Score : " + playerScore, 880, 500);
+		g2.drawString("Red Apple     = 10 points", 880, 200);
+		g2.drawString("Green Pear    = 20 points", 880, 300);
+		g2.drawString("Yellow Banana = 15 points", 880, 250);
+		g2.drawString("Gray Mouse    = 30 points", 880, 350);
+		g2.drawString("Lifes: ", 880, 550);
+		g2.drawString("Hight Score : " + playerScore, 880, 600);
 		g2.setColor(Color.BLUE);
 		g2.drawString("" + playerScore, 810, 100);
 		g2.drawString("" + timer, 270, 100);
-		g2.drawString("" + numOFLifes, 950, 600);
+		g2.drawString("" + numOFLifes, 950, 550);
 		if (isGameOver()) {
 			g2.setColor(Color.RED);
 			g2.drawString("Game Over!", 480, 250);
