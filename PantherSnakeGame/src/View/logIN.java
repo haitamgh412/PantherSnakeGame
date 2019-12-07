@@ -1,96 +1,96 @@
 package View;
 
-import java.awt.Button;
+import java.awt.EventQueue;
 
-
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import java.awt.Color;
+import java.awt.Font;
+import javax.swing.JTextField;
+
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 import java.awt.Toolkit;
 
-public class logIN extends JFrame implements ActionListener {
+public class logIN {
 
-	private static final long serialVersionUID = -1299314404835604855L;
+	public JFrame loginframe;
+	private JTextField Nametext;
 
-	Button list[] = new Button[3];
-	String listStrings[] = { "New Game","Back", "Exit" };
-	MainScreenPanel buttonPanel = null;
 
-	public logIN(int level) {
-		setResizable(false);
-		setType(Type.POPUP);
-		setFont(new Font("Dialog", Font.BOLD, 13));
-		setForeground(Color.DARK_GRAY);
-		setIconImage(Toolkit.getDefaultToolkit().getImage("src\\images\\icon.png"));
-		setTitle("Snake Game - LogIN Page");
-		
-		buttonPanel = new MainScreenPanel();
-
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(420, 127, 600, 500);
-		buttonPanel.setBackground(Color.BLACK);
-		for (int i = 0; i < list.length; i++) {
-			list[i] = new Button(listStrings[i]);
-			list[i].addActionListener(this);
-			list[i].setBackground(Color.YELLOW);
-			list[i].setFont(new Font("Comic Sans MS", Font.BOLD, 15));
-			list[i].setBounds(230, 200 + i * 50, 120, 30);
-			buttonPanel.add(list[i]);
-		}
-
-		buttonPanel.setLayout(null);
-		getContentPane().add(buttonPanel);
-		setVisible(true);
+	/**
+	 * Create the application.
+	 */
+	public logIN() {
+		initialize();
 	}
 
-	public void actionPerformed(ActionEvent e) {
-		Object obj = e.getSource();
-
-		if (obj == list[0]) {
-
-			new GameBoardWindow(1);
-			setVisible(false);
-			dispose();
-
-		}
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		loginframe = new JFrame();
+		loginframe.setIconImage(Toolkit.getDefaultToolkit().getImage(logIN.class.getResource("/images/icon.png")));
+		loginframe.setTitle("SnakeGame");
+		loginframe.setBounds(100, 100, 676, 452);
+		loginframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		loginframe.getContentPane().setLayout(null);
 		
-		if (obj == list[1]) {
+		JButton btnNewButton = new JButton("");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				MainScreen f = new MainScreen();
+				f.framefirst.setVisible(true);
+				loginframe.dispose();	
 			
-            new MainScreen(1);
-			setVisible(false);
-			dispose();
-		}
+			}
+		});
+		btnNewButton.setIcon(new ImageIcon(logIN.class.getResource("/images/back.jpg")));
+		btnNewButton.setBounds(30, 343, 67, 37);
+		loginframe.getContentPane().add(btnNewButton);
 		
-		if (obj == list[2]) {
-
-			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			setVisible(false);
-			dispose();
-		}
+		JLabel lblNewLabel_1 = new JLabel("Enter your Name");
+		lblNewLabel_1.setFont(new Font("Segoe Print", Font.PLAIN, 22));
+		lblNewLabel_1.setBounds(201, 94, 212, 40);
+		loginframe.getContentPane().add(lblNewLabel_1);
 		
+		Nametext = new JTextField();
+		Nametext.setFont(new Font("Segoe Print", Font.PLAIN, 19));
+		Nametext.setBounds(183, 150, 230, 37);
+		loginframe.getContentPane().add(Nametext);
+		Nametext.setColumns(10);
+		 String name =  Nametext.getText();
+		 
+		JButton btnPlay = new JButton("Play");
+		btnPlay.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(Nametext.getText().equals("")) {
+					JOptionPane.showMessageDialog(loginframe,"please enter your name !");
+				}
+				else {
+				new GameBoardWindow(1);
+				loginframe.setVisible(false);
+				loginframe.dispose();
+				}
+			}
+		});
+		
+		
+		btnPlay.setForeground(Color.BLACK);
+		btnPlay.setFont(new Font("Segoe Print", Font.PLAIN, 18));
+		btnPlay.setBackground(new Color(154, 205, 50));
+		btnPlay.setBounds(226, 212, 144, 40);
+		loginframe.getContentPane().add(btnPlay);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(logIN.class.getResource("/images/snake111.jpg")));
+		lblNewLabel.setBounds(0, 0, 655, 406);
+		loginframe.getContentPane().add(lblNewLabel);
 	}
-
-	@SuppressWarnings("serial")
-	class MainScreenPanel extends JPanel {
-
-		MainScreenPanel() {
-		}
-
-		public void paintComponent(Graphics g) {
-			super.paintComponent(g);
-			Graphics2D g2 = (Graphics2D) g;
-
-			g2.setColor(Color.YELLOW);
-			g2.setFont(new Font("Comic Sans MS", Font.BOLD, 45));
-			g2.drawString("  Snake Game", 135, 85);
-			g2.setColor(Color.YELLOW);
-			g2.drawString("Panther", 210, 150);
-		}
-	}
+	
 }

@@ -117,7 +117,7 @@ public class Setting extends JFrame implements ActionListener {
 			
 			setVisible(false);
 			dispose();
-			new MainScreen(1);
+			new MainScreen();
 		}
 
 		if (source == exitGameMenuItem) {

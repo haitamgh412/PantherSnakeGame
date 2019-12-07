@@ -1,111 +1,142 @@
 package View;
 
-import java.awt.Button;
-
-
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 import java.awt.Toolkit;
 
-public class MainScreen extends JFrame implements ActionListener {
+public class MainScreen  extends JFrame implements ActionListener {
 
-	private static final long serialVersionUID = -1299314404835604855L;
+	public JFrame framefirst;
+	
 
-	Button list[] = new Button[5];
-	String listStrings[] = { "Log IN", "Setting", "Instructions" , "Hight Score" , "Exit" };
-	MainScreenPanel buttonPanel = null;
-
-	public MainScreen(int level) {
-		setResizable(false);
-		setType(Type.POPUP);
-		setFont(new Font("Dialog", Font.BOLD, 13));
-		setForeground(Color.DARK_GRAY);
-		setIconImage(Toolkit.getDefaultToolkit().getImage("src\\images\\icon.png"));
-		setTitle("Snake Game - Panther");
-		
-		buttonPanel = new MainScreenPanel();
-
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(420, 127, 600, 500);
-		buttonPanel.setBackground(Color.BLACK);
-		for (int i = 0; i < list.length; i++) {
-			list[i] = new Button(listStrings[i]);
-			list[i].addActionListener(this);
-			list[i].setBackground(Color.YELLOW);
-			list[i].setFont(new Font("Comic Sans MS", Font.BOLD, 15));
-			list[i].setBounds(230, 200 + i * 50, 120, 30);
-			buttonPanel.add(list[i]);
-		}
-
-		buttonPanel.setLayout(null);
-		getContentPane().add(buttonPanel);
-		setVisible(true);
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					MainScreen window = new MainScreen();
+					window.framefirst.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 	}
 
+	/**
+	 * Create the application.
+	 */
+	public MainScreen() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		framefirst = new JFrame();
+		framefirst.setTitle("SnakeGame");
+		framefirst.setIconImage(Toolkit.getDefaultToolkit().getImage(MainScreen.class.getResource("/images/icon.png")));
+		framefirst.setBounds(100, 100, 669, 459);
+		framefirst.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		framefirst.getContentPane().setLayout(null);
+		
+		JButton btnNewButton = new JButton("");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+				setVisible(false);
+				
+			}
+		});
+		btnNewButton.setIcon(new ImageIcon(MainScreen.class.getResource("/images/esc1.jpg")));
+		btnNewButton.setBounds(26, 341, 42, 46);
+		framefirst.getContentPane().add(btnNewButton);
+		
+		JButton btnHightScore = new JButton("Hight Score");
+		btnHightScore.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			    new Scores(4);
+				setVisible(false);
+				dispose();
+			}
+		});
+		btnHightScore.setForeground(Color.BLACK);
+		btnHightScore.setFont(new Font("Segoe Print", Font.PLAIN, 18));
+		btnHightScore.setBackground(new Color(154, 205, 50));
+		btnHightScore.setBounds(213, 292, 144, 40);
+		framefirst.getContentPane().add(btnHightScore);
+		
+		JButton btnIns = new JButton("Instructions");
+		btnIns.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				  new Instructions(3);
+					setVisible(false);
+					dispose();
+			}
+		});
+		btnIns.setForeground(Color.BLACK);
+		btnIns.setFont(new Font("Segoe Print", Font.PLAIN, 18));
+		btnIns.setBackground(new Color(154, 205, 50));
+		btnIns.setBounds(213, 229, 144, 40);
+		framefirst.getContentPane().add(btnIns);
+		
+		JButton btnSetting = new JButton("Setting");
+		btnSetting.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			    new Setting(2);
+				setVisible(false);
+				dispose();
+			}
+		});
+		btnSetting.setForeground(Color.BLACK);
+		btnSetting.setFont(new Font("Segoe Print", Font.PLAIN, 18));
+		btnSetting.setBackground(new Color(154, 205, 50));
+		btnSetting.setBounds(213, 165, 144, 40);
+		framefirst.getContentPane().add(btnSetting);
+		
+		JLabel lblSnakeGamePanther = new JLabel("Snake Game_Panther");
+		lblSnakeGamePanther.setFont(new Font("Segoe Print", Font.ITALIC, 35));
+		lblSnakeGamePanther.setBounds(91, 13, 450, 68);
+		framefirst.getContentPane().add(lblSnakeGamePanther);
+		
+		JButton button1 = new JButton("Log IN");
+		button1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+		    
+		    logIN N = new logIN();
+			N.loginframe.setVisible(true);
+			framefirst.dispose();
+		    
+			}
+		});
+		button1.setFont(new Font("Segoe Print", Font.PLAIN, 18));
+		button1.setBackground(new Color(154, 205, 50));
+		button1.setForeground(new Color(0, 0, 0));
+		button1.setBounds(213, 97, 144, 40);
+		framefirst.getContentPane().add(button1);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setBackground(new Color(255, 255, 255));
+		lblNewLabel.setIcon(new ImageIcon(MainScreen.class.getResource("/images/snake111.jpg")));
+		lblNewLabel.setBounds(0, -20, 672, 436);
+		framefirst.getContentPane().add(lblNewLabel);
+	}
+
+	@Override
 	public void actionPerformed(ActionEvent e) {
-		Object obj = e.getSource();
-
-		if (obj == list[0]) {
-
-			new logIN(1);
-			setVisible(false);
-			dispose();
-
-		}
-
-		if (obj == list[1]) {
-			
-            new Setting(2);
-			setVisible(false);
-			dispose();
-			
-		}
-
-		if (obj == list[2]) {
-			
-            new Instructions(3);
-			setVisible(false);
-			dispose();
-		}
+		// TODO Auto-generated method stub
 		
-		if (obj == list[3]) {
-			
-            new Scores(4);
-			setVisible(false);
-			dispose();
-		}
-		
-		if (obj == list[4]) {
-
-			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			setVisible(false);
-			dispose();
-		}
-		
-	}
-
-	@SuppressWarnings("serial")
-	class MainScreenPanel extends JPanel {
-
-		MainScreenPanel() {
-		}
-
-		public void paintComponent(Graphics g) {
-			super.paintComponent(g);
-			Graphics2D g2 = (Graphics2D) g;
-
-			g2.setColor(Color.YELLOW);
-			g2.setFont(new Font("Comic Sans MS", Font.BOLD, 45));
-			g2.drawString("  Snake Game", 135, 85);
-			g2.setColor(Color.YELLOW);
-			g2.drawString("Panther", 210, 150);
-		}
 	}
 }
