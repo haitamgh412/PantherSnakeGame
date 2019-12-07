@@ -68,10 +68,11 @@ public class GameBoardWindow extends JFrame implements ActionListener {
 		Object source = event.getSource();
 
 		if (source == newGameMenuItem) {
-			setVisible(false);
+			 logIN N = new logIN();
+				N.loginframe.setVisible(true);
+			
 			dispose();
 
-			new logIN(1);
 		}
 
 		if (source == exitGameMenuItem) {
