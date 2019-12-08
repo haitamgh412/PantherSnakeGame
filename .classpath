@@ -7,5 +7,6 @@
 	<classpathentry kind="lib" path="PantherSnakeGame/jgoodies-forms-1.8.0-sources.jar"/>
 	<classpathentry kind="lib" path="PantherSnakeGame/jgoodies-forms-1.8.0.jar"/>
 	<classpathentry kind="lib" path="PantherSnakeGame/miglayout15-swing.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
 	<classpathentry kind="output" path="PantherSnakeGame/bin"/>
 </classpath>

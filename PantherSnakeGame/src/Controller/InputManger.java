@@ -15,6 +15,12 @@ public class InputManger implements KeyListener {
 	public void keyTyped(KeyEvent e) {
 	}
 
+	/*
+	 * Manages what the game have to do when the player presses on the keyboard's keys 
+	 * in different situations
+	 * 
+	 */
+	
 	public void keyPressed(KeyEvent e) {
 
 		int key = e.getKeyCode();

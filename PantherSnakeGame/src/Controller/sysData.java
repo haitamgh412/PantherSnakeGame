@@ -23,7 +23,7 @@ import Model.Mouse;
 @SuppressWarnings("serial")
 public class sysData extends JPanel implements ActionListener {
 
-	/** Creates a new instance of GameBoard */
+	/** Creates a new instance of sysData */
 
 	private Snake snake;
 	private Apple snakeFood;
@@ -42,7 +42,7 @@ public class sysData extends JPanel implements ActionListener {
 	private int playerScore = 0;
 	private int numOFLifes = 3;
 
-	private String soundFilePath = "start.wav";
+	 private String soundFilePath = "start.wav";
 
 	public sysData(int level) {
 
@@ -214,9 +214,15 @@ public class sysData extends JPanel implements ActionListener {
 		this.snake.setDirection(direction);
 	}
 
+	/*
+	 * the method checks if the snake collisions with the boundary or with her self
+	 * and updates or finishes the game 
+	 * and check when the snake eat any type of food and add to the score the appropriate 
+	 * points and add it again
+	 */
 	public void checkCollision() {
 
-		if (isSelfCollisioned() || isBoundryCollisioned() && numOFLifes > 0) {
+		if (isSelfCollisioned() || isBoundaryCollisioned() && numOFLifes > 0) {
 			
 			numOFLifes = numOFLifes -1;
 			if(numOFLifes == 1) {
@@ -227,7 +233,7 @@ public class sysData extends JPanel implements ActionListener {
 
 
 		}
-		else if (isSelfCollisioned() || isBoundryCollisioned() && numOFLifes == 0)
+		else if (isSelfCollisioned() || isBoundaryCollisioned() && numOFLifes == 0)
 		{
 
 			isGameOver = true;
@@ -267,7 +273,10 @@ public class sysData extends JPanel implements ActionListener {
 		}
 	}
 
-	public boolean isBoundryCollisioned() {
+	/*
+	 * checks if the snakes collisions with the boundary according to the boundary coordinates
+	 */
+	public boolean isBoundaryCollisioned() {
 		if (snake.getDirection() == 1) {
 			double centerY = ((Ellipse2D.Double) snake.getSnakeBody().get(0))
 					.getMinY();
@@ -287,6 +296,11 @@ public class sysData extends JPanel implements ActionListener {
 		return false;
 	}
 
+	/*
+	 * check if the the user press up if on the upper point exist any of the snake part
+	 * then there is collision .
+	 * the same thing for the four directions
+	 */
 	public boolean isSelfCollisioned() {
 
 		if (snake.getDirection() == 1) {
@@ -338,6 +352,9 @@ public class sysData extends JPanel implements ActionListener {
 
 	}
 
+	/*
+	 * the method checks if the snake ate Apple and return true in any step
+	 */
 	public boolean isFoodCollisioned() {
 
 		boolean collisionedWithFood = false;
@@ -377,7 +394,9 @@ public class sysData extends JPanel implements ActionListener {
 		return collisionedWithFood;
 
 	}
-	
+	/*
+	 * the method checks if the snake ate Pear and return true in any step
+	 */
 	public boolean isFoodCollisioned2() {
 
 		boolean collisionedWithFood2 = false;
@@ -417,7 +436,9 @@ public class sysData extends JPanel implements ActionListener {
 		return collisionedWithFood2;
 
 	}
-	
+	/*
+	 * the method checks if the snake ate Banana and return true in any step
+	 */
 	public boolean isFoodCollisioned3() {
 
 		boolean collisionedWithFood3 = false;
@@ -457,7 +478,9 @@ public class sysData extends JPanel implements ActionListener {
 		return collisionedWithFood3;
 
 	}
-	
+	/*
+	 * the method checks if the snake ate Mouse and return true in any step
+	 */
 	public boolean isFoodCollisioned4() {
 
 		boolean collisionedWithFood4 = false;
@@ -497,7 +520,9 @@ public class sysData extends JPanel implements ActionListener {
 		return collisionedWithFood4;
 
 	}
-
+	/*
+	 *Starts new game , if another game is on progress the game starts again 
+	 */
 	public void startGame() {
 
 		if (gameThread.isRunning()) {
@@ -512,7 +537,9 @@ public class sysData extends JPanel implements ActionListener {
 		}
 
 	}
-
+	/*
+	 * pausing the game
+	 */
 	public void pauseGame() {
 
 		gameThread.stop();
@@ -521,7 +548,9 @@ public class sysData extends JPanel implements ActionListener {
 		repaint();
 
 	}
-	
+	/*
+	 * continue the game after pausing
+	 */
 	public void contGame() {
 		
 		gameThread.stop();
@@ -532,8 +561,9 @@ public class sysData extends JPanel implements ActionListener {
 		} else pauseGame();
 		}
 		
-	
-
+	/*
+	 * Stopping the game
+	 */
 	public void stopGame() {
 
 		gameThread.stop();
@@ -541,11 +571,15 @@ public class sysData extends JPanel implements ActionListener {
 		soundManger.stopSound();
 
 	}
-
+	/*
+	 * checks if the game is in progress 
+	 */
 	public boolean isGameRunning() {
 		return gameThread.isRunning() && !isGameOver();
 	}
-
+	/*
+	 * checks if the game Ended 
+	 */
 	public boolean isGameOver() {
 		return isGameOver;
 	}
