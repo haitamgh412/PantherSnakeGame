@@ -58,7 +58,7 @@ public class sysData extends JPanel implements ActionListener {
 		inputManager = new InputManger(this);
 		soundManger = new SoundManger(soundFilePath);
 
-		gameThread = new Timer(getDelay(level), this);
+		gameThread = new Timer(140, this);
 
 		timerThread = new Timer(1000, new ActionListener() {
 
@@ -80,7 +80,8 @@ public class sysData extends JPanel implements ActionListener {
 
 	}
 
-	private int getDelay(int level) {
+/*	private int getDelay(int level) {
+
 
 		int delay = 0;
 		if (level == 1) {	
@@ -95,13 +96,16 @@ public class sysData extends JPanel implements ActionListener {
 		}
 		return delay;
 	}
-
+*/
+	
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 
 		doDrawing(g);
 	}
-
+	/*
+	 * initiate the full board with all the objects
+	 */
 	public void doDrawing(Graphics g) {
 
 		Graphics2D g2 = (Graphics2D) g;
@@ -124,7 +128,7 @@ public class sysData extends JPanel implements ActionListener {
      	DrawSnake(g2);
 
 	}
-
+	//draw the boundary
 	public void DrawBoundry(Graphics2D g2) {
 		for (int i = 0; i < 17; i++) {
 			Rectangle2D.Double rect = new Rectangle2D.Double(227.0 - i,
@@ -135,7 +139,7 @@ public class sysData extends JPanel implements ActionListener {
 
 		}
 	}
-
+	//draw the snake
 	public void DrawSnake(Graphics2D g2) {
 
 		for (int i = 0; i < snake.getSnakeBody().size(); i++) {
@@ -151,27 +155,27 @@ public class sysData extends JPanel implements ActionListener {
 
 		}
 	}
-
+	//draw the apple
 	public void DrawSnakeFood(Graphics2D g2) {
 		g2.setColor(Color.RED);
 		g2.fill(snakeFood.getFood());
 	}
-	
+	//draw the pear
 	public void DrawSnakeFood2(Graphics2D g2) {
 		g2.setColor(Color.GREEN);
 		g2.fill(snakeFood2.getFood2());
 	}
-	
+	//draw the banana
 	public void DrawSnakeFood3(Graphics2D g2) {
 		g2.setColor(Color.YELLOW);
 		g2.fill(snakeFood3.getFood3());
 	}
-	
+	//draw the mouse
 	public void DrawSnakeFood4(Graphics2D g2) {
 		g2.setColor(Color.GRAY);
 		g2.fill(snakeFood4.getFood4());
 	}
-
+	//draw the Status bar 
 	public void DrawStatusbar(Graphics2D g2) {
 		g2.setColor(Color.WHITE);
 		g2.setFont(new Font("Comic Sans MS", Font.BOLD, 35));
@@ -209,7 +213,9 @@ public class sysData extends JPanel implements ActionListener {
 		}
 
 	}
-
+	/* 
+	 * change the direction of the snake
+	 */
 	public void changeSnakeDirection(int direction) {
 		this.snake.setDirection(direction);
 	}

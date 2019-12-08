@@ -9,12 +9,15 @@ public class Apple {
 
 	private Ellipse2D.Double food;
 
-	/** Creates a new instance of SnakeFood */
+	/** Creates a new instance of Apple */
 	public Apple() {
 
 		generateFood();
 	}
-
+	
+	/*
+	 * Create an new Apple in the the random coordinates x and y
+	 */
 	public void generateFood() {
 
 		Random random = new Random();

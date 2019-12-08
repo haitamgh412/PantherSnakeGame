@@ -9,12 +9,14 @@ public class Mouse {
 
 	private Ellipse2D.Double food;
 
-	/** Creates a new instance of SnakeFood */
+	/** Creates a new instance of Mouse */
 	public Mouse() {
 
 		generateFood4();
 	}
-
+	/*
+	 * Create an new Mouse in the the random coordinates x and y
+	 */
 	public void generateFood4() {
 
 		Random random = new Random();

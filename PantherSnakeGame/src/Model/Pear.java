@@ -8,12 +8,14 @@ public class Pear {
 
 	private Ellipse2D.Double food;
 
-	/** Creates a new instance of SnakeFood */
+	/** Creates a new instance of Pear */
 	public Pear() {
 
 		generateFood2();
 	}
-
+	/*
+	 * Create an new Pear in the the random coordinates x and y
+	 */
 	public void generateFood2() {
 
 		Random random = new Random();
