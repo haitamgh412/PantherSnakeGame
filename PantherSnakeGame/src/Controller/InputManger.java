@@ -4,11 +4,13 @@ package Controller;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import Model.GameBoard;
+
 public class InputManger implements KeyListener {
 
-	private sysData gameBoard;
+	private GameBoard gameBoard;
 
-	public InputManger(sysData gameBoard) {
+	public InputManger(GameBoard gameBoard) {
 		this.gameBoard = gameBoard;
 	}
 

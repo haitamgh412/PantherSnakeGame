@@ -2,43 +2,7 @@
 <class-diagram version="1.2.3" icons="true" automaticImage="JPEG" always-add-relationships="false" 
   generalizations="true" realizations="true" associations="true" dependencies="false" nesting-relationships="true" 
   router="FAN">  
-  <class id="1" language="java" name="Controller.Main" project="PantherSnakeGame" 
-    file="/PantherSnakeGame/src/Controller/Main.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="106" width="130" x="280" y="-7"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="2" language="java" name="Model.Answer" project="PantherSnakeGame" 
-    file="/PantherSnakeGame/src/Model/Answer.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="88" width="104" x="450" y="-7"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="3" language="java" name="View.MainScreen.MainScreenPanel" project="PantherSnakeGame" 
-    file="/PantherSnakeGame/src/View/MainScreen.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="106" width="206" x="3777" y="697"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="4" language="java" name="Model.mediumQuestion" project="PantherSnakeGame" 
-    file="/PantherSnakeGame/src/Model/mediumQuestion.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="88" width="144" x="594" y="-7"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="5" language="java" name="Controller.LoopingByteInputStream" project="PantherSnakeGame" 
+  <class id="1" language="java" name="Controller.LoopingByteInputStream" project="PantherSnakeGame" 
     file="/PantherSnakeGame/src/Controller/LoopingByteInputStream.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="142" width="209" x="1041" y="-7"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -47,7 +11,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="6" language="java" name="Model.Mouse" project="PantherSnakeGame" 
+  <class id="2" language="java" name="Model.Mouse" project="PantherSnakeGame" 
     file="/PantherSnakeGame/src/Model/Mouse.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="142" width="146" x="2522" y="697"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -56,7 +20,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="7" language="java" name="Controller.InputManger" project="PantherSnakeGame" 
+  <class id="3" language="java" name="Controller.InputManger" project="PantherSnakeGame" 
     file="/PantherSnakeGame/src/Controller/InputManger.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="142" width="207" x="2708" y="697"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -65,7 +29,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="8" language="java" name="View.logIN" project="PantherSnakeGame" 
+  <class id="4" language="java" name="View.logIN" project="PantherSnakeGame" 
     file="/PantherSnakeGame/src/View/logIN.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="160" width="223" x="778" y="-7"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -74,7 +38,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="9" language="java" name="View.GameBoardWindow" project="PantherSnakeGame" 
+  <class id="5" language="java" name="View.GameBoardWindow" project="PantherSnakeGame" 
     file="/PantherSnakeGame/src/View/GameBoardWindow.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="178" width="223" x="1290" y="-7"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -83,7 +47,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="10" language="java" name="Model.Apple" project="PantherSnakeGame" 
+  <class id="6" language="java" name="Model.Apple" project="PantherSnakeGame" 
     file="/PantherSnakeGame/src/Model/Apple.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="142" width="139" x="2955" y="697"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -92,17 +56,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="11" language="java" name="Model.HardQuestion" project="PantherSnakeGame" 
-    file="/PantherSnakeGame/src/Model/HardQuestion.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="88" width="123" x="1553" y="-7"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="12" language="java" name="View.SoundManger.PlayThread" project="PantherSnakeGame" 
-    file="/PantherSnakeGame/src/View/SoundManger.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="7" language="java" name="Controller.SoundManger.PlayThread" project="PantherSnakeGame" 
+    file="/PantherSnakeGame/src/Controller/SoundManger.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="196" width="237" x="2334" y="1149"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -110,8 +65,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="13" language="java" name="Controller.sysData" project="PantherSnakeGame" 
-    file="/PantherSnakeGame/src/Controller/sysData.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="8" language="java" name="Model.GameBoard" project="PantherSnakeGame" 
+    file="/PantherSnakeGame/src/Model/GameBoard.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="88" width="104" x="1716" y="-7"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -119,16 +74,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="14" language="java" name="Model.EasyQuestion" project="PantherSnakeGame" 
-    file="/PantherSnakeGame/src/Model/EasyQuestion.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="88" width="122" x="1860" y="-7"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="15" language="java" name="View.Scores" project="PantherSnakeGame" 
+  <class id="9" language="java" name="View.Scores" project="PantherSnakeGame" 
     file="/PantherSnakeGame/src/View/Scores.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="178" width="223" x="2022" y="-7"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -137,7 +83,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="16" language="java" name="Model.Player" project="PantherSnakeGame" 
+  <class id="10" language="java" name="Model.Player" project="PantherSnakeGame" 
     file="/PantherSnakeGame/src/Model/Player.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="88" width="104" x="2285" y="-7"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -146,16 +92,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="17" language="java" name="View.logIN.MainScreenPanel" project="PantherSnakeGame" 
-    file="/PantherSnakeGame/src/View/logIN.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="106" width="206" x="778" y="697"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="18" language="java" name="Model.Banana" project="PantherSnakeGame" 
+  <class id="11" language="java" name="Model.Banana" project="PantherSnakeGame" 
     file="/PantherSnakeGame/src/Model/Banana.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="142" width="146" x="3134" y="697"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -164,7 +101,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="19" language="java" name="View.MainScreen" project="PantherSnakeGame" 
+  <class id="12" language="java" name="View.MainScreen" project="PantherSnakeGame" 
     file="/PantherSnakeGame/src/View/MainScreen.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="160" width="223" x="3777" y="-7"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -173,7 +110,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="20" language="java" name="View.Setting" project="PantherSnakeGame" 
+  <class id="13" language="java" name="View.Setting" project="PantherSnakeGame" 
     file="/PantherSnakeGame/src/View/Setting.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="214" width="223" x="2429" y="-7"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -182,8 +119,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="21" language="java" name="View.SoundManger" project="PantherSnakeGame" 
-    file="/PantherSnakeGame/src/View/SoundManger.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="14" language="java" name="Controller.SoundManger" project="PantherSnakeGame" 
+    file="/PantherSnakeGame/src/Controller/SoundManger.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="142" width="148" x="2334" y="697"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -191,7 +128,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="22" language="java" name="View.Instructions" project="PantherSnakeGame" 
+  <class id="15" language="java" name="View.Instructions" project="PantherSnakeGame" 
     file="/PantherSnakeGame/src/View/Instructions.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="178" width="223" x="2692" y="-7"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -200,7 +137,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="23" language="java" name="Model.Pear" project="PantherSnakeGame" 
+  <class id="16" language="java" name="Model.Pear" project="PantherSnakeGame" 
     file="/PantherSnakeGame/src/Model/Pear.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="142" width="146" x="3320" y="697"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -209,7 +146,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="24" language="java" name="Model.Snake" project="PantherSnakeGame" 
+  <class id="17" language="java" name="Model.Snake" project="PantherSnakeGame" 
     file="/PantherSnakeGame/src/Model/Snake.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="412" width="231" x="3506" y="697"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -218,42 +155,22 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <nesting id="25">    
-    <end type="SOURCE" refId="21"/>    
-    <end type="TARGET" refId="12"/>  
+  <nesting id="18">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="7"/>  
   </nesting>  
-  <nesting id="26">    
-    <end type="SOURCE" refId="19"/>    
-    <end type="TARGET" refId="3"/>  
-  </nesting>  
-  <association id="27">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="28" name="buttonPanel"/>      
-      <multiplicity id="29" minimum="0" maximum="1"/>    
+  <association id="19">    
+    <end type="SOURCE" refId="14" navigable="false">      
+      <attribute id="20" name="playThread">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="21" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="17" navigable="true"/>    
+    <end type="TARGET" refId="7" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="30">    
-    <end type="SOURCE" refId="21" navigable="false">      
-      <attribute id="31" name="playThread"/>      
-      <multiplicity id="32" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="12" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="33">    
-    <end type="SOURCE" refId="19" navigable="false">      
-      <attribute id="34" name="buttonPanel"/>      
-      <multiplicity id="35" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <nesting id="36">    
-    <end type="SOURCE" refId="8"/>    
-    <end type="TARGET" refId="17"/>  
-  </nesting>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    

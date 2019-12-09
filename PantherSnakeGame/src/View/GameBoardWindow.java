@@ -9,7 +9,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
-import Controller.sysData;
+import Model.GameBoard;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -34,7 +34,7 @@ public class GameBoardWindow extends JFrame implements ActionListener {
 		setBounds(200, 50, 1200, 700);
 		setResizable(false);
 
-		getContentPane().add(new sysData(level));
+		getContentPane().add(new GameBoard(level));
 		
 		menuBar = new JMenuBar();
 
