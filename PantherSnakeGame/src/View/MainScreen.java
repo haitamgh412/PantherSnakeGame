@@ -81,8 +81,9 @@ public class MainScreen  extends JFrame implements ActionListener {
 		JButton btnIns = new JButton("Instructions");
 		btnIns.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				  new Instructions(3);
-					setVisible(false);
+				Instructions I =  new Instructions();
+				I.Instructionsframe.setVisible(true);
+				setVisible(false);
 					dispose();
 			}
 		});
@@ -95,7 +96,8 @@ public class MainScreen  extends JFrame implements ActionListener {
 		JButton btnSetting = new JButton("Setting");
 		btnSetting.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			    new Setting(2);
+			    Setting S = new Setting();
+				S.Settingframe.setVisible(true);
 				setVisible(false);
 				dispose();
 			}
