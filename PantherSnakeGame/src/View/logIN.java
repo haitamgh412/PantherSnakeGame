@@ -12,6 +12,7 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JTextField;
 
+import Model.Snake;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -73,7 +74,12 @@ public class logIN {
 					JOptionPane.showMessageDialog(loginframe,"please enter your name !");
 				}
 				else {
-				new GameBoardWindow(1);
+					java.awt.EventQueue.invokeLater(new Runnable() {
+				        public void run() {
+				            new Snake().setVisible(true);
+
+				        }
+				    });
 				loginframe.setVisible(false);
 				loginframe.dispose();
 				}

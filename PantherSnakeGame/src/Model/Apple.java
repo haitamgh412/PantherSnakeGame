@@ -2,13 +2,18 @@
 
 package Model;
 
-import java.awt.geom.Ellipse2D;
-import java.util.Random;
+import java.awt.Image;
+
+
+import javax.swing.ImageIcon;
 
 public class Apple {
 
-	private Ellipse2D.Double food;
-
+    private int apple_x;
+    private int apple_y;
+    private Image apple;
+    private final int applePoints = 10;
+    
 	/** Creates a new instance of Apple */
 	public Apple() {
 
@@ -19,21 +24,44 @@ public class Apple {
 	 * Create an new Apple in the the random coordinates x and y
 	 */
 	public void generateFood() {
+		
+		ImageIcon iia = new ImageIcon("src/images/apple.png");
+        apple = iia.getImage();
+        
+        int a = (int) (Math.random() * Board.RAND_POS);
+        this.apple_x = ((a * Board.DOT_SIZE));
 
-		Random random = new Random();
-		int x, y;
-		do {
-			x = (int) (random.nextInt(39));
-			y = (int) (random.nextInt(30));
-		} while (x == 0 || y == 0 || x == 38 || y == 29);
+        a = (int) (Math.random() * Board.RAND_POS);
+        this.apple_y = ((a * Board.DOT_SIZE));
+        
+        
+		
+		
 
-		x = x * 16 + 227;
-		y = y * 16 + 127;
-
-		food = new Ellipse2D.Double(x, y, 16, 16);
 	}
-
-	public Ellipse2D.Double getFood() {
-		return food;
+	
+	public int getX() {
+		return this.apple_x;
 	}
+	public int getY() {
+		return this.apple_y;
+	}
+	public Image getImage() {
+		return this.apple;
+	}
+	
+	public void random() {
+        int a = (int) (Math.random() * Board.RAND_POS);
+        this.apple_x = ((a * Board.DOT_SIZE));
+
+        a = (int) (Math.random() * Board.RAND_POS);
+        this.apple_y = ((a * Board.DOT_SIZE));
+        
+	}
+	
+	public int addPoints() {
+		return (applePoints);
+	}
+	
+	
 }

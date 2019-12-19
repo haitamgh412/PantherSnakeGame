@@ -2,38 +2,62 @@
 
 package Model;
 
-import java.awt.geom.Ellipse2D;
-import java.util.Random;
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
 
 public class Banana {
 
-	private Ellipse2D.Double food;
-
-	/** Creates a new instance of Banana */
+    private int banana_x;
+    private int banana_y;
+    private Image banana;
+    private final int bananaPoints = 15;
+    
+	/** Creates a new instance of Apple */
 	public Banana() {
 
-		generateFood3();
+		generateFood();
 	}
-
+	
 	/*
-	 * Create an new Banana in the the random coordinates x and y
+	 * Create an new Apple in the the random coordinates x and y
 	 */
-	public void generateFood3() {
+	public void generateFood() {
+		
+        ImageIcon iib = new ImageIcon("src/images/banana.png");
+        banana = iib.getImage();
+        
+        int a = (int) (Math.random() * Board.RAND_POS);
+        this.banana_x = ((a * Board.DOT_SIZE));
 
-		Random random = new Random();
-		int x, y;
-		do {
-			x = (int) (random.nextInt(39));
-			y = (int) (random.nextInt(30));
-		} while (x == 0 || y == 0 || x == 38 || y == 29);
+        a = (int) (Math.random() * Board.RAND_POS);
+        this.banana_y = ((a * Board.DOT_SIZE));
+        	
 
-		x = x * 16 + 227;
-		y = y * 16 + 127;
-
-		food = new Ellipse2D.Double(x, y, 16, 16);
 	}
-
-	public Ellipse2D.Double getFood3() {
-		return food;
+	
+	public int getX() {
+		return this.banana_x;
 	}
+	public int getY() {
+		return this.banana_y;
+	}
+	public Image getImage() {
+		return this.banana;
+	}
+	
+	public void random() {
+        int a = (int) (Math.random() * Board.RAND_POS);
+        this.banana_x = ((a * Board.DOT_SIZE));
+
+        a = (int) (Math.random() * Board.RAND_POS);
+        this.banana_y = ((a * Board.DOT_SIZE));
+        
+	}
+	
+	public int addPoints() {
+		return (bananaPoints);
+	}
+	
+	
 }

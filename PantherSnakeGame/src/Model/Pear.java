@@ -1,38 +1,63 @@
 
+
 package Model;
 
-import java.awt.geom.Ellipse2D;
-import java.util.Random;
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
 
 public class Pear {
 
-	private Ellipse2D.Double food;
-
-	/** Creates a new instance of Pear */
+    private int pear_x;
+    private int pear_y;
+    private Image pear;
+    private final int pearPoints =20;
+    
+	/** Creates a new instance of Apple */
 	public Pear() {
 
-		generateFood2();
+		generateFood();
 	}
+	
 	/*
-	 * Create an new Pear in the the random coordinates x and y
+	 * Create an new Apple in the the random coordinates x and y
 	 */
-	public void generateFood2() {
+	public void generateFood() {
+		
+        ImageIcon iip = new ImageIcon("src/images/pear.png");
+        pear = iip.getImage();
+        
+        int a = (int) (Math.random() * Board.RAND_POS);
+        this.pear_x = ((a * Board.DOT_SIZE));
 
-		Random random = new Random();
-		int x, y;
-		do {
-			x = (int) (random.nextInt(39));
-			y = (int) (random.nextInt(30));
-		} while (x == 0 || y == 0 || x == 38 || y == 29);
+        a = (int) (Math.random() * Board.RAND_POS);
+        this.pear_y = ((a * Board.DOT_SIZE));
+        	
 
-		x = x * 16 + 227;
-		y = y * 16 + 127;
-
-		food = new Ellipse2D.Double(x, y, 16, 16);
 	}
-
-	public Ellipse2D.Double getFood2() {
-		return food;
+	
+	public int getX() {
+		return this.pear_x;
 	}
+	public int getY() {
+		return this.pear_y;
+	}
+	public Image getImage() {
+		return this.pear;
+	}
+	
+	public void random() {
+        int a = (int) (Math.random() * Board.RAND_POS);
+        this.pear_x = ((a * Board.DOT_SIZE));
+
+        a = (int) (Math.random() * Board.RAND_POS);
+        this.pear_y = ((a * Board.DOT_SIZE));
+        
+	}
+	
+	public int addPoints() {
+		return (pearPoints);
+	}
+	
 	
 }

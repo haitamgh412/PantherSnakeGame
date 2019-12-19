@@ -9,6 +9,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
+import Model.Board;
 import Model.GameBoard;
 
 import java.awt.Color;
@@ -34,7 +35,7 @@ public class GameBoardWindow extends JFrame implements ActionListener {
 		setBounds(200, 50, 1200, 700);
 		setResizable(false);
 
-		getContentPane().add(new GameBoard(level));
+		getContentPane().add(new Board());
 		
 		menuBar = new JMenuBar();
 
