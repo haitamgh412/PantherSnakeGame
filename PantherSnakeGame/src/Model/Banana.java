@@ -24,7 +24,7 @@ public class Banana {
 	 */
 	public void generateFood() {
 		
-        ImageIcon iib = new ImageIcon("src/images/banana.png");
+        ImageIcon iib = new ImageIcon(Board.class.getResource("/images/banana.png"));
         banana = iib.getImage();
         
         int a = (int) (Math.random() * Board.RAND_POS);

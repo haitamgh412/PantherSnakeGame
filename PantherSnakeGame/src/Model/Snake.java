@@ -4,6 +4,7 @@ package Model;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import java.awt.Dialog.ModalExclusionType;
 
 public class Snake extends JFrame {
 	
@@ -19,7 +20,9 @@ public class Snake extends JFrame {
     
     private void initUI() {
     	
-        add(new Board());
+        Board board = new Board();
+        getContentPane().add(board);
+        board.setLayout(null);
 
         
         setResizable(false);
@@ -27,7 +30,7 @@ public class Snake extends JFrame {
         
         setTitle("Snake");
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
     
 

@@ -17,6 +17,7 @@ import javax.swing.Timer;
 
 import Controller.InputManager;
 import Controller.SoundManger;
+import View.Instructions;
 
 public class Board extends JPanel implements ActionListener {
 	
@@ -118,33 +119,34 @@ public class Board extends JPanel implements ActionListener {
 
     private void loadImages() {
 
-        ImageIcon iid = new ImageIcon("src/images/dot.png");
+        ImageIcon iid = new ImageIcon(Board.class.getResource("/images/dot.png"));
         ball = iid.getImage();
 
        
         
 
         
-        ImageIcon iimd = new ImageIcon("src/images/mouse_down.png");
+        ImageIcon iimd = new ImageIcon(Board.class.getResource("/images/mouse_down.png"));
         mouse_down = iimd.getImage();
-        ImageIcon iimr = new ImageIcon("src/images/mouse_right.png");
+        ImageIcon iimr = new ImageIcon(Board.class.getResource("/images/mouse_right.png"));
         mouse_down = iimr.getImage();
-        ImageIcon iiml = new ImageIcon("src/images/mouse_left.png");
+        ImageIcon iiml = new ImageIcon(Board.class.getResource("/images/mouse_left.png"));
         mouse_down = iiml.getImage();
-        ImageIcon iimu = new ImageIcon("src/images/mouse_up.png");
+        ImageIcon iimu = new ImageIcon(Board.class.getResource("/images/mouse_up.png"));
         mouse_down = iimu.getImage();
         
         
-        ImageIcon iiw = new ImageIcon("src/images/whiteQ.png");
+        ImageIcon iiw = new ImageIcon(Board.class.getResource("/images/whiteQ.png"));
         whiteQ = iiw.getImage();
         
-        ImageIcon iiy = new ImageIcon("src/images/yellowQ.png");
+        ImageIcon iiy = new ImageIcon(Board.class.getResource("/images/yellowQ.png"));
         yellowQ = iiy.getImage();
         
-        ImageIcon iir = new ImageIcon("src/images/redQ.png");
+        ImageIcon iir = new ImageIcon(Board.class.getResource("/images/redQ.png"));
         redQ = iir.getImage();
 
-        ImageIcon iih = new ImageIcon("src/images/headR.png");
+        
+        ImageIcon iih = new ImageIcon(Board.class.getResource("/images/headR.png"));
         head = iih.getImage();
         
     }

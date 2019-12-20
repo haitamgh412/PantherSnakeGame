@@ -21,7 +21,7 @@ public class InputManager implements KeyListener{
 	            	Board.leftDirection = true;
 	            	Board. upDirection = false;
 	            	Board. downDirection = false;
-	                ImageIcon iih = new ImageIcon("src/images/headL.png");
+	                ImageIcon iih = new ImageIcon(Board.class.getResource("/images/headL.png"));
 	                Board.head = iih.getImage();
 	               
 	            }
@@ -30,7 +30,7 @@ public class InputManager implements KeyListener{
 	            	Board.rightDirection = true;
 	            	Board.upDirection = false;
 	            	Board.downDirection = false;
-	                ImageIcon iih = new ImageIcon("src/images/headR.png");
+	                ImageIcon iih = new ImageIcon(Board.class.getResource("/images/headR.png"));
 	                Board.head = iih.getImage();
 	            }
 
@@ -38,7 +38,7 @@ public class InputManager implements KeyListener{
 	            	Board.upDirection = true;
 	            	Board.rightDirection = false;
 	            	Board.leftDirection = false;
-	                ImageIcon iih = new ImageIcon("src/images/headU.png");
+	                ImageIcon iih = new ImageIcon(Board.class.getResource("/images/headU.png"));
 	                Board.head = iih.getImage();
 	            }
 
@@ -46,7 +46,7 @@ public class InputManager implements KeyListener{
 	            	Board.downDirection = true;
 	            	Board.rightDirection = false;
 	            	Board.leftDirection = false;
-	                ImageIcon iih = new ImageIcon("src/images/headD.png");
+	                ImageIcon iih = new ImageIcon(Board.class.getResource("/images/headD.png"));
 	                Board.head = iih.getImage();
 	            }
 //	            else if (key == KeyEvent.VK_SPACE) {

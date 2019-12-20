@@ -7,6 +7,8 @@ import java.awt.Image;
 
 import javax.swing.ImageIcon;
 
+import View.Instructions;
+
 public class Apple {
 
     private int apple_x;
@@ -25,7 +27,8 @@ public class Apple {
 	 */
 	public void generateFood() {
 		
-		ImageIcon iia = new ImageIcon("src/images/apple.png");
+		
+		ImageIcon iia = new ImageIcon(Apple.class.getResource("/images/apple.png"));
         apple = iia.getImage();
         
         int a = (int) (Math.random() * Board.RAND_POS);
