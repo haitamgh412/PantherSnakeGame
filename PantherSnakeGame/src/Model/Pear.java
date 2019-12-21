@@ -46,6 +46,13 @@ public class Pear implements Fruit{
 		return this.pear;
 	}
 	
+	public void clear() {
+		
+		this.pear_x=-50;
+		this.pear_y=-50;
+		this.pear=null;
+	}
+	
 	public void random() {
         int a = (int) (Math.random() * Board.RAND_POS);
         this.pear_x = ((a * Board.DOT_SIZE));

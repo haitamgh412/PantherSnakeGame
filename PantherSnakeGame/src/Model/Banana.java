@@ -46,13 +46,25 @@ public class Banana implements Fruit{
 		return this.banana;
 	}
 	
+	public void clear() {
+		
+		this.banana_x=-50;
+		this.banana_y=-50;
+		this.banana=null;
+	}
+	
 	public void random() {
-        int a = (int) (Math.random() * Board.RAND_POS);
-        this.banana_x = ((a * Board.DOT_SIZE));
-
-        a = (int) (Math.random() * Board.RAND_POS);
-        this.banana_y = ((a * Board.DOT_SIZE));
-        
+		
+		clear();
+		new java.util.Timer().schedule( 
+        new java.util.TimerTask() {
+			@Override
+            public void run() {
+                generateFood();
+            }
+        }, 
+        10000 
+        );
 	}
 	
 	public int addPoints() {

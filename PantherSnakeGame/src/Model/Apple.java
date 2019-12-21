@@ -4,7 +4,6 @@ package Model;
 
 import java.awt.Image;
 
-
 import javax.swing.ImageIcon;
 
 import View.Instructions;
@@ -53,12 +52,25 @@ public class Apple implements Fruit {
 		return this.apple;
 	}
 	
+	public void clear() {
+		
+		this.apple_x=-50;
+		this.apple_y=-50;
+		this.apple=null;
+	}
+	
 	public void random() {
-        int a = (int) (Math.random() * Board.RAND_POS);
-        this.apple_x = ((a * Board.DOT_SIZE));
-
-        a = (int) (Math.random() * Board.RAND_POS);
-        this.apple_y = ((a * Board.DOT_SIZE));
+		clear();
+		new java.util.Timer().schedule( 
+        new java.util.TimerTask() {
+			@Override
+            public void run() {
+                generateFood();
+            }
+        }, 
+        5000 
+		);
+        
         
 	}
 	

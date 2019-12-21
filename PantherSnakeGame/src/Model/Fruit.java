@@ -9,4 +9,5 @@ public interface Fruit {
 	public int getY();
 	public Image getImage();
 	public void random();
+	public void clear();
 }

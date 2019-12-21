@@ -67,6 +67,11 @@ public class Mouse {
 		
 	}
 	
+	public void clear() {
+		mouse_x=-500;
+		mouse_y=-500;
+	}
+	
 	public void random() {
         int a = (int) (Math.random() * Board.RAND_POS);
         this.mouse_x = ((a * Board.DOT_SIZE));
