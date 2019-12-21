@@ -37,21 +37,32 @@ public class Apple implements Fruit {
         this.apple_y = ((a * Board.DOT_SIZE));
         
         
-		
-		
-
 	}
 	
+	/*
+	 * return the coordinate X of the apple
+	 */
 	public int getX() {
 		return this.apple_x;
 	}
+	
+	/*
+	 * return the coordinate Y of the apple
+	 */
 	public int getY() {
 		return this.apple_y;
 	}
+	
+	/*
+	 * return the image of the apple
+	 */
 	public Image getImage() {
 		return this.apple;
 	}
 	
+	/*
+	 * clear the banana off the Board
+	 */
 	public void clear() {
 		
 		this.apple_x=-50;
@@ -59,6 +70,10 @@ public class Apple implements Fruit {
 		this.apple=null;
 	}
 	
+	/*
+	 * clear the apple on the board , wait 5 seconds and generate new apple 
+	 * on another random place
+	 */
 	public void random() {
 		clear();
 		new java.util.Timer().schedule( 
@@ -70,10 +85,12 @@ public class Apple implements Fruit {
         }, 
         5000 
 		);
-        
-        
+       
 	}
 	
+	/*
+	 * return the the points that the apple adds
+	 */
 	public int addPoints() {
 		return (applePoints);
 	}

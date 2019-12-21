@@ -33,7 +33,7 @@ public class Board extends JPanel implements ActionListener {
     private final int B_HEIGHT = 600;
     public static final int DOT_SIZE = 10;
     private final int ALL_DOTS = 3600;
-    public static final int RAND_POS = 60;
+    public static final int RAND_POS = 58;
     private final int DELAY = 140;
     
 	/** Creates a new instance of sysData */

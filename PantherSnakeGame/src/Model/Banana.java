@@ -36,16 +36,29 @@ public class Banana implements Fruit{
 
 	}
 	
+	/*
+	 * return the coordinate X of the banana
+	 */
 	public int getX() {
 		return this.banana_x;
 	}
+	/*
+	 * return the coordinate Y of the banana
+	 */
 	public int getY() {
 		return this.banana_y;
 	}
+	
+	/*
+	 * return the image of the banana
+	 */
 	public Image getImage() {
 		return this.banana;
 	}
 	
+	/*
+	 * clear the banana off the Board
+	 */
 	public void clear() {
 		
 		this.banana_x=-50;
@@ -53,6 +66,10 @@ public class Banana implements Fruit{
 		this.banana=null;
 	}
 	
+	/*
+	 * clear the banana on the board , wait 10 seconds and generate new banana 
+	 * on another random place
+	 */
 	public void random() {
 		
 		clear();
@@ -67,6 +84,9 @@ public class Banana implements Fruit{
         );
 	}
 	
+	/*
+	 * return the the points that the banana adds
+	 */
 	public int addPoints() {
 		return (bananaPoints);
 	}
