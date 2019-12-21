@@ -64,6 +64,7 @@ public class Board extends JPanel implements ActionListener {
     private Apple apple = new Apple();
     private Banana banana = new Banana();
     private Pear pear = new Pear();
+    private Mouse mouse = new Mouse();
 
 
 
@@ -73,8 +74,7 @@ public class Board extends JPanel implements ActionListener {
     private int yellowQ_y;
     private int redQ_x;
     private int redQ_y;
-    private int mouse_x;
-    private int mouse_y;
+
 
     public static boolean leftDirection = false;
     public static boolean rightDirection = true;
@@ -121,19 +121,8 @@ public class Board extends JPanel implements ActionListener {
 
         ImageIcon iid = new ImageIcon(Board.class.getResource("/images/dot.png"));
         ball = iid.getImage();
-
-       
-        
-
-        
-        ImageIcon iimd = new ImageIcon(Board.class.getResource("/images/mouse_down.png"));
-        mouse_down = iimd.getImage();
-        ImageIcon iimr = new ImageIcon(Board.class.getResource("/images/mouse_right.png"));
-        mouse_down = iimr.getImage();
-        ImageIcon iiml = new ImageIcon(Board.class.getResource("/images/mouse_left.png"));
-        mouse_down = iiml.getImage();
-        ImageIcon iimu = new ImageIcon(Board.class.getResource("/images/mouse_up.png"));
-        mouse_down = iimu.getImage();
+        ImageIcon iih = new ImageIcon(Board.class.getResource("/images/headR.png"));
+        head = iih.getImage();
         
         
         ImageIcon iiw = new ImageIcon(Board.class.getResource("/images/whiteQ.png"));
@@ -146,14 +135,13 @@ public class Board extends JPanel implements ActionListener {
         redQ = iir.getImage();
 
         
-        ImageIcon iih = new ImageIcon(Board.class.getResource("/images/headR.png"));
-        head = iih.getImage();
+
         
     }
     
     /**
      * In the initGame() method we create the snake,
-     *  randomly locate an apple on the board, and start the timer.
+     *  randomly locate the fruits mouse and questions on the board, and start the timer.
      */
 
     private void initGame() {
@@ -192,10 +180,11 @@ public class Board extends JPanel implements ActionListener {
             g.drawImage(redQ, redQ_x, redQ_y, this);
             
             
-            g.drawImage(mouse_down, mouse_x, mouse_y, this);
-            g.drawImage(mouse_left, mouse_x, mouse_y, this);
-            g.drawImage(mouse_right, mouse_x, mouse_y, this);
-            g.drawImage(mouse_up, mouse_x, mouse_y, this);
+            g.drawImage(mouse.getImage(1), mouse.getX(), mouse.getY(), this);
+            movemouse();
+      //      g.drawImage(mouse_left, mouse_x, mouse_y, this);
+     //       g.drawImage(mouse_right, mouse_x, mouse_y, this);
+      //      g.drawImage(mouse_up, mouse_x, mouse_y, this);
 
 
 
@@ -225,6 +214,11 @@ public class Board extends JPanel implements ActionListener {
         g.setColor(Color.RED);
         g.setFont(small);
         g.drawString(msg, (B_WIDTH - metr.stringWidth(msg)) / 2, B_HEIGHT / 2);
+    }
+    
+    
+    private void movemouse() {
+    //TODO
     }
 
     /**
@@ -263,7 +257,7 @@ public class Board extends JPanel implements ActionListener {
 
         if ((x[0] == whiteQ_x) && (y[0] == whiteQ_y)) {
 
-            dots++;
+           // dots++;
             locateF();
         }
     }
@@ -271,7 +265,7 @@ public class Board extends JPanel implements ActionListener {
 
         if ((x[0] == redQ_x) && (y[0] == redQ_y)) {
 
-            dots++;
+      //      dots++;
             locateF();
         }
     }
@@ -279,17 +273,17 @@ public class Board extends JPanel implements ActionListener {
 
         if ((x[0] == yellowQ_x) && (y[0] == yellowQ_y)) {
 
-            dots++;
+       //     dots++;
             locateF();
         }
     }
     
     private void checkM() {
 
-        if ((x[0] == mouse_x) && (y[0] == mouse_y)) {
+        if ((x[0] == mouse.getX()) && (y[0] == mouse.getY())) {
         	dots++;
             dots++;
-            locateF();
+            mouse.random();
         }
     }
 
@@ -367,16 +361,7 @@ public class Board extends JPanel implements ActionListener {
     }
 
     private void locateF() {
-    	 
 
-        
-        int m = (int) (Math.random() * RAND_POS);
-        mouse_x = ((m * DOT_SIZE));
-
-        m = (int) (Math.random() * RAND_POS);
-        mouse_y = ((m * DOT_SIZE));
-        
-        
         
         int rq = (int) (Math.random() * RAND_POS);
         redQ_x = ((rq * DOT_SIZE));

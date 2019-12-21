@@ -2,37 +2,83 @@
 
 package Model;
 
-import java.awt.geom.Ellipse2D;
-import java.util.Random;
+import java.awt.Image;
+
+
+import javax.swing.ImageIcon;
+
+import View.Instructions;
 
 public class Mouse {
 
-	private Ellipse2D.Double food;
-
+    private int mouse_x;
+    private int mouse_y;
+    
+    private Image mouse_down;
+    private Image mouse_right;
+    private Image mouse_left;
+    private Image mouse_up;
+    
+    private final int mousePoints = 30;
+    
 	/** Creates a new instance of Mouse */
 	public Mouse() {
 
-		generateFood4();
+		generateFood();
 	}
+	
 	/*
-	 * Create an new Mouse in the the random coordinates x and y
+	 * Create an new Apple in the the random coordinates x and y
 	 */
-	public void generateFood4() {
+	public void generateFood() {
+		
+		
+        ImageIcon iimd = new ImageIcon(Board.class.getResource("/images/mouse_down.png"));
+        mouse_down = iimd.getImage();
+        ImageIcon iimr = new ImageIcon(Board.class.getResource("/images/mouse_right.png"));
+        mouse_right = iimr.getImage();
+        ImageIcon iiml = new ImageIcon(Board.class.getResource("/images/mouse_left.png"));
+        mouse_left = iiml.getImage();
+        ImageIcon iimu = new ImageIcon(Board.class.getResource("/images/mouse_up.png"));
+        mouse_up = iimu.getImage();
+        
+        int a = (int) (Math.random() * Board.RAND_POS);
+        this.mouse_x = ((a * Board.DOT_SIZE));
 
-		Random random = new Random();
-		int x, y;
-		do {
-			x = (int) (random.nextInt(39));
-			y = (int) (random.nextInt(30));
-		} while (x == 0 || y == 0 || x == 38 || y == 29);
+        a = (int) (Math.random() * Board.RAND_POS);
+        this.mouse_y = ((a * Board.DOT_SIZE));
+        
 
-		x = x * 16 + 227;
-		y = y * 16 + 127;
-
-		food = new Ellipse2D.Double(x, y, 16, 16);
 	}
-
-	public Ellipse2D.Double getFood4() {
-		return food;
+	
+	public int getX() {
+		return this.mouse_x;
 	}
+	public int getY() {
+		return this.mouse_y;
+	}
+	public Image getImage(int direction) {
+		
+		if (direction==1)return this.mouse_up;
+		if (direction==2)return this.mouse_down;
+		if (direction==3)return this.mouse_right;
+		if (direction==4)return this.mouse_left;
+		return mouse_up;
+		
+	}
+	
+	public void random() {
+        int a = (int) (Math.random() * Board.RAND_POS);
+        this.mouse_x = ((a * Board.DOT_SIZE));
+
+        a = (int) (Math.random() * Board.RAND_POS);
+        this.mouse_y = ((a * Board.DOT_SIZE));
+        
+	}
+	
+	public int addPoints() {
+		return (mousePoints);
+	}
+	
+	
 }
