@@ -9,7 +9,7 @@ import javax.swing.ImageIcon;
 
 import View.Instructions;
 
-public class Apple {
+public class Apple implements Fruit {
 
     private int apple_x;
     private int apple_y;

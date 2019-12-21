@@ -6,7 +6,7 @@ import java.awt.Image;
 
 import javax.swing.ImageIcon;
 
-public class Banana {
+public class Banana implements Fruit{
 
     private int banana_x;
     private int banana_y;
