@@ -76,14 +76,31 @@ public class Setting {
 		label_2.setBounds(179, 200, 42, 29);
 		Settingframe.getContentPane().add(label_2);
 		
+		JLabel label_3 = new JLabel("");
+		label_3.setIcon(new ImageIcon(Setting.class.getResource("/images/sound.png")));
+		label_3.setBounds(179, 274, 69, 20);
+		Settingframe.getContentPane().add(label_3);
+		
+		JButton btnUpdateQuestions = new JButton("update questions");
+		btnUpdateQuestions.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				QuestionsView V = new QuestionsView();
+				V.Qframe.setVisible(true);
+				Settingframe.dispose();	
+				
+			}
+		});
+		btnUpdateQuestions.setBackground(Color.WHITE);
+		btnUpdateQuestions.setBounds(333, 346, 174, 43);
+		Settingframe.getContentPane().add(btnUpdateQuestions);
+		
 		JLabel label = new JLabel("");
 		label.setIcon(new ImageIcon(Setting.class.getResource("/images/bubble.png")));
 		label.setBounds(-27, 0, 659, 509);
 		Settingframe.getContentPane().add(label);
 		
-		JLabel label_3 = new JLabel("");
-		label_3.setIcon(new ImageIcon(Setting.class.getResource("/images/sound.png")));
-		label_3.setBounds(179, 274, 69, 20);
-		Settingframe.getContentPane().add(label_3);
+		JLabel label_4 = new JLabel("");
+		label_4.setBounds(179, 357, 69, 20);
+		Settingframe.getContentPane().add(label_4);
 	}
 }

@@ -5,11 +5,15 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 
 import Model.Board;
+import sun.font.TextLabel;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
+import javax.swing.Timer;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.sql.Time;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextPane;
 import java.awt.Color;
@@ -19,18 +23,19 @@ import java.awt.Toolkit;
 public class SnakeView {
 
 	public JFrame Snakeframe;
-
+    public String newName ; 
 	/**
 	 * Create the application.
 	 */
-	public SnakeView() {
-		initialize();
+	public SnakeView(String name) {
+	   this.newName = name ;
+		initialize(newName);
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
+	private void initialize(String name) {
 		Snakeframe = new JFrame();
 		Snakeframe.setForeground(new Color(204, 255, 204));
 		Snakeframe.setBackground(new Color(255, 255, 255));
@@ -67,11 +72,20 @@ public class SnakeView {
 		   lblLives.setBounds(628, 320, 69, 20);
 		   Snakeframe.getContentPane().add(lblLives);
 		   
+		   JLabel Namelabel = new JLabel("");
+		   Namelabel.setFont(new Font("Segoe Print", Font.PLAIN, 19));
+		   Namelabel.setBounds(727, 133, 161, 27);
+		   Namelabel.setText(newName);
+		  
+		   
+		   Snakeframe.getContentPane().add(Namelabel);
+		     
+		   
 		   JButton btnNewGame = new JButton("new game");
 		   btnNewGame.setBackground(SystemColor.menu);
 		   btnNewGame.addActionListener(new ActionListener() {
 		   	public void actionPerformed(ActionEvent arg0) {
-		   		SnakeView s=new SnakeView();
+		   		SnakeView s=new SnakeView(newName);
 		   		s.Snakeframe.setVisible(true);
 		   		Snakeframe.dispose();
 		   	}
@@ -108,19 +122,24 @@ public class SnakeView {
 		   lblName.setBounds(628, 130, 84, 30);
 		   Snakeframe.getContentPane().add(lblName);
 		   
-		   JLabel Namelabel = new JLabel("");
-		   Namelabel.setFont(new Font("Segoe Print", Font.PLAIN, 19));
-		   Namelabel.setBounds(735, 164, 113, 24);
-		   Snakeframe.getContentPane().add(Namelabel);
+		
 		   
-		   JLabel timelabel = new JLabel("");
+		   JLabel timelabel = new JLabel("00:00:00");
 		   timelabel.setFont(new Font("Segoe Print", Font.PLAIN, 19));
-		   timelabel.setBounds(735, 226, 113, 24);
+		   timelabel.setBounds(727, 195, 113, 24);
 		   Snakeframe.getContentPane().add(timelabel);
-		   
+		
+//		    String time = timelabel.getText();
+//		 
+//		        Timer timer = new Timer(1000, );
+//		        timer.setInitialDelay(1);
+//		        timer.start();
+		    
+		    
+		    
 		   JLabel scorelabel = new JLabel("");
 		   scorelabel.setFont(new Font("Segoe Print", Font.PLAIN, 19));
-		   scorelabel.setBounds(735, 286, 113, 24);
+		   scorelabel.setBounds(727, 258, 113, 24);
 		   Snakeframe.getContentPane().add(scorelabel);
 		   
 		   JLabel livelabel = new JLabel("3");

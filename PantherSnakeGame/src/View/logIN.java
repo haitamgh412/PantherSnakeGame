@@ -65,7 +65,7 @@ public class logIN {
 		Nametext.setBounds(183, 150, 230, 37);
 		loginframe.getContentPane().add(Nametext);
 		Nametext.setColumns(10);
-		 String name =  Nametext.getText();
+		// String name =  Nametext.getText();
 		 
 		JButton btnPlay = new JButton("Play");
 		btnPlay.addActionListener(new ActionListener() {
@@ -74,7 +74,8 @@ public class logIN {
 					JOptionPane.showMessageDialog(loginframe,"please enter your name !");
 				}
 				else {
-					SnakeView S = new SnakeView();
+					SnakeView S = new SnakeView(Nametext.getText());
+					//System.out.println("name:" +Nametext.getText());
 					S.Snakeframe.setVisible(true);
 				loginframe.dispose();
 				}
