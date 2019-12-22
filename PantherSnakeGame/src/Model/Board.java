@@ -46,8 +46,8 @@ public class Board extends JPanel implements ActionListener {
 //	private boolean isGameOver = false;
 //
 //	private int timer1 = 0;
-//	private int playerScore = 0;
-//	private int numOFLifes = 3;
+	private int playerScore = 0;
+	private int numOFLifes = 3;
 //	 private String soundFilePath = "start.wav";
 
 
@@ -209,6 +209,7 @@ public class Board extends JPanel implements ActionListener {
         if ((x[0] == apple.getX()) && (y[0] == apple.getY())) {
 
             dots++;
+            playerScore+=apple.addPoints();
             apple.random();
         }
     }
@@ -217,6 +218,7 @@ public class Board extends JPanel implements ActionListener {
         if ((x[0] == banana.getX()) && (y[0] == banana.getY())) {
 
             dots++;
+            playerScore+=banana.addPoints();
             banana.random();
         }
     }
@@ -225,6 +227,7 @@ public class Board extends JPanel implements ActionListener {
         if ((x[0] == pear.getX()) && (y[0] == pear.getY())) {
 
             dots++;
+            playerScore+=pear.addPoints();
             pear.random();
         }
     }
@@ -235,6 +238,7 @@ public class Board extends JPanel implements ActionListener {
 
         if ((x[0] == whiteQuestion.getX()) && (y[0] == whiteQuestion.getY())) {
 
+        	playerScore+=whiteQuestion.getAnswerPoints();
             whiteQuestion.random();
         }
     }
@@ -242,6 +246,7 @@ public class Board extends JPanel implements ActionListener {
 
         if ((x[0] == redQuestion.getX()) && (y[0] == redQuestion.getY())) {
 
+        	playerScore+=redQuestion.getAnswerPoints();
             redQuestion.random();
         }
     }
@@ -249,6 +254,7 @@ public class Board extends JPanel implements ActionListener {
 
         if ((x[0] == yellowQuestion.getX()) && (y[0] == yellowQuestion.getY())) {
 
+        	playerScore+=redQuestion.getAnswerPoints();
             yellowQuestion.random();
         }
     }
@@ -256,6 +262,8 @@ public class Board extends JPanel implements ActionListener {
     private void checkM() {
 
         if ((x[0] == mouse.getX()) && (y[0] == mouse.getY())) {
+        	
+        	playerScore+=mouse.addPoints();
         	dots+=2;
             mouse.random();
         }
@@ -344,11 +352,9 @@ public class Board extends JPanel implements ActionListener {
             checkBanana();
             checkPear();
             
-            
             checkRQ();
             checkWQ();
             checkYQ();
-            
             
             checkM();
             
