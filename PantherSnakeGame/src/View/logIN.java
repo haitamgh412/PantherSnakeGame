@@ -74,13 +74,8 @@ public class logIN {
 					JOptionPane.showMessageDialog(loginframe,"please enter your name !");
 				}
 				else {
-					java.awt.EventQueue.invokeLater(new Runnable() {
-				        public void run() {
-				            new Snake().setVisible(true);
-
-				        }
-				    });
-				loginframe.setVisible(false);
+					SnakeView S = new SnakeView();
+					S.Snakeframe.setVisible(true);
 				loginframe.dispose();
 				}
 			}
