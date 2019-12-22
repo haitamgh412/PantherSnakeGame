@@ -65,15 +65,10 @@ public class Board extends JPanel implements ActionListener {
     private Banana banana = new Banana();
     private Pear pear = new Pear();
     private Mouse mouse = new Mouse();
-
-
-
-    private int whiteQ_x;
-    private int whiteQ_y;
-    private int yellowQ_x;
-    private int yellowQ_y;
-    private int redQ_x;
-    private int redQ_y;
+    private WhiteQuestion whiteQuestion=new WhiteQuestion();
+    private YellowQuestion yellowQuestion=new YellowQuestion();
+    private RedQuestion redQuestion=new RedQuestion();
+    
 
 
     public static boolean leftDirection = false;
@@ -90,10 +85,7 @@ public class Board extends JPanel implements ActionListener {
     private Image mouse_up;
     private Image mouse_right;
     private Image mouse_left;
-    
-    private Image whiteQ;
-    private Image yellowQ;
-    private Image redQ;
+
     
 
     public Board() {
@@ -124,19 +116,6 @@ public class Board extends JPanel implements ActionListener {
         ImageIcon iih = new ImageIcon(Board.class.getResource("/images/headR.png"));
         head = iih.getImage();
         
-        
-        ImageIcon iiw = new ImageIcon(Board.class.getResource("/images/whiteQ.png"));
-        whiteQ = iiw.getImage();
-        
-        ImageIcon iiy = new ImageIcon(Board.class.getResource("/images/yellowQ.png"));
-        yellowQ = iiy.getImage();
-        
-        ImageIcon iir = new ImageIcon(Board.class.getResource("/images/redQ.png"));
-        redQ = iir.getImage();
-
-        
-
-        
     }
     
     /**
@@ -153,7 +132,6 @@ public class Board extends JPanel implements ActionListener {
             y[z] = 50;
         }
         
-        locateF();
 
         timer = new Timer(DELAY, this);
         timer.start();
@@ -175,9 +153,9 @@ public class Board extends JPanel implements ActionListener {
             g.drawImage(pear.getImage(), pear.getX(), pear.getY(), this);
             
             
-            g.drawImage(whiteQ, whiteQ_x, whiteQ_y, this);
-            g.drawImage(yellowQ, yellowQ_x, yellowQ_y, this);
-            g.drawImage(redQ, redQ_x, redQ_y, this);
+            g.drawImage(whiteQuestion.getImage(), whiteQuestion.getX(), whiteQuestion.getY(), this);
+            g.drawImage(yellowQuestion.getImage(), yellowQuestion.getX(), yellowQuestion.getY(), this);
+            g.drawImage(redQuestion.getImage(), redQuestion.getX(), redQuestion.getY(), this);
             
             
             g.drawImage(mouse.getImage(1), mouse.getX(), mouse.getY(), this);
@@ -255,34 +233,30 @@ public class Board extends JPanel implements ActionListener {
     
     private void checkWQ() {
 
-        if ((x[0] == whiteQ_x) && (y[0] == whiteQ_y)) {
+        if ((x[0] == whiteQuestion.getX()) && (y[0] == whiteQuestion.getY())) {
 
-           // dots++;
-            locateF();
+            whiteQuestion.random();
         }
     }
     private void checkRQ() {
 
-        if ((x[0] == redQ_x) && (y[0] == redQ_y)) {
+        if ((x[0] == redQuestion.getX()) && (y[0] == redQuestion.getY())) {
 
-      //      dots++;
-            locateF();
+            redQuestion.random();
         }
     }
     private void checkYQ() {
 
-        if ((x[0] == yellowQ_x) && (y[0] == yellowQ_y)) {
+        if ((x[0] == yellowQuestion.getX()) && (y[0] == yellowQuestion.getY())) {
 
-       //     dots++;
-            locateF();
+            yellowQuestion.random();
         }
     }
     
     private void checkM() {
 
         if ((x[0] == mouse.getX()) && (y[0] == mouse.getY())) {
-        	dots++;
-            dots++;
+        	dots+=2;
             mouse.random();
         }
     }
@@ -360,33 +334,6 @@ public class Board extends JPanel implements ActionListener {
         }
     }
 
-    private void locateF() {
-
-        
-        int rq = (int) (Math.random() * RAND_POS);
-        redQ_x = ((rq * DOT_SIZE));
-
-        rq = (int) (Math.random() * RAND_POS);
-        redQ_y = ((rq * DOT_SIZE));
-        
-        
-        
-        int wq = (int) (Math.random() * RAND_POS);
-        whiteQ_x = ((wq * DOT_SIZE));
-
-        wq = (int) (Math.random() * RAND_POS);
-        whiteQ_y = ((wq * DOT_SIZE));
-        
-        
-        
-        int yq = (int) (Math.random() * RAND_POS);
-        yellowQ_x = ((yq * DOT_SIZE));
-
-        yq = (int) (Math.random() * RAND_POS);
-        yellowQ_y = ((yq * DOT_SIZE));
-        
-        
-    }
 
     @Override
     public void actionPerformed(ActionEvent e) {

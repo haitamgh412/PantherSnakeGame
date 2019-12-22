@@ -1,16 +1,26 @@
 package Model;
 
+import java.awt.Image;
 import java.util.ArrayList;
 
 public class Question {
 
-	String question;
-	ArrayList<String> answers;
-	String currectAnsw;
-	QuestionLevel level;
-	
+	 String question;
+	 ArrayList<String> answers;
+	 String currectAnsw;
+	 QuestionLevel level;
+     int question_x;
+     int question_y;
+     Image questionImage;
+    
+     /*
+      * empty constructor for the use of the sons classes
+      */
+     public Question() {
+    	 
+     }
 	/**
-	 * contructor
+	 * Constructor
 	 * @param question 
 	 * @param currectAnsw
 	 * @param level
@@ -64,10 +74,34 @@ public class Question {
 	public void setLevel(QuestionLevel level) {
 		this.level = level;
 	}
+
+
+	public int getX() {
+		return question_x;
+	}
+	public int getY() {
+		return question_y;
+	}
+	public Image getImage() {
+		return questionImage;
+	}
+	
+	/*
+	 * replace the coordinates of the Question
+	 */
+	public void random() {
+		
+        int a = (int) (Math.random() * Board.RAND_POS);
+        this.question_x = ((a * Board.DOT_SIZE));
+
+        a = (int) (Math.random() * Board.RAND_POS);
+        this.question_y = ((a * Board.DOT_SIZE));
+	}
+	
+	
 	
 	/* hashCode & equals */
-
-
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
