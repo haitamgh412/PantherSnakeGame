@@ -40,17 +40,15 @@ public class RedQuestion extends Question {
 		return wrongAnswerPoints;
 	}
 	
+
 	/*
-	 * replace the coordinates of the Question
+	 * the method check the Answer 
+	 * if the Answer is right returns getRightAnswerPoints()
+	 * if the Answer is wrong returns GetWrongAnswerPoints()
 	 */
-//	public void random() {
-//		
-//        int a = (int) (Math.random() * Board.RAND_POS);
-//        this.question_x = ((a * Board.DOT_SIZE));
-//
-//        a = (int) (Math.random() * Board.RAND_POS);
-//        this.question_y = ((a * Board.DOT_SIZE));
-//	}
-	
+	public int getAnswerPoints() {
+		//TODO
+		return 0;
+	}
 	
 }
