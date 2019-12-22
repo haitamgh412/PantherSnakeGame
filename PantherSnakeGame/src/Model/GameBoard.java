@@ -21,8 +21,7 @@ public class GameBoard extends JPanel implements ActionListener {
 
 
 
-
-
+int i ;
 
 		soundManger = new SoundManger(soundFilePath);
 
