@@ -7,8 +7,6 @@ import java.awt.Image;
 
 import javax.swing.ImageIcon;
 
-import View.Instructions;
-
 public class Mouse {
 
     private int mouse_x;
@@ -72,17 +70,27 @@ public class Mouse {
 		mouse_y=-500;
 	}
 	
-	public void random() {
-        int a = (int) (Math.random() * Board.RAND_POS);
-        this.mouse_x = ((a * Board.DOT_SIZE));
-
-        a = (int) (Math.random() * Board.RAND_POS);
-        this.mouse_y = ((a * Board.DOT_SIZE));
-        
-	}
 	
 	public int addPoints() {
 		return (mousePoints);
+	}
+	
+	/*
+	 * clear the mouse on the board , wait 1 minute and generate new mouse 
+	 * on another random place
+	 */
+	public void random() {
+		
+		clear();
+		new java.util.Timer().schedule( 
+        new java.util.TimerTask() {
+			@Override
+            public void run() {
+                generateFood();
+            }
+        }, 
+        60000 
+        );
 	}
 	
 	
