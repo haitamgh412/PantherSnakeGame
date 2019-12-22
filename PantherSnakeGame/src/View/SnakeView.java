@@ -36,7 +36,7 @@ public class SnakeView {
 		Snakeframe.setBackground(new Color(255, 255, 255));
 		Snakeframe.setIconImage(Toolkit.getDefaultToolkit().getImage(SnakeView.class.getResource("/images/icon.png")));
 		Snakeframe.getContentPane().setBackground(new Color(255, 255, 255));
-		Snakeframe.setTitle("SnakeGame");
+		Snakeframe.setTitle("SnakeGame_panther");
 		Snakeframe.setBounds(100, 100, 925, 658);
 		Snakeframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Snakeframe.getContentPane().setLayout(null);
