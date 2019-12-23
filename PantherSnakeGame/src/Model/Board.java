@@ -81,13 +81,11 @@ public class Board extends JPanel implements ActionListener {
     private Image ball;
     public static Image head;
     
-    private Image mouse_down;
-    private Image mouse_up;
-    private Image mouse_right;
-    private Image mouse_left;
-
+//    private Image mouse_down;
+//    private Image mouse_up;
+//    private Image mouse_right;
+//    private Image mouse_left;
     
-
     public Board() {
         
         initBoard();
@@ -128,14 +126,16 @@ public class Board extends JPanel implements ActionListener {
         dots = 1;
 
         for (int z = 0; z < dots; z++) {
-            x[z] = 50 - z * 10;
-            y[z] = 50;
+            x[z] = 310 - z * 10;
+            y[z] = 300;
         }
         
 
         timer = new Timer(DELAY, this);
         timer.start();
+        
     }
+    
 
     @Override
     public void paintComponent(Graphics g) {
@@ -364,6 +364,8 @@ public class Board extends JPanel implements ActionListener {
 
         repaint();
     }
+    
+    
 
    
     }

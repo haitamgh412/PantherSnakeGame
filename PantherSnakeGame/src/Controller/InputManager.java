@@ -10,8 +10,7 @@ import Model.Board;
 
 public class InputManager implements KeyListener{
 	
-
-
+	
 	        @Override
 	        public void keyPressed(KeyEvent e) {
 
@@ -49,23 +48,24 @@ public class InputManager implements KeyListener{
 	                ImageIcon iih = new ImageIcon(Board.class.getResource("/images/headD.png"));
 	                Board.head = iih.getImage();
 	            }
-//	            else if (key == KeyEvent.VK_SPACE) {
-//
-//	    			if (gameBoard.isGameRunning()) {
-//	    				gameBoard.pauseGame();
+	             if (key == KeyEvent.VK_SPACE) {
+
+//	    			if (Board.isGameRunning()) {
+//	    				Board.pauseGame();
 //
 //	    			} else {
-//	    				gameBoard.startGame();
-//
-//	    			}
-//
+//	    				Board.initGame();
+	            	 
+	            	 
+	    			}
+
 	    		 if (key == KeyEvent.VK_ESCAPE) {
 
 	    			System.exit(0);
 	    		}
 	        
 	        }
-
+	        
 
 			@Override
 			public void keyTyped(KeyEvent e) {

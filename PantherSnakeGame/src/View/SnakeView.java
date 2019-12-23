@@ -50,6 +50,8 @@ public class SnakeView {
 		 board.setBounds(0, 0, 600, 600);
 		   Snakeframe.getContentPane().add(board);
 		   board.setLayout(null);
+		
+		
 		   
 		   JLabel lblSnakeGame = new JLabel("Snake Game ");
 		   lblSnakeGame.setHorizontalAlignment(SwingConstants.CENTER);
