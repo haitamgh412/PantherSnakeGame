@@ -39,7 +39,7 @@ public class QuestionsView {
 		btnAddQuestion.setBounds(75, 62, 169, 43);
 		Qframe.getContentPane().add(btnAddQuestion);
 		
-		JButton btnRemovQuestion = new JButton("Remov Question");
+		JButton btnRemovQuestion = new JButton("Remove Question");
 		btnRemovQuestion.setBackground(Color.WHITE);
 		btnRemovQuestion.setBounds(75, 129, 169, 43);
 		Qframe.getContentPane().add(btnRemovQuestion);
