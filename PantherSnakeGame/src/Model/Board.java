@@ -363,7 +363,16 @@ public class Board extends JPanel implements ActionListener {
 
         repaint();
     }
+
+	public int getPlayerScore() {
+		return playerScore;
+	}
+
+	public int getNumOFLifes() {
+		return numOFLifes;
+	}
     
+	
     
 
    
