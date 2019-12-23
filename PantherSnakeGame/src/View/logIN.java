@@ -1,6 +1,6 @@
 package View;
 
-import java.awt.EventQueue;
+//import java.awt.EventQueue;
 
 
 import javax.swing.JFrame;
@@ -11,8 +11,6 @@ import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JTextField;
-
-import Model.Snake;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;

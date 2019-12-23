@@ -1,21 +1,15 @@
 package View;
 
-import java.awt.EventQueue;
+
 
 import javax.swing.JFrame;
-
 import Model.Board;
-import sun.font.TextLabel;
-
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
-import javax.swing.Timer;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
-import java.sql.Time;
 import java.awt.event.ActionEvent;
-import javax.swing.JTextPane;
 import java.awt.Color;
 import java.awt.SystemColor;
 import java.awt.Toolkit;

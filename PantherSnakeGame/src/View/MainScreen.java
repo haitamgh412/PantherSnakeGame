@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Toolkit;
 
+@SuppressWarnings("serial")
 public class MainScreen  extends JFrame implements ActionListener {
 
 	public JFrame framefirst;

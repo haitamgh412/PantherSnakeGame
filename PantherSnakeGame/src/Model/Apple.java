@@ -6,8 +6,6 @@ import java.awt.Image;
 
 import javax.swing.ImageIcon;
 
-import View.Instructions;
-
 public class Apple implements Fruit {
 
     private int apple_x;

@@ -1,11 +1,9 @@
 package Model;
 
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
-import java.awt.Dialog.ModalExclusionType;
 
+@SuppressWarnings("serial")
 public class Snake extends JFrame {
 	
       public JFrame snakeframe;
