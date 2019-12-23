@@ -131,12 +131,15 @@ public class SnakeView {
 //		        timer.setInitialDelay(1);
 //		        timer.start();
 		    
-		    
+		    int score = board.getPlayerScore();
+		    String score1 = Integer.toString(score);
+		//    System.out.println(score);
 		    
 		   JLabel scorelabel = new JLabel("");
 		   scorelabel.setFont(new Font("Segoe Print", Font.PLAIN, 19));
 		   scorelabel.setBounds(727, 258, 113, 24);
 		   Snakeframe.getContentPane().add(scorelabel);
+		   scorelabel.setText(score1);
 		   
 		   JLabel livelabel = new JLabel("3");
 		   livelabel.setFont(new Font("Segoe Print", Font.PLAIN, 19));
