@@ -76,12 +76,13 @@ public class SnakeView {
 		  
 		   
 		   Snakeframe.getContentPane().add(Namelabel);
-		     
+		  // int score1 = Board.playerScore;  
 		   
 		   JButton btnNewGame = new JButton("new game");
 		   btnNewGame.setBackground(SystemColor.menu);
 		   btnNewGame.addActionListener(new ActionListener() {
 		   	public void actionPerformed(ActionEvent arg0) {
+		   		Board.playerScore=0;
 		   		SnakeView s=new SnakeView(newName);
 		   		s.Snakeframe.setVisible(true);
 		   		Snakeframe.dispose();
@@ -122,7 +123,7 @@ public class SnakeView {
 		   
 		
 		   
-		   JLabel timelabel = new JLabel("00:00:00");
+		   JLabel timelabel = new JLabel("");
 		   timelabel.setFont(new Font("Segoe Print", Font.PLAIN, 19));
 		   timelabel.setBounds(727, 195, 113, 24);
 		   Snakeframe.getContentPane().add(timelabel);
@@ -135,11 +136,12 @@ public class SnakeView {
 		   Snakeframe.getContentPane().add(scorelabel);
 		   scorelabel.setText(Integer.toString(Board.playerScore));
 
+           
 		   
 		   int live = board.getNumOFLifes();
 		   String live1 = Integer.toString(live);
 		   
-		   JLabel livelabel = new JLabel("3");
+		   JLabel livelabel = new JLabel("");
 		   livelabel.setFont(new Font("Segoe Print", Font.PLAIN, 19));
 		   livelabel.setBounds(734, 320, 69, 20);
 		   Snakeframe.getContentPane().add(livelabel);
