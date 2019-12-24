@@ -45,7 +45,7 @@ public class sysData {
 	 * 
 	 * @return list of questions
 	 */
-	public ArrayList<Question> getQuestions() {
+	public ArrayList<Question> getQuestionsAfterRead() {
 		readQuestions();		
 		return questions;
 	}
@@ -53,32 +53,32 @@ public class sysData {
 	/**
 	 * reading the questions from json file 
 	 */
+	@SuppressWarnings("unchecked")
 	public boolean readQuestions(){  
-		JSONParser parser = new JSONParser();
-		Object object;
 		try{
-			object = parser.parse(new FileReader(new File(Constants.QUESTIONFILENAME)));
+			JSONParser jparser = new JSONParser();
+			Object object;
+			object = jparser.parse(new FileReader(new File(Constants.QUESTIONFILENAME)));
 			JSONObject jo=(JSONObject) object;
 			JSONArray jArr=(JSONArray) jo.get("questions");
-			System.out.println(jArr);
-			for(Object obj:jArr) {
+			for(Object o:jArr) {
 				Question question=new Question();
-				JSONObject jobj=(JSONObject) obj;
-				question.setQuestion(jobj.get("question").toString());
-				int level = Integer.parseInt(String.valueOf( jobj.get("level")));
+				JSONObject jobject=(JSONObject) o;
+				question.setQuestion(jobject.get("question").toString());
+				int level = Integer.parseInt(String.valueOf( jobject.get("level")));
 				if (level == 1)
 					question.setLevel(QuestionLevel.Easy);
 				else if (level == 2)
 					question.setLevel(QuestionLevel.Medium);
 				else
 					question.setLevel(QuestionLevel.Hard);
-				question.setCurrectAnsw(Integer.parseInt(String.valueOf(jobj.get("correct_ans"))));
-				question.setTeam(jobj.get("team").toString());        		 
-				JSONArray answers=(JSONArray) jobj.get("answers");
+				question.setCurrectAnsw(Integer.parseInt(String.valueOf(jobject.get("correct_ans"))));
+				question.setTeam(jobject.get("team").toString());        		 
+				JSONArray answers=(JSONArray) jobject.get("answers");
 				for(Object a: answers) {
 					question.setAnswers((String) a); 
 				}
-			//	System.out.println(question);
+				//	System.out.println(question);
 				addQuestion(question); 
 			}
 			//			System.out.println("questionsss");
@@ -102,10 +102,13 @@ public class sysData {
 	 * @return true if the array not contains this question and added it else return false
 	 */
 	public boolean addQuestion(Question question){
-		if(!questions.contains(question)){
-			return questions.add(question);
-		}
-		return false;
+		if(question == null)
+			return false;
+		if(questions.contains(question))
+			return false;
+
+		return questions.add(question);
+
 	}
 
 	/**
@@ -118,7 +121,7 @@ public class sysData {
 		JSONArray jsarray=new JSONArray();
 		JSONObject jobject=new JSONObject();
 
-		for(Question question: getQuestions())   {
+		for(Question question: getQuestionsAfterRead())   {
 			JSONObject obj=new JSONObject();
 			obj.put("question",question.getQuestion()); 
 			JSONArray answers = new JSONArray();
@@ -137,13 +140,13 @@ public class sysData {
 			jsarray.add(obj);
 		}
 		try {
-			removeFile(Constants.QUESTIONFILENAME);
+			removeAndCreateNewFile(Constants.QUESTIONFILENAME);
 		}catch(Exception ex) {
 
 		}
-		try (FileWriter file = new FileWriter(Constants.QUESTIONFILENAME)) {
+		try (FileWriter f = new FileWriter(Constants.QUESTIONFILENAME)) {
 			jobject.put("questions", jsarray);
-			file.write(jobject.toJSONString());
+			f.write(jobject.toJSONString());
 		} 
 		catch(Exception ex) {
 		}
@@ -154,18 +157,19 @@ public class sysData {
 	 * @param fileName : the file name
 	 * @return true if removed and created new successfully else return false
 	 */
-	public boolean removeFile(String fileName) {
-		File file=null;
-		if(fileName.equals(Constants.QUESTIONFILENAME)) {
-			file=new File(Constants.QUESTIONFILENAME);
-			if(file.isFile())
-				file.delete();
-			try {
-				file.createNewFile();
-				return true;
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+	public boolean removeAndCreateNewFile(String questionFileName) {
+		if(!questionFileName.equals(Constants.QUESTIONFILENAME)) {
+			return false;
+		}
+		File f=null;
+		f=new File(Constants.QUESTIONFILENAME);
+		if(f.isFile())
+			f.delete();
+		try {
+			f.createNewFile();
+			return true;
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 		return false;
 	}
@@ -177,15 +181,15 @@ public class sysData {
 	 * @return true if the question updated successfully else return false
 	 */
 	public boolean updateQuestion(Question question) {
-		if(question!=null) {
-			if(questions.contains(question)) {
-				questions.remove(question);
-				addQuestion(question);
-				writeQuestions();
-				return true;
-			}
+		if(question==null)
+			return false;
+		if(!questions.contains(question)) {
+			return false;
 		}
-		return false;	
+		questions.remove(question);
+		addQuestion(question);
+		writeQuestions();
+		return true;
 	}
 
 }

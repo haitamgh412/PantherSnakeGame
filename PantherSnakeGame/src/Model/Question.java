@@ -64,6 +64,7 @@ public class Question {
 
 
 	public void setAnswers(ArrayList<String> answers) {
+		if(answers.size()==4)
 		this.answers = answers;
 	}
 
