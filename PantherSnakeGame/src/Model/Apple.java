@@ -6,6 +6,8 @@ import java.awt.Image;
 
 import javax.swing.ImageIcon;
 
+import View.FoodView;
+
 public class Apple implements Fruit {
 
     private int apple_x;
@@ -17,6 +19,7 @@ public class Apple implements Fruit {
 	public Apple() {
 
 		generateFood();
+
 	}
 	
 	/*
@@ -25,14 +28,17 @@ public class Apple implements Fruit {
 	public void generateFood() {
 		
 		
-		ImageIcon iia = new ImageIcon(Apple.class.getResource("/images/apple.png"));
-        apple = iia.getImage();
+//		ImageIcon iia = new ImageIcon(Apple.class.getResource("/images/apple.png"));
+//        apple = iia.getImage();
         
         int a = (int) (Math.random() * Board.RAND_POS);
         this.apple_x = ((a * Board.DOT_SIZE));
 
         a = (int) (Math.random() * Board.RAND_POS);
         this.apple_y = ((a * Board.DOT_SIZE));
+        
+		FoodView foodView=new FoodView();
+        this.apple=foodView.GetApple();
         
         
 	}

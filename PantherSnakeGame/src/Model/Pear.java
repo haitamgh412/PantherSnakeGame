@@ -7,6 +7,8 @@ import java.util.Random;
 
 import javax.swing.ImageIcon;
 
+import View.FoodView;
+
 public class Pear implements Fruit{
 
     private int pear_x;
@@ -26,8 +28,9 @@ public class Pear implements Fruit{
 	 */
 	public void generateFood() {
 		
-        ImageIcon iip = new ImageIcon(Board.class.getResource("/images/pear.png"));
-        pear = iip.getImage();
+
+		FoodView foodView=new FoodView();
+        this.pear=foodView.GetPear();
         
         Random rand = new Random();
         numofcorner = rand.nextInt(4);
