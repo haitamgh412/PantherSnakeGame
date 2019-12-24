@@ -53,7 +53,6 @@ public class sysData {
 	/**
 	 * reading the questions from json file 
 	 */
-	@SuppressWarnings("unchecked")
 	public boolean readQuestions(){  
 		try{
 			JSONParser jparser = new JSONParser();

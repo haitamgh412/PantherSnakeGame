@@ -9,7 +9,7 @@ import Model.Mouse;
 class MouseTest {
 
 	@Test
-	public void checkPearPoints() {
+	public void checkMousePoints() {
 		Mouse mouse = new Mouse();
 		assertEquals(30, mouse.addPoints());
 	}

@@ -1,12 +1,8 @@
 package View;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-import Model.Board;
-//import javafx.scene.layout.Border;
 
 import javax.swing.ImageIcon;
 import java.awt.Toolkit;

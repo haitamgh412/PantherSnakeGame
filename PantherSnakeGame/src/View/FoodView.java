@@ -41,31 +41,31 @@ public class FoodView {
 
 	
 	
-	public static Image GetApple() {
+	public Image GetApple() {
 		return apple;
 	}
 	
-	public static Image GetBanana() {
+	public Image GetBanana() {
 		return banana;
 	}
 	
-	public static Image GetPear() {
+	public Image GetPear() {
 		return pear;
 	}
 	
-	public static Image Getmouse_down() {
+	public Image Getmouse_down() {
 		return mouse_down;
 	}
 	
-	public static Image Getmouse_right() {
+	public Image Getmouse_right() {
 		return mouse_right;
 	}
 	
-	public static Image Getmouse_left() {
+	public Image Getmouse_left() {
 		return mouse_left;
 	}
 	
-	public static Image Getmouse_up() {
+	public Image Getmouse_up() {
 		return mouse_up;
 	}
 	

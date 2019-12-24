@@ -160,9 +160,4 @@ public class Question {
 		return "Question [question=" + question + ", answers=" + answers + ", currectAnsw=" + currectAnsw + ", level="
 				+ level + ", question_x=" + question_x + ", question_y=" + question_y + ", team=" + team + "]";
 	}
-
-	
-	
-	
-
 }

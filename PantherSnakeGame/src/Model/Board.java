@@ -56,8 +56,6 @@ public class Board extends JPanel implements ActionListener {
 
     public final static int x[] = new int[ALL_DOTS];
     public final static int y[] = new int[ALL_DOTS];
-
-//    private int dots;
     
     private Snake snake = new Snake();
 
@@ -78,13 +76,6 @@ public class Board extends JPanel implements ActionListener {
     public static boolean inGame = true;
 
     public static Timer timer;
-//    private Image ball;
-//    private Image head;
-    
-//    private Image mouse_down;
-//    private Image mouse_up;
-//    private Image mouse_right;
-//    private Image mouse_left;
     
     public Board() {
         
@@ -98,7 +89,6 @@ public class Board extends JPanel implements ActionListener {
         setFocusable(true);
 
         setPreferredSize(new Dimension(B_WIDTH, B_HEIGHT));
-     //   loadImages();
         snake.initGame();
 
         timer = new Timer(DELAY, this);
@@ -110,40 +100,6 @@ public class Board extends JPanel implements ActionListener {
          downDirection = false;
          inGame = true;
     }
-    
-    /**
-     * In the loadImages() method we get the images for the game.
-     * The ImageIcon class is used for displaying PNG images.
-     */
-
-//    private void loadImages() {
-//
-//        ImageIcon iid = new ImageIcon(Board.class.getResource("/images/dot.png"));
-//        ball = iid.getImage();
-//        ImageIcon iih = new ImageIcon(Board.class.getResource("/images/headR.png"));
-//        head = iih.getImage();
-//        
-//    }
-//    
-    /**
-     * In the initGame() method we create the snake,
-     *  randomly locate the fruits mouse and questions on the board, and start the timer.
-     */
-
-//    private void initGame() {
-//
-//        dots = 1;
-//
-//        for (int z = 0; z < dots; z++) {
-//            x[z] = 310 - z * 10;
-//            y[z] = 300;
-//        }
-//        
-//
-//        timer = new Timer(DELAY, this);
-//        timer.start();
-//        
-//    }
     
 
     @Override
@@ -185,7 +141,7 @@ public class Board extends JPanel implements ActionListener {
 
             Toolkit.getDefaultToolkit().sync();
 
-        } else {
+        } else if(isGameOver) {
 
             gameOver(g);
         }        
@@ -281,7 +237,9 @@ public class Board extends JPanel implements ActionListener {
         	
         	playerScore+=mouse.addPoints();
             SnakeView.updatescore();
-            numOFLifes++;
+            if(numOFLifes<3) {
+            numOFLifes+=mouse.addLives();
+            }
         	snake.dots+=2;
             mouse.random();
         }
@@ -334,37 +292,38 @@ public class Board extends JPanel implements ActionListener {
 
         for (int z = snake.dots; z > 0; z--) {
 
-            if ((z > 4) && (x[0] == x[z]) && (y[0] == y[z])) {
+            if ((z > 4) && (x[0] == x[z]) && (y[0] == y[z]) && numOFLifes >0) {
             	numOFLifes--;
                 inGame = false;
             }
         }
 
-        if (y[0] >= B_HEIGHT) {
-            inGame = false;
+        if (y[0] >= B_HEIGHT && numOFLifes >0) {
             numOFLifes--;
+            inGame = false;
         }
 
-        if (y[0] < 0) {
+        if (y[0] < 0 && numOFLifes >0) {
         	numOFLifes--;
             inGame = false;
         }
 
-        if (x[0] >= B_WIDTH) {
+        if (x[0] >= B_WIDTH && numOFLifes >0) {
         	numOFLifes--;
             inGame = false;
         }
 
-        if (x[0] < 0) {
+        if (x[0] < 0 && numOFLifes >0) {
         	numOFLifes--;
             inGame = false;
         }
         
-//        if(numOFLifes<0) { 
-//        	inGame=false;
- //       setGameOver(true);
-//        	}
-//        
+        if(numOFLifes == 0) { 
+        	inGame=false;
+        	timer.stop();
+            setGameOver(true);
+        	}
+        
         if (!inGame) {
             timer.stop();
             setGameOver(true);

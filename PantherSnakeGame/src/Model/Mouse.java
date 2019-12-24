@@ -1,11 +1,7 @@
-
-
 package Model;
 
 import java.awt.Image;
 
-
-import javax.swing.ImageIcon;
 
 import View.FoodView;
 

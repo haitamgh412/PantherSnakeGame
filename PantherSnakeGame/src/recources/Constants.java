@@ -9,7 +9,5 @@ public class Constants {
 	
 	/* files name */
 	public final static  String QUESTIONFILENAME="PantherSnakeGame\\src\\recources\\questions.json";
-	
-	
 
 }

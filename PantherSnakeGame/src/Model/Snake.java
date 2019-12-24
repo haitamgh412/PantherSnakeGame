@@ -28,6 +28,12 @@ public class Snake {
         head = iih.getImage();
     }
     
+    /**
+     * In the initGame() method we create the snake,
+     *  randomly locate the fruits mouse and questions on the board, and start the timer.
+     */
+
+
     public void initGame() {
 
         dots = 1;
@@ -67,9 +73,5 @@ public class Snake {
 	public Image getImage1() {
 		return this.ball;
 	}
-
-
-    
-
 
 }

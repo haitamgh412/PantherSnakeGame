@@ -1,7 +1,5 @@
 package View;
 
-
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
@@ -16,8 +14,6 @@ import java.awt.event.ActionEvent;
 public class Setting {
 
 	public JFrame Settingframe;
-
-
 
 	/**
 	 * Create the application.

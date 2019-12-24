@@ -11,9 +11,9 @@ public class Player implements Comparable<Player>{
 	private String userName;
 	// player Scores while playing current game
 	private int playerScore;
-	// all the scores of the player from all the games he playes
+	// all the scores of the player from all the games he players
 	private TreeSet<Integer> scores;
-	// the high score of the playe from all the games he playes
+	// the high score of the playe from all the games he players
 	private int highScore;
 	
 	
