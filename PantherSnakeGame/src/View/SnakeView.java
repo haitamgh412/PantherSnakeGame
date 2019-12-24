@@ -37,7 +37,7 @@ public class SnakeView {
 		Snakeframe.setIconImage(Toolkit.getDefaultToolkit().getImage(SnakeView.class.getResource("/images/icon.png")));
 		Snakeframe.getContentPane().setBackground(new Color(255, 255, 255));
 		Snakeframe.setTitle("SnakeGame_panther");
-		Snakeframe.setBounds(100, 100, 925, 658);
+		Snakeframe.setBounds(100, 100, 999, 658);
 		Snakeframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Snakeframe.getContentPane().setLayout(null);
 		 Board board = new Board();
@@ -54,14 +54,9 @@ public class SnakeView {
 		   lblSnakeGame.setBounds(648, 35, 200, 60);
 		   Snakeframe.getContentPane().add(lblSnakeGame);
 		   
-		   JLabel lblTime = new JLabel("time:");
-		   lblTime.setFont(new Font("Segoe Print", Font.PLAIN, 19));
-		   lblTime.setBounds(628, 192, 84, 30);
-		   Snakeframe.getContentPane().add(lblTime);
-		   
 		   JLabel lblScore = new JLabel("score:");
 		   lblScore.setFont(new Font("Segoe Print", Font.PLAIN, 19));
-		   lblScore.setBounds(628, 258, 69, 20);
+		   lblScore.setBounds(628, 229, 69, 20);
 		   Snakeframe.getContentPane().add(lblScore);
 		   
 		   JLabel lblLives = new JLabel("lives:");
@@ -74,47 +69,37 @@ public class SnakeView {
 		   Namelabel.setBounds(727, 133, 161, 27);
 		   Namelabel.setText(newName);
 		  
+		  JButton btnNewGame = new JButton("new game"); 
 		   
+		  
 		   Snakeframe.getContentPane().add(Namelabel);
 		  // int score1 = Board.playerScore;  
 		   
-		   JButton btnNewGame = new JButton("new game");
+		   
 		   btnNewGame.setBackground(SystemColor.menu);
 		   btnNewGame.addActionListener(new ActionListener() {
 		   	public void actionPerformed(ActionEvent arg0) {
-		   		if(board.isGameOver()) {
-		   		SnakeView s=new SnakeView(newName);
-		   		s.Snakeframe.setVisible(true);
-		   		Snakeframe.dispose();	
-		   		board.setGameOver(false);
-		   	
-		   		     }
-		   		Board.playerScore=0;
-		   		
-		   		
+		   		logIN log = new logIN();
+		   		log.loginframe.setVisible(true);
+		   		Snakeframe.dispose();
+//		   		Board.playerScore=0;  		
 		   	}
 		   });
 		   btnNewGame.setFont(new Font("Segoe Print", Font.PLAIN, 18));
 		   btnNewGame.setBounds(693, 492, 169, 37);
 		   Snakeframe.getContentPane().add(btnNewGame);
 		   
-		   JButton btnNewButton = new JButton("Instructions");
-		   btnNewButton.setBackground(SystemColor.menu);
-		   btnNewButton.addActionListener(new ActionListener() {
-		   	public void actionPerformed(ActionEvent arg0) {
-		   		Instructions1 I = new Instructions1();
-		   		I.Iframe.setVisible(true);
-		   		Board.timer.stop();
-		   	
-		   	}
-		   });
-		   btnNewButton.setFont(new Font("Segoe Print", Font.PLAIN, 18));
-		   btnNewButton.setBounds(693, 439, 169, 37);
-		   Snakeframe.getContentPane().add(btnNewButton);
+//		   JButton btnNewButton = new JButton("Instructions");
+//		   btnNewButton.setBackground(SystemColor.menu);
+//		 
+//		   
+//		   btnNewButton.setFont(new Font("Segoe Print", Font.PLAIN, 18));
+//		   btnNewButton.setBounds(693, 439, 169, 37);
+//		   Snakeframe.getContentPane().add(/
 		   
 		   JLabel lblPressSpaceFor = new JLabel("press space for start/pause the game !");
 		   lblPressSpaceFor.setFont(new Font("Segoe Print", Font.PLAIN, 16));
-		   lblPressSpaceFor.setBounds(628, 393, 273, 44);
+		   lblPressSpaceFor.setBounds(628, 393, 334, 44);
 		   Snakeframe.getContentPane().add(lblPressSpaceFor);
 		   
 		   JLabel lblPressEscFor = new JLabel("press esc for exit !");
@@ -126,19 +111,12 @@ public class SnakeView {
 		   lblName.setFont(new Font("Segoe Print", Font.PLAIN, 19));
 		   lblName.setBounds(628, 130, 84, 30);
 		   Snakeframe.getContentPane().add(lblName);
-		   
-		
-		   
-		   JLabel timelabel = new JLabel("");
-		   timelabel.setFont(new Font("Segoe Print", Font.PLAIN, 19));
-		   timelabel.setBounds(727, 195, 113, 24);
-		   Snakeframe.getContentPane().add(timelabel);
 		
 
 		    
 		   scorelabel = new JLabel("");
 		   scorelabel.setFont(new Font("Segoe Print", Font.PLAIN, 19));
-		   scorelabel.setBounds(727, 258, 113, 24);
+		   scorelabel.setBounds(727, 227, 113, 24);
 		   Snakeframe.getContentPane().add(scorelabel);
 		   scorelabel.setText(Integer.toString(Board.playerScore));
 
@@ -172,4 +150,6 @@ public class SnakeView {
 	public static void updatescore() {
 		   scorelabel.setText(Integer.toString(Board.playerScore));
 	}
+	
+ 
 }

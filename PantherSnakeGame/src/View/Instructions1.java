@@ -4,6 +4,10 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+
+import Model.Board;
+//import javafx.scene.layout.Border;
+
 import javax.swing.ImageIcon;
 import java.awt.Toolkit;
 import javax.swing.JButton;
@@ -33,11 +37,13 @@ public class Instructions1 {
 		Iframe.setBounds(100, 100, 952, 567);
 		Iframe.getContentPane().setLayout(null);
 		
+		
 		JButton btnBackToGame = new JButton("back to game ");
 		btnBackToGame.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
-				Iframe.dispose();
+				Iframe.setVisible(false);
+				logIN N = new logIN();
+				N.loginframe.setVisible(true);
 			}
 		});
 		btnBackToGame.setBackground(Color.WHITE);
