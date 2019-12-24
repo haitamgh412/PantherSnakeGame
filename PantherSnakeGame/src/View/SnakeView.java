@@ -87,7 +87,7 @@ public class SnakeView {
 		   	}
 		   });
 		   btnNewGame.setFont(new Font("Segoe Print", Font.PLAIN, 18));
-		   btnNewGame.setBounds(693, 539, 143, 37);
+		   btnNewGame.setBounds(693, 492, 169, 37);
 		   Snakeframe.getContentPane().add(btnNewGame);
 		   
 		   JButton btnNewButton = new JButton("Instructions");
@@ -100,12 +100,12 @@ public class SnakeView {
 		   	}
 		   });
 		   btnNewButton.setFont(new Font("Segoe Print", Font.PLAIN, 18));
-		   btnNewButton.setBounds(693, 486, 143, 37);
+		   btnNewButton.setBounds(693, 439, 169, 37);
 		   Snakeframe.getContentPane().add(btnNewButton);
 		   
 		   JLabel lblPressSpaceFor = new JLabel("press space for pause the game !");
 		   lblPressSpaceFor.setFont(new Font("Segoe Print", Font.PLAIN, 16));
-		   lblPressSpaceFor.setBounds(628, 416, 273, 54);
+		   lblPressSpaceFor.setBounds(628, 393, 273, 44);
 		   Snakeframe.getContentPane().add(lblPressSpaceFor);
 		   
 		   JLabel lblPressEscFor = new JLabel("press esc for exit !");
@@ -130,10 +130,10 @@ public class SnakeView {
 //		        Timer timer = new Timer(1000, );
 //		        timer.setInitialDelay(1);
 //		        timer.start();
-		    
+		  
 		    int score = board.getPlayerScore();
 		    String score1 = Integer.toString(score);
-		//    System.out.println(score);
+		    System.out.println(board.getPlayerScore());
 		    
 		   JLabel scorelabel = new JLabel("");
 		   scorelabel.setFont(new Font("Segoe Print", Font.PLAIN, 19));
@@ -141,9 +141,28 @@ public class SnakeView {
 		   Snakeframe.getContentPane().add(scorelabel);
 		   scorelabel.setText(score1);
 		   
+		   int live = board.getNumOFLifes();
+		   String live1 = Integer.toString(live);
+		   
 		   JLabel livelabel = new JLabel("3");
 		   livelabel.setFont(new Font("Segoe Print", Font.PLAIN, 19));
 		   livelabel.setBounds(734, 320, 69, 20);
 		   Snakeframe.getContentPane().add(livelabel);
+		   livelabel.setText(live1);
+		   
+		   JButton btnPause = new JButton("back");
+		   btnPause.addActionListener(new ActionListener() {
+		   	public void actionPerformed(ActionEvent arg0) {
+		   		MainScreen f = new MainScreen();
+				f.framefirst.setVisible(true);
+				Snakeframe.dispose();	
+			
+		   		
+		   	}
+		   });
+		   btnPause.setFont(new Font("Segoe Print", Font.PLAIN, 18));
+		   btnPause.setBackground(SystemColor.menu);
+		   btnPause.setBounds(695, 549, 167, 37);
+		   Snakeframe.getContentPane().add(btnPause);
 	}
 }
