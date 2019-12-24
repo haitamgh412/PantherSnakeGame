@@ -7,8 +7,8 @@ public class YellowQuestion extends Question{
 	private final int rightAnswerPoints=2;
 	private final int wrongAnswerPoints=-20;
 	
-	public YellowQuestion(String question, String currectAnsw, QuestionLevel level) {
-		super(question, currectAnsw, level);
+	public YellowQuestion(String question, int currectAnsw, QuestionLevel level,String team) {
+		super(question, currectAnsw, level, team);
 		generateQuestion();
 		// TODO Auto-generated constructor stub
 	}

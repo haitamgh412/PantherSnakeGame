@@ -3,39 +3,51 @@ package Model;
 import java.awt.Image;
 import java.util.ArrayList;
 
+
 public class Question {
 
-	 String question;
-	 ArrayList<String> answers;
-	 String currectAnsw;
-	 QuestionLevel level;
-     int question_x;
-     int question_y;
-     Image questionImage;
-    
-     /*
-      * empty constructor for the use of the sons classes
-      */
-     public Question() {
-    	 
-     }
+	String question;
+	ArrayList<String> answers;
+	int currectAnsw;
+	QuestionLevel level;
+	int question_x;
+	int question_y;
+	Image questionImage;
+	String team;
+
+	
+	public Question(String question) {
+		super();
+		this.question = question;
+		this.answers = new ArrayList<>();
+	}
+	
+	/*
+	 * empty constructor for the use of the sons classes
+	 */
+	public Question() {
+		super();
+		this.answers = new ArrayList<>();
+	}
+	
 	/**
 	 * Constructor
 	 * @param question 
 	 * @param currectAnsw
 	 * @param level
 	 */
-	public Question(String question, String currectAnsw, QuestionLevel level) {
+	public Question(String question, int currectAnsw, QuestionLevel level, String team) {
 		super();
 		this.question = question;
 		this.answers = new ArrayList<String>();
 		this.currectAnsw = currectAnsw;
 		this.level = level;
+		this.team=team;
 	}
 
 
 	/* getters & setters */
-	
+
 	public String getQuestion() {
 		return question;
 	}
@@ -55,13 +67,22 @@ public class Question {
 		this.answers = answers;
 	}
 
+	public void setAnswers(String ans) {
+		if(this.answers !=null && this.answers.size()<4) {
+			addAnswer(ans);
+		}
+	}
+	public boolean addAnswer(String ans) {
+		return answers.add(ans);
+	}
 
-	public String getCurrectAnsw() {
+
+	public int getCurrectAnsw() {
 		return currectAnsw;
 	}
 
 
-	public void setCurrectAnsw(String currectAnsw) {
+	public void setCurrectAnsw(int currectAnsw) {
 		this.currectAnsw = currectAnsw;
 	}
 
@@ -75,45 +96,47 @@ public class Question {
 		this.level = level;
 	}
 
-
+	public String getTeam() {
+		return team;
+	}
+	
+	public void setTeam(String team) {
+		this.team = team;
+	}
+	
 	public int getX() {
 		return question_x;
 	}
+	
 	public int getY() {
 		return question_y;
 	}
+	
 	public Image getImage() {
 		return questionImage;
 	}
-	
+
 	/*
 	 * replace the coordinates of the Question
 	 */
 	public void random() {
-		
-        int a = (int) (Math.random() * Board.RAND_POS);
-        this.question_x = ((a * Board.DOT_SIZE));
 
-        a = (int) (Math.random() * Board.RAND_POS);
-        this.question_y = ((a * Board.DOT_SIZE));
+		int a = (int) (Math.random() * Board.RAND_POS);
+		this.question_x = ((a * Board.DOT_SIZE));
+
+		a = (int) (Math.random() * Board.RAND_POS);
+		this.question_y = ((a * Board.DOT_SIZE));
 	}
-	
-	
-	
+
+
 	/* hashCode & equals */
-	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((answers == null) ? 0 : answers.hashCode());
-		result = prime * result + ((currectAnsw == null) ? 0 : currectAnsw.hashCode());
-		result = prime * result + ((level == null) ? 0 : level.hashCode());
 		result = prime * result + ((question == null) ? 0 : question.hashCode());
 		return result;
 	}
-
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -123,18 +146,6 @@ public class Question {
 		if (getClass() != obj.getClass())
 			return false;
 		Question other = (Question) obj;
-		if (answers == null) {
-			if (other.answers != null)
-				return false;
-		} else if (!answers.equals(other.answers))
-			return false;
-		if (currectAnsw == null) {
-			if (other.currectAnsw != null)
-				return false;
-		} else if (!currectAnsw.equals(other.currectAnsw))
-			return false;
-		if (level != other.level)
-			return false;
 		if (question == null) {
 			if (other.question != null)
 				return false;
@@ -143,5 +154,14 @@ public class Question {
 		return true;
 	}
 	
+	@Override
+	public String toString() {
+		return "Question [question=" + question + ", answers=" + answers + ", currectAnsw=" + currectAnsw + ", level="
+				+ level + ", question_x=" + question_x + ", question_y=" + question_y + ", team=" + team + "]";
+	}
+
 	
+	
+	
+
 }

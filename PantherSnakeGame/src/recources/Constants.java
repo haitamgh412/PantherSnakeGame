@@ -8,7 +8,7 @@ package recources;
 public class Constants {
 	
 	/* files name */
-	public final static  String QUESTIONFILENAME="src\\resources\\questions.json";
+	public final static  String QUESTIONFILENAME="PantherSnakeGame\\src\\recources\\questions.json";
 	
 	
 
