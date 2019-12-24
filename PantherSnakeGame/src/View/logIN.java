@@ -12,6 +12,8 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JTextField;
 
+import Model.Board;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Toolkit;
@@ -39,7 +41,7 @@ public class logIN {
 		loginframe.setBounds(100, 100, 676, 452);
 		loginframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		loginframe.getContentPane().setLayout(null);
-		
+		Board.playerScore = 0;
 		JButton btnNewButton = new JButton("");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
