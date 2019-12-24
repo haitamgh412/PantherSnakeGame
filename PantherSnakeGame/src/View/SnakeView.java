@@ -54,14 +54,9 @@ public class SnakeView {
 		   lblSnakeGame.setBounds(648, 35, 200, 60);
 		   Snakeframe.getContentPane().add(lblSnakeGame);
 		   
-		   JLabel lblTime = new JLabel("time:");
-		   lblTime.setFont(new Font("Segoe Print", Font.PLAIN, 19));
-		   lblTime.setBounds(628, 192, 84, 30);
-		   Snakeframe.getContentPane().add(lblTime);
-		   
 		   JLabel lblScore = new JLabel("score:");
 		   lblScore.setFont(new Font("Segoe Print", Font.PLAIN, 19));
-		   lblScore.setBounds(628, 258, 69, 20);
+		   lblScore.setBounds(628, 229, 69, 20);
 		   Snakeframe.getContentPane().add(lblScore);
 		   
 		   JLabel lblLives = new JLabel("lives:");
@@ -116,19 +111,12 @@ public class SnakeView {
 		   lblName.setFont(new Font("Segoe Print", Font.PLAIN, 19));
 		   lblName.setBounds(628, 130, 84, 30);
 		   Snakeframe.getContentPane().add(lblName);
-		   
-		
-		   
-		   JLabel timelabel = new JLabel("");
-		   timelabel.setFont(new Font("Segoe Print", Font.PLAIN, 19));
-		   timelabel.setBounds(727, 195, 113, 24);
-		   Snakeframe.getContentPane().add(timelabel);
 		
 
 		    
 		   scorelabel = new JLabel("");
 		   scorelabel.setFont(new Font("Segoe Print", Font.PLAIN, 19));
-		   scorelabel.setBounds(727, 258, 113, 24);
+		   scorelabel.setBounds(727, 227, 113, 24);
 		   Snakeframe.getContentPane().add(scorelabel);
 		   scorelabel.setText(Integer.toString(Board.playerScore));
 
@@ -163,10 +151,5 @@ public class SnakeView {
 		   scorelabel.setText(Integer.toString(Board.playerScore));
 	}
 	
-	static class Quit implements ActionListener {
-	       public void actionPerformed (ActionEvent e) {
-	           System.exit(0);
-	            
-	       }
-	   } 
+ 
 }
