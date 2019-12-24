@@ -18,6 +18,7 @@ public class Mouse {
     private Image mouse_up;
     
     private final int mousePoints = 30;
+    private final int mouseLives = 1;
     
 	/** Creates a new instance of Mouse */
 	public Mouse() {
@@ -73,6 +74,10 @@ public class Mouse {
 	
 	public int addPoints() {
 		return (mousePoints);
+	}
+	
+	public int addLives() {
+		return (mouseLives);
 	}
 	
 	/*

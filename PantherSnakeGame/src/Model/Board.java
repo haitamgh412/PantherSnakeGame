@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 import Controller.InputManager;
+import View.SnakeView;
 
 
 @SuppressWarnings("serial")
@@ -43,7 +44,7 @@ public class Board extends JPanel implements ActionListener {
 //	private boolean isGameOver = false;
 //
 //	private int timer1 = 0;
-	private int playerScore = 0;
+	public static int playerScore = 0;
 	private int numOFLifes = 3;
 //	 private String soundFilePath = "start.wav";
 
@@ -212,6 +213,7 @@ public class Board extends JPanel implements ActionListener {
 
             snake.dots++;
             playerScore+=apple.addPoints();
+            SnakeView.updatescore();
             apple.random();
         }
     }
@@ -221,6 +223,7 @@ public class Board extends JPanel implements ActionListener {
 
             snake.dots++;
             playerScore+=banana.addPoints();
+            SnakeView.updatescore();
             banana.random();
         }
     }
@@ -230,6 +233,7 @@ public class Board extends JPanel implements ActionListener {
 
             snake.dots++;
             playerScore+=pear.addPoints();
+            SnakeView.updatescore();
             pear.random();
         }
     }
@@ -241,6 +245,7 @@ public class Board extends JPanel implements ActionListener {
         if ((x[0] == whiteQuestion.getX()) && (y[0] == whiteQuestion.getY())) {
 
         	playerScore+=whiteQuestion.getAnswerPoints();
+            SnakeView.updatescore();
             whiteQuestion.random();
         }
     }
@@ -249,6 +254,7 @@ public class Board extends JPanel implements ActionListener {
         if ((x[0] == redQuestion.getX()) && (y[0] == redQuestion.getY())) {
 
         	playerScore+=redQuestion.getAnswerPoints();
+            SnakeView.updatescore();
             redQuestion.random();
         }
     }
@@ -257,6 +263,7 @@ public class Board extends JPanel implements ActionListener {
         if ((x[0] == yellowQuestion.getX()) && (y[0] == yellowQuestion.getY())) {
 
         	playerScore+=redQuestion.getAnswerPoints();
+            SnakeView.updatescore();
             yellowQuestion.random();
         }
     }
@@ -266,6 +273,7 @@ public class Board extends JPanel implements ActionListener {
         if ((x[0] == mouse.getX()) && (y[0] == mouse.getY())) {
         	
         	playerScore+=mouse.addPoints();
+            SnakeView.updatescore();
         	snake.dots+=2;
             mouse.random();
         }
@@ -342,6 +350,12 @@ public class Board extends JPanel implements ActionListener {
         if (!inGame) {
             timer.stop();
         }
+    }
+    
+    public static void pause() {
+    	
+    	if(timer.isRunning())timer.stop();
+    	else timer.start();
     }
 
 

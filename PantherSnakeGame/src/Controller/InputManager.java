@@ -56,7 +56,7 @@ public class InputManager implements KeyListener{
 //
 //	    			} else {
 //	    				Board.initGame();
-	            	 
+	            	 Board.pause();
 	            	 
 	    			}
 
