@@ -75,7 +75,7 @@ public class Board extends JPanel implements ActionListener {
     public static boolean rightDirection = true;
     public static boolean upDirection = false;
     public static boolean downDirection = false;
-    private boolean inGame = true;
+    public static boolean inGame = true;
 
     public static Timer timer;
 //    private Image ball;
@@ -102,7 +102,12 @@ public class Board extends JPanel implements ActionListener {
         snake.initGame();
 
         timer = new Timer(DELAY, this);
-        timer.start();
+        timer.stop();
+        
+         leftDirection = false;
+         rightDirection = true;
+         upDirection = false;
+         downDirection = false;
     }
     
     /**
