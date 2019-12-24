@@ -41,7 +41,7 @@ public class Board extends JPanel implements ActionListener {
 //	private Timer gameThread;
 //	private Timer timerThread;
 //
-//	private boolean isGameOver = false;
+	private static boolean isGameOver = false;
 //
 //	private int timer1 = 0;
 	public static int playerScore = 0;
@@ -361,10 +361,12 @@ public class Board extends JPanel implements ActionListener {
         
 //        if(numOFLifes<0) { 
 //        	inGame=false;
+ //       setGameOver(true);
 //        	}
 //        
         if (!inGame) {
             timer.stop();
+            setGameOver(true);
         }
     }
     
@@ -403,5 +405,13 @@ public class Board extends JPanel implements ActionListener {
 
 	public int getNumOFLifes() {
 		return numOFLifes;
+	}
+
+	public boolean isGameOver() {
+		return isGameOver;
+	}
+
+	public void setGameOver(boolean isGameOver) {
+		Board.isGameOver = isGameOver;
 	}
     }

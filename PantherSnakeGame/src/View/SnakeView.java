@@ -82,10 +82,16 @@ public class SnakeView {
 		   btnNewGame.setBackground(SystemColor.menu);
 		   btnNewGame.addActionListener(new ActionListener() {
 		   	public void actionPerformed(ActionEvent arg0) {
-		   		Board.playerScore=0;
+		   		if(board.isGameOver()) {
 		   		SnakeView s=new SnakeView(newName);
 		   		s.Snakeframe.setVisible(true);
-		   		Snakeframe.dispose();
+		   		Snakeframe.dispose();	
+		   		board.setGameOver(false);
+		   	
+		   		     }
+		   		Board.playerScore=0;
+		   		
+		   		
 		   	}
 		   });
 		   btnNewGame.setFont(new Font("Segoe Print", Font.PLAIN, 18));
@@ -98,7 +104,7 @@ public class SnakeView {
 		   	public void actionPerformed(ActionEvent arg0) {
 		   		Instructions1 I = new Instructions1();
 		   		I.Iframe.setVisible(true);
-		   		board.timer.stop();
+		   		Board.timer.stop();
 		   	
 		   	}
 		   });
@@ -106,7 +112,7 @@ public class SnakeView {
 		   btnNewButton.setBounds(693, 439, 169, 37);
 		   Snakeframe.getContentPane().add(btnNewButton);
 		   
-		   JLabel lblPressSpaceFor = new JLabel("press space for pause the game !");
+		   JLabel lblPressSpaceFor = new JLabel("press space for start/pause the game !");
 		   lblPressSpaceFor.setFont(new Font("Segoe Print", Font.PLAIN, 16));
 		   lblPressSpaceFor.setBounds(628, 393, 273, 44);
 		   Snakeframe.getContentPane().add(lblPressSpaceFor);
