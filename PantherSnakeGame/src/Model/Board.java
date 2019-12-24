@@ -206,7 +206,7 @@ public class Board extends JPanel implements ActionListener {
     private void movemouse() {
     //TODO
     	
-    	mouse.generateFood();
+//    	mouse.generateFood();
     }
 
     /**
@@ -281,7 +281,7 @@ public class Board extends JPanel implements ActionListener {
         	
         	playerScore+=mouse.addPoints();
             SnakeView.updatescore();
-       //     numOFLifes++;
+            numOFLifes++;
         	snake.dots+=2;
             mouse.random();
         }
@@ -335,28 +335,28 @@ public class Board extends JPanel implements ActionListener {
         for (int z = snake.dots; z > 0; z--) {
 
             if ((z > 4) && (x[0] == x[z]) && (y[0] == y[z])) {
-            //	numOFLifes--;
+            	numOFLifes--;
                 inGame = false;
             }
         }
 
         if (y[0] >= B_HEIGHT) {
             inGame = false;
-  //          numOFLifes--;
+            numOFLifes--;
         }
 
         if (y[0] < 0) {
- //       	numOFLifes--;
+        	numOFLifes--;
             inGame = false;
         }
 
         if (x[0] >= B_WIDTH) {
-//        	numOFLifes--;
+        	numOFLifes--;
             inGame = false;
         }
 
         if (x[0] < 0) {
-       // 	numOFLifes--;
+        	numOFLifes--;
             inGame = false;
         }
         
