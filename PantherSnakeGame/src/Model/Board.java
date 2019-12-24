@@ -45,7 +45,7 @@ public class Board extends JPanel implements ActionListener {
 //
 //	private int timer1 = 0;
 	public static int playerScore = 0;
-	private int numOFLifes = 3;
+	public static int numOFLifes = 3;
 //	 private String soundFilePath = "start.wav";
 
 
@@ -108,6 +108,7 @@ public class Board extends JPanel implements ActionListener {
          rightDirection = true;
          upDirection = false;
          downDirection = false;
+         inGame = true;
     }
     
     /**
@@ -279,6 +280,7 @@ public class Board extends JPanel implements ActionListener {
         	
         	playerScore+=mouse.addPoints();
             SnakeView.updatescore();
+       //     numOFLifes++;
         	snake.dots+=2;
             mouse.random();
         }
@@ -332,26 +334,35 @@ public class Board extends JPanel implements ActionListener {
         for (int z = snake.dots; z > 0; z--) {
 
             if ((z > 4) && (x[0] == x[z]) && (y[0] == y[z])) {
+            //	numOFLifes--;
                 inGame = false;
             }
         }
 
         if (y[0] >= B_HEIGHT) {
             inGame = false;
+  //          numOFLifes--;
         }
 
         if (y[0] < 0) {
+ //       	numOFLifes--;
             inGame = false;
         }
 
         if (x[0] >= B_WIDTH) {
+//        	numOFLifes--;
             inGame = false;
         }
 
         if (x[0] < 0) {
+       // 	numOFLifes--;
             inGame = false;
         }
         
+//        if(numOFLifes<0) { 
+//        	inGame=false;
+//        	}
+//        
         if (!inGame) {
             timer.stop();
         }
