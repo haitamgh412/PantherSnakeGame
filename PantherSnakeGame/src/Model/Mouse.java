@@ -7,6 +7,8 @@ import java.awt.Image;
 
 import javax.swing.ImageIcon;
 
+import View.FoodView;
+
 public class Mouse {
 
     private int mouse_x;
@@ -32,14 +34,6 @@ public class Mouse {
 	public void generateFood() {
 		
 		
-        ImageIcon iimd = new ImageIcon(Board.class.getResource("/images/mouse_down.png"));
-        mouse_down = iimd.getImage();
-        ImageIcon iimr = new ImageIcon(Board.class.getResource("/images/mouse_right.png"));
-        mouse_right = iimr.getImage();
-        ImageIcon iiml = new ImageIcon(Board.class.getResource("/images/mouse_left.png"));
-        mouse_left = iiml.getImage();
-        ImageIcon iimu = new ImageIcon(Board.class.getResource("/images/mouse_up.png"));
-        mouse_up = iimu.getImage();
         
         int a = (int) (Math.random() * Board.RAND_POS);
         this.mouse_x = ((a * Board.DOT_SIZE));
@@ -47,6 +41,12 @@ public class Mouse {
         a = (int) (Math.random() * Board.RAND_POS);
         this.mouse_y = ((a * Board.DOT_SIZE));
         
+
+		FoodView foodView=new FoodView();
+        this.mouse_down=foodView.Getmouse_down();
+        this.mouse_right=foodView.Getmouse_right();
+        this.mouse_left=foodView.Getmouse_left();
+        this.mouse_up=foodView.Getmouse_up();
 
 	}
 	
