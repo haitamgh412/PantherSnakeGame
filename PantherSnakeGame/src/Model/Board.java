@@ -375,6 +375,4 @@ public class Board extends JPanel implements ActionListener {
 		return numOFLifes;
 	}
     
-	
-   
     }

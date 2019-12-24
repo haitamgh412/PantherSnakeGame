@@ -37,9 +37,7 @@ public class Snake {
             Board.y[z] = 300;
         }
         
-//
-//        Board.timer = new Timer(Board.DELAY, this);
-//        Board.timer.start();
+
         
     }
 
