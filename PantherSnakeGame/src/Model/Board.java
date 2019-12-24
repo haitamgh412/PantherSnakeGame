@@ -5,12 +5,10 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -31,9 +29,9 @@ public class Board extends JPanel implements ActionListener {
     private final int B_WIDTH = 600;
     private final int B_HEIGHT = 600;
     public static final int DOT_SIZE = 10;
-    private final int ALL_DOTS = 3600;
+    private final static int ALL_DOTS = 3600;
     public static final int RAND_POS = 58;
-    private final int DELAY = 140;
+    public final static int DELAY = 140;
     
 	/** Creates a new instance of sysData */
     
@@ -55,11 +53,13 @@ public class Board extends JPanel implements ActionListener {
      * These two arrays store the x and y coordinates of all joints of a snake.
      */
 
-    private final int x[] = new int[ALL_DOTS];
-    private final int y[] = new int[ALL_DOTS];
+    public final static int x[] = new int[ALL_DOTS];
+    public final static int y[] = new int[ALL_DOTS];
 
-    private int dots;
+//    private int dots;
     
+    private Snake snake = new Snake();
+
     private Apple apple = new Apple();
     private Banana banana = new Banana();
     private Pear pear = new Pear();
@@ -76,9 +76,9 @@ public class Board extends JPanel implements ActionListener {
     public static boolean downDirection = false;
     private boolean inGame = true;
 
-    private Timer timer;
-    private Image ball;
-    public static Image head;
+    public static Timer timer;
+//    private Image ball;
+//    private Image head;
     
 //    private Image mouse_down;
 //    private Image mouse_up;
@@ -97,8 +97,11 @@ public class Board extends JPanel implements ActionListener {
         setFocusable(true);
 
         setPreferredSize(new Dimension(B_WIDTH, B_HEIGHT));
-        loadImages();
-        initGame();
+     //   loadImages();
+        snake.initGame();
+
+        timer = new Timer(DELAY, this);
+        timer.start();
     }
     
     /**
@@ -106,34 +109,34 @@ public class Board extends JPanel implements ActionListener {
      * The ImageIcon class is used for displaying PNG images.
      */
 
-    private void loadImages() {
-
-        ImageIcon iid = new ImageIcon(Board.class.getResource("/images/dot.png"));
-        ball = iid.getImage();
-        ImageIcon iih = new ImageIcon(Board.class.getResource("/images/headR.png"));
-        head = iih.getImage();
-        
-    }
-    
+//    private void loadImages() {
+//
+//        ImageIcon iid = new ImageIcon(Board.class.getResource("/images/dot.png"));
+//        ball = iid.getImage();
+//        ImageIcon iih = new ImageIcon(Board.class.getResource("/images/headR.png"));
+//        head = iih.getImage();
+//        
+//    }
+//    
     /**
      * In the initGame() method we create the snake,
      *  randomly locate the fruits mouse and questions on the board, and start the timer.
      */
 
-    private void initGame() {
-
-        dots = 1;
-
-        for (int z = 0; z < dots; z++) {
-            x[z] = 310 - z * 10;
-            y[z] = 300;
-        }
-        
-
-        timer = new Timer(DELAY, this);
-        timer.start();
-        
-    }
+//    private void initGame() {
+//
+//        dots = 1;
+//
+//        for (int z = 0; z < dots; z++) {
+//            x[z] = 310 - z * 10;
+//            y[z] = 300;
+//        }
+//        
+//
+//        timer = new Timer(DELAY, this);
+//        timer.start();
+//        
+//    }
     
 
     @Override
@@ -166,11 +169,11 @@ public class Board extends JPanel implements ActionListener {
 
 
             
-            for (int z = 0; z < dots; z++) {
+            for (int z = 0; z < snake.dots; z++) {
                 if (z == 0) {
-                    g.drawImage(head, x[z], y[z], this);
+                    g.drawImage(snake.getImage(), x[z], y[z], this);
                 } else {
-                    g.drawImage(ball, x[z], y[z], this);
+                    g.drawImage(snake.getImage1(), x[z], y[z], this);
                 }
             }
 
@@ -207,7 +210,7 @@ public class Board extends JPanel implements ActionListener {
 
         if ((x[0] == apple.getX()) && (y[0] == apple.getY())) {
 
-            dots++;
+            snake.dots++;
             playerScore+=apple.addPoints();
             apple.random();
         }
@@ -216,7 +219,7 @@ public class Board extends JPanel implements ActionListener {
 
         if ((x[0] == banana.getX()) && (y[0] == banana.getY())) {
 
-            dots++;
+            snake.dots++;
             playerScore+=banana.addPoints();
             banana.random();
         }
@@ -225,7 +228,7 @@ public class Board extends JPanel implements ActionListener {
 
         if ((x[0] == pear.getX()) && (y[0] == pear.getY())) {
 
-            dots++;
+            snake.dots++;
             playerScore+=pear.addPoints();
             pear.random();
         }
@@ -263,7 +266,7 @@ public class Board extends JPanel implements ActionListener {
         if ((x[0] == mouse.getX()) && (y[0] == mouse.getY())) {
         	
         	playerScore+=mouse.addPoints();
-        	dots+=2;
+        	snake.dots+=2;
             mouse.random();
         }
     }
@@ -280,7 +283,7 @@ public class Board extends JPanel implements ActionListener {
      */
     private void move() {
 
-        for (int z = dots; z > 0; z--) {
+        for (int z = snake.dots; z > 0; z--) {
             x[z] = x[(z - 1)];
             y[z] = y[(z - 1)];
         }
@@ -313,7 +316,7 @@ public class Board extends JPanel implements ActionListener {
 
     private void checkCollision() {
 
-        for (int z = dots; z > 0; z--) {
+        for (int z = snake.dots; z > 0; z--) {
 
             if ((z > 4) && (x[0] == x[z]) && (y[0] == y[z])) {
                 inGame = false;

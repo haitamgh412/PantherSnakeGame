@@ -7,6 +7,7 @@ import java.awt.event.KeyListener;
 import javax.swing.ImageIcon;
 
 import Model.Board;
+import Model.Snake;
 
 public class InputManager implements KeyListener{
 	
@@ -21,7 +22,7 @@ public class InputManager implements KeyListener{
 	            	Board. upDirection = false;
 	            	Board. downDirection = false;
 	                ImageIcon iih = new ImageIcon(Board.class.getResource("/images/headL.png"));
-	                Board.head = iih.getImage();
+	                Snake.head = iih.getImage();
 	               
 	            }
 
@@ -30,7 +31,7 @@ public class InputManager implements KeyListener{
 	            	Board.upDirection = false;
 	            	Board.downDirection = false;
 	                ImageIcon iih = new ImageIcon(Board.class.getResource("/images/headR.png"));
-	                Board.head = iih.getImage();
+	                Snake.head  = iih.getImage();
 	            }
 
 	            if ((key == KeyEvent.VK_UP) && (!Board.downDirection)) {
@@ -38,7 +39,7 @@ public class InputManager implements KeyListener{
 	            	Board.rightDirection = false;
 	            	Board.leftDirection = false;
 	                ImageIcon iih = new ImageIcon(Board.class.getResource("/images/headU.png"));
-	                Board.head = iih.getImage();
+	                Snake.head = iih.getImage();
 	            }
 
 	            if ((key == KeyEvent.VK_DOWN) && (!Board.upDirection)) {
@@ -46,7 +47,7 @@ public class InputManager implements KeyListener{
 	            	Board.rightDirection = false;
 	            	Board.leftDirection = false;
 	                ImageIcon iih = new ImageIcon(Board.class.getResource("/images/headD.png"));
-	                Board.head = iih.getImage();
+	                Snake.head  = iih.getImage();
 	            }
 	             if (key == KeyEvent.VK_SPACE) {
 

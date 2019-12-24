@@ -1,35 +1,77 @@
 package Model;
 
 
-import javax.swing.JFrame;
+import java.awt.Image;
 
-@SuppressWarnings("serial")
-public class Snake extends JFrame {
+
+import javax.swing.ImageIcon;
+
+
+public class Snake {
 	
-      public JFrame snakeframe;
+    public int dots;
+    private Image ball;
+    public static Image head;
+    
+    private int snake_x;
+    private int snake_y;
+    
+    
 
 
     public Snake() {
     	
-    	
-        initUI();
-
+    	//initBoard();
+    	ImageIcon iid = new ImageIcon(Board.class.getResource("/images/dot.png"));
+        ball = iid.getImage();
+        ImageIcon iih = new ImageIcon(Board.class.getResource("/images/headR.png"));
+        head = iih.getImage();
     }
     
-    private void initUI() {
-    	
-        Board board = new Board();
-        getContentPane().add(board);
-        board.setLayout(null);
+    public void initGame() {
 
+        dots = 1;
+
+        for (int z = 0; z < dots; z++) {
+            Board.x[z] = 310 - z * 10;
+            Board.y[z] = 300;
+        }
         
-        setResizable(false);
-        pack();
+//
+//        Board.timer = new Timer(Board.DELAY, this);
+//        Board.timer.start();
         
-        setTitle("Snake");
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
+
+	/*
+	 * return the coordinate X of the snake
+	 */
+	public int getX() {
+		return this.snake_x;
+	}
+	
+	/*
+	 * return the coordinate Y of the snake
+	 */
+	public int getY() {
+		return this.snake_y;
+	}
+	
+	/*
+	 * return the image of the snake head
+	 */
+	public Image getImage() {
+		return Snake.head;
+	}
+	
+	/*
+	 * return the image of the snake ball
+	 */
+	public Image getImage1() {
+		return this.ball;
+	}
+
+
     
 
 
