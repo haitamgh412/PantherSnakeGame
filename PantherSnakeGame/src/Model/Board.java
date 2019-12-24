@@ -168,10 +168,9 @@ public class Board extends JPanel implements ActionListener {
             
             
             g.drawImage(mouse.getImage(1), mouse.getX(), mouse.getY(), this);
-            movemouse();
-      //      g.drawImage(mouse_left, mouse_x, mouse_y, this);
-     //       g.drawImage(mouse_right, mouse_x, mouse_y, this);
-      //      g.drawImage(mouse_up, mouse_x, mouse_y, this);
+//            g.drawImage(mouse.getImage(2), mouse.getX(), mouse.getY(), this);
+//            g.drawImage(mouse.getImage(3), mouse.getX(), mouse.getY(), this);
+//            g.drawImage(mouse.getImage(4), mouse.getX(), mouse.getY(), this);
 
 
 
@@ -206,6 +205,8 @@ public class Board extends JPanel implements ActionListener {
     
     private void movemouse() {
     //TODO
+    	
+    	mouse.generateFood();
     }
 
     /**
@@ -394,6 +395,7 @@ public class Board extends JPanel implements ActionListener {
             
             checkCollision();
             move();
+            movemouse();
         }
 
         repaint();

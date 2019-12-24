@@ -47,6 +47,16 @@ public class Mouse {
         a = (int) (Math.random() * Board.RAND_POS);
         this.mouse_y = ((a * Board.DOT_SIZE));
         
+//        new java.util.Timer().schedule( 
+//		        new java.util.TimerTask() {
+//					@Override
+//		            public void run() {
+//		                clear();
+//		            }
+//		        }, 
+//		        100000 
+//		        );
+        
 
 	}
 	
@@ -58,11 +68,11 @@ public class Mouse {
 	}
 	public Image getImage(int direction) {
 		
-		if (direction==1)return this.mouse_up;
-		if (direction==2)return this.mouse_down;
-		if (direction==3)return this.mouse_right;
-		if (direction==4)return this.mouse_left;
-		return mouse_up;
+		if (direction==1)return mouse_up;
+		if (direction==2)return mouse_down;
+		if (direction==3)return mouse_right;
+		if (direction==4)return mouse_left;
+		return mouse_down;
 		
 	}
 	
@@ -86,16 +96,16 @@ public class Mouse {
 	 */
 	public void random() {
 		
-		clear();
+		//clear();
 		new java.util.Timer().schedule( 
-        new java.util.TimerTask() {
-			@Override
-            public void run() {
-                generateFood();
-            }
-        }, 
-        60000 
-        );
+		        new java.util.TimerTask() {
+					@Override
+		            public void run() {
+		                generateFood();
+		            }
+		        }, 
+		        60000 
+		        );
 	}
 	
 	
