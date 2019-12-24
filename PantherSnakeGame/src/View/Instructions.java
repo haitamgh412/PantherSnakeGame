@@ -51,6 +51,5 @@ public class Instructions {
 		lblNewLabel.setBounds(0, -7, 909, 528);
 		Instructions.getContentPane().add(lblNewLabel);
 		Instructionsframe.setBounds(100, 100, 931, 577);
-		Instructionsframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 }

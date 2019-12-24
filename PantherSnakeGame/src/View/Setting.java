@@ -33,7 +33,6 @@ public class Setting {
 		Settingframe = new JFrame();
 		Settingframe.setBackground(Color.WHITE);
 		Settingframe.setBounds(100, 100, 631, 513);
-		Settingframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Settingframe.getContentPane().setLayout(null);
 		
 		JLabel lblSettings = new JLabel("Settings");

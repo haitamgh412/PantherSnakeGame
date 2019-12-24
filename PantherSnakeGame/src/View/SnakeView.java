@@ -95,9 +95,10 @@ public class SnakeView {
 		   btnNewButton.setBackground(SystemColor.menu);
 		   btnNewButton.addActionListener(new ActionListener() {
 		   	public void actionPerformed(ActionEvent arg0) {
-		   		Instructions I = new Instructions();
-		   		I.Instructionsframe.setVisible(true);
-		   	//	Snakeframe.dispose();
+		   		Instructions1 I = new Instructions1();
+		   		I.Iframe.setVisible(true);
+		   		board.timer.stop();
+		   	
 		   	}
 		   });
 		   btnNewButton.setFont(new Font("Segoe Print", Font.PLAIN, 18));
