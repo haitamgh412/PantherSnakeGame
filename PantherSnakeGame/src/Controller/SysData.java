@@ -14,20 +14,20 @@ import Model.QuestionLevel;
 import recources.*;
 
 
-public class sysData {
-	private static sysData sysdata;
+public class SysData {
+	private static SysData sysdata;
 	/**
 	 * saving questions details 
 	 */
 	private static ArrayList<Question> questions ;
 
-	private sysData(){
+	private SysData(){
 		questions=new ArrayList<Question>();
 	}
 
-	public static sysData getInstance() {
+	public static SysData getInstance() {
 		if(sysdata==null) { 
-			sysdata=new sysData();			
+			sysdata=new SysData();			
 		}
 		return sysdata; 
 	}
