@@ -41,7 +41,7 @@ public class Board extends JPanel implements ActionListener {
 //	private Timer gameThread;
 //	private Timer timerThread;
 //
-	private static boolean isGameOver = false;
+	public static boolean isGameOver = false;
 //
 //	private int timer1 = 0;
 	public static int playerScore = 0;
@@ -112,6 +112,7 @@ public class Board extends JPanel implements ActionListener {
         upDirection = false;
         downDirection = false;
         inGame = true;
+        snake.setImage(snake.resumeGame());
     }
     
 

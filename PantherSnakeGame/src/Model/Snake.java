@@ -12,6 +12,7 @@ public class Snake {
     public int dots;
     private Image ball;
     public static Image head;
+    public Image resumeHead;
     
     private int snake_x;
     private int snake_y;
@@ -26,6 +27,7 @@ public class Snake {
         ball = iid.getImage();
         ImageIcon iih = new ImageIcon(Board.class.getResource("/images/headR.png"));
         head = iih.getImage();
+        resumeHead=iih.getImage();
     }
     
     /**
@@ -67,11 +69,19 @@ public class Snake {
 		return Snake.head;
 	}
 	
+	public void setImage(Image hx) {
+		Snake.head=hx;
+	}
+	
 	/*
 	 * return the image of the snake ball
 	 */
 	public Image getImage1() {
 		return this.ball;
+	}
+	
+	public Image resumeGame() {
+		return resumeHead;
 	}
 
 }
