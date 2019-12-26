@@ -19,6 +19,7 @@ public class SnakeView {
 	public JFrame Snakeframe;
     public String newName ; 
     public static JLabel scorelabel;
+    public static JLabel livelabel;
 	/**
 	 * Create the application.
 	 */
@@ -125,7 +126,7 @@ public class SnakeView {
 		   int live = board.getNumOFLifes();
 		   String live1 = Integer.toString(live);
 		   
-		   JLabel livelabel = new JLabel("");
+		   livelabel = new JLabel("");
 		   livelabel.setFont(new Font("Segoe Print", Font.PLAIN, 19));
 		   livelabel.setBounds(734, 320, 69, 20);
 		   Snakeframe.getContentPane().add(livelabel);
@@ -151,5 +152,9 @@ public class SnakeView {
 		   scorelabel.setText(Integer.toString(Board.playerScore));
 	}
 	
+	public static void updateLives() {
+		if(Board.numOFLifes>0)livelabel.setText(Integer.toString(Board.numOFLifes));
+		if(Board.numOFLifes==0)livelabel.setText(Integer.toString(0));
+	}
  
 }

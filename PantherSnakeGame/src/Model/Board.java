@@ -85,7 +85,7 @@ public class Board extends JPanel implements ActionListener {
     private void initBoard() {
 
         addKeyListener(new InputManager());
-        setBackground(Color.WHITE);
+      //  setBackground(Color.WHITE);
         setFocusable(true);
 
         setPreferredSize(new Dimension(B_WIDTH, B_HEIGHT));
@@ -99,6 +99,19 @@ public class Board extends JPanel implements ActionListener {
          upDirection = false;
          downDirection = false;
          inGame = true;
+    }
+    
+    public void resumeGame() {
+        setFocusable(true);
+
+        setPreferredSize(new Dimension(B_WIDTH, B_HEIGHT));
+        snake.initGame();
+        timer.stop();
+        leftDirection = false;
+        rightDirection = true;
+        upDirection = false;
+        downDirection = false;
+        inGame = true;
     }
     
 
@@ -239,6 +252,8 @@ public class Board extends JPanel implements ActionListener {
             SnakeView.updatescore();
             if(numOFLifes<3) {
             numOFLifes+=mouse.addLives();
+            SnakeView.updateLives();
+            
             }
         	snake.dots+=2;
             mouse.random();
@@ -294,28 +309,38 @@ public class Board extends JPanel implements ActionListener {
 
             if ((z > 4) && (x[0] == x[z]) && (y[0] == y[z]) && numOFLifes >0) {
             	numOFLifes--;
-                inGame = false;
+            	SnakeView.updateLives();
+           //     inGame = false;
+            	resumeGame();
             }
         }
 
         if (y[0] >= B_HEIGHT && numOFLifes >0) {
             numOFLifes--;
-            inGame = false;
+            SnakeView.updateLives();
+          //  inGame = false;
+            resumeGame();
         }
 
         if (y[0] < 0 && numOFLifes >0) {
         	numOFLifes--;
-            inGame = false;
+        	SnakeView.updateLives();
+          //  inGame = false;
+        	resumeGame();
         }
 
         if (x[0] >= B_WIDTH && numOFLifes >0) {
         	numOFLifes--;
-            inGame = false;
+        	SnakeView.updateLives();
+           // inGame = false;
+        	resumeGame();
         }
 
         if (x[0] < 0 && numOFLifes >0) {
         	numOFLifes--;
-            inGame = false;
+        	SnakeView.updateLives();
+        //    inGame = false;
+        	resumeGame();
         }
         
         if(numOFLifes == 0) { 
@@ -326,7 +351,7 @@ public class Board extends JPanel implements ActionListener {
         
         if (!inGame) {
             timer.stop();
-            setGameOver(true);
+            if(numOFLifes==0) setGameOver(true);
         }
     }
     
@@ -375,4 +400,4 @@ public class Board extends JPanel implements ActionListener {
 	public void setGameOver(boolean isGameOver) {
 		Board.isGameOver = isGameOver;
 	}
-    }
+}
