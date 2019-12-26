@@ -41,7 +41,18 @@ public class SnakeView {
 		Snakeframe.setBounds(100, 100, 999, 658);
 		Snakeframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Snakeframe.getContentPane().setLayout(null);
-		 Board board = new Board();
+		
+		if (Board.isGameOver) {
+			Board.setGameOver(false);
+			//Board.setInGame(false);
+			System.out.println("maha");
+			Board newBoard = new Board();
+			 newBoard.setBackground(new Color(204, 255, 204));
+			 newBoard.setBounds(0, 0, 600, 600);
+			   Snakeframe.getContentPane().add(newBoard);
+			   newBoard.setLayout(null);	
+		}
+		Board board = new Board();
 		 board.setBackground(new Color(204, 255, 204));
 		 board.setBounds(0, 0, 600, 600);
 		   Snakeframe.getContentPane().add(board);
@@ -137,9 +148,7 @@ public class SnakeView {
 		   	public void actionPerformed(ActionEvent arg0) {
 		   		MainScreen f = new MainScreen();
 				f.framefirst.setVisible(true);
-				Snakeframe.dispose();	
-			
-		   		
+				Snakeframe.dispose();	   		
 		   	}
 		   });
 		   btnPause.setFont(new Font("Segoe Print", Font.PLAIN, 18));
