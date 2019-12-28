@@ -67,10 +67,9 @@ public class MainScreen  extends JFrame implements ActionListener {
 		JButton btnHightScore = new JButton("Hight Score");
 		btnHightScore.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-			    new Scores(4);
-				setVisible(false);
-				dispose();
+				HighScores H = new HighScores();
+				H.scoreframe.setVisible(true);
+				framefirst.dispose();
 			}
 		});
 		btnHightScore.setForeground(Color.BLACK);

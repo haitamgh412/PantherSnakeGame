@@ -10,6 +10,8 @@ import java.awt.Color;
 import javax.swing.JCheckBox;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Toolkit;
+import javax.swing.UIManager;
 
 public class Setting {
 
@@ -27,6 +29,9 @@ public class Setting {
 	 */
 	private void initialize() {
 		Settingframe = new JFrame();
+		Settingframe.setTitle("Settings");
+		Settingframe.setIconImage(Toolkit.getDefaultToolkit().getImage(Setting.class.getResource("/images/settings.png")));
+		Settingframe.getContentPane().setBackground(Color.WHITE);
 		Settingframe.setBackground(Color.WHITE);
 		Settingframe.setBounds(100, 100, 631, 513);
 		Settingframe.getContentPane().setLayout(null);
@@ -36,11 +41,6 @@ public class Setting {
 		lblSettings.setFont(new Font("Segoe Print", Font.BOLD, 30));
 		lblSettings.setBounds(247, 119, 165, 53);
 		Settingframe.getContentPane().add(lblSettings);
-		
-		JLabel label_1 = new JLabel("");
-		label_1.setIcon(new ImageIcon(Setting.class.getResource("/images/SnakeeB.png")));
-		label_1.setBounds(179, 67, 92, 83);
-		Settingframe.getContentPane().add(label_1);
 		
 		JButton button = new JButton("");
 		button.addActionListener(new ActionListener() {
@@ -53,30 +53,33 @@ public class Setting {
 		});
 		button.setBackground(Color.WHITE);
 		button.setIcon(new ImageIcon(Setting.class.getResource("/images/esc1.jpg")));
-		button.setBounds(15, 399, 53, 43);
+		button.setBounds(15, 399, 49, 42);
 		Settingframe.getContentPane().add(button);
 		
 		JCheckBox chckbxOnoff = new JCheckBox("On/Off");
+		chckbxOnoff.setBackground(new Color(255, 255, 255));
 		chckbxOnoff.setFont(new Font("Segoe Print", Font.PLAIN, 19));
 		chckbxOnoff.setBounds(362, 200, 139, 29);
 		Settingframe.getContentPane().add(chckbxOnoff);
 		
 		JCheckBox checkBox = new JCheckBox("On/Off");
+		checkBox.setBackground(new Color(255, 255, 255));
 		checkBox.setFont(new Font("Segoe Print", Font.PLAIN, 19));
 		checkBox.setBounds(362, 270, 139, 29);
 		Settingframe.getContentPane().add(checkBox);
 		
 		JLabel label_2 = new JLabel("");
 		label_2.setIcon(new ImageIcon(Setting.class.getResource("/images/music.png")));
-		label_2.setBounds(179, 200, 42, 29);
+		label_2.setBounds(194, 200, 42, 29);
 		Settingframe.getContentPane().add(label_2);
 		
 		JLabel label_3 = new JLabel("");
 		label_3.setIcon(new ImageIcon(Setting.class.getResource("/images/sound.png")));
-		label_3.setBounds(179, 274, 69, 20);
+		label_3.setBounds(194, 279, 69, 20);
 		Settingframe.getContentPane().add(label_3);
 		
 		JButton btnUpdateQuestions = new JButton("update questions");
+		btnUpdateQuestions.setFont(new Font("Segoe Print", Font.PLAIN, 16));
 		btnUpdateQuestions.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				QuestionsView V = new QuestionsView();
@@ -85,17 +88,18 @@ public class Setting {
 				
 			}
 		});
-		btnUpdateQuestions.setBackground(Color.WHITE);
+		btnUpdateQuestions.setBackground(new Color(255, 255, 240));
 		btnUpdateQuestions.setBounds(333, 346, 174, 43);
 		Settingframe.getContentPane().add(btnUpdateQuestions);
 		
 		JLabel label = new JLabel("");
-		label.setIcon(new ImageIcon(Setting.class.getResource("/images/bubble.png")));
-		label.setBounds(-27, 0, 659, 509);
+		label.setIcon(new ImageIcon(Setting.class.getResource("/images/whiteQ.png")));
+		label.setBounds(197, 346, 32, 32);
 		Settingframe.getContentPane().add(label);
 		
-		JLabel label_4 = new JLabel("");
-		label_4.setBounds(179, 357, 69, 20);
-		Settingframe.getContentPane().add(label_4);
+		JLabel label_1 = new JLabel("");
+		label_1.setIcon(new ImageIcon(Setting.class.getResource("/images/setting.jpg")));
+		label_1.setBounds(0, -26, 426, 409);
+		Settingframe.getContentPane().add(label_1);
 	}
 }
