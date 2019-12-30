@@ -98,8 +98,7 @@ public class MainScreen  extends JFrame implements ActionListener {
 			public void actionPerformed(ActionEvent e) {
 			    Setting S = new Setting();
 				S.Settingframe.setVisible(true);
-				setVisible(false);
-				dispose();
+				framefirst.dispose();
 			}
 		});
 		btnSetting.setForeground(Color.BLACK);

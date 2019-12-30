@@ -45,7 +45,6 @@ public class SnakeView {
 		if (Board.isGameOver) {
 			Board.setGameOver(false);
 			//Board.setInGame(false);
-			System.out.println("maha");
 			Board newBoard = new Board();
 			 newBoard.setBackground(new Color(204, 255, 204));
 			 newBoard.setBounds(0, 0, 600, 600);

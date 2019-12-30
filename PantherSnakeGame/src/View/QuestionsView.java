@@ -29,29 +29,30 @@ public class QuestionsView {
 	 */
 	private void initialize() {
 		Qframe = new JFrame();
+		Qframe.getContentPane().setBackground(Color.WHITE);
 		Qframe.setFont(new Font("Segoe Print", Font.PLAIN, 12));
 		Qframe.setTitle("Question");
 		Qframe.setIconImage(Toolkit.getDefaultToolkit().getImage(QuestionsView.class.getResource("/images/write.png")));
-		Qframe.setBounds(100, 100, 615, 465);
+		Qframe.setBounds(100, 100, 735, 477);
 		Qframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Qframe.getContentPane().setLayout(null);
 		
 		JButton btnAddQuestion = new JButton("Add Question");
 		btnAddQuestion.setFont(new Font("Segoe Print", Font.PLAIN, 16));
 		btnAddQuestion.setBackground(Color.WHITE);
-		btnAddQuestion.setBounds(75, 83, 192, 50);
+		btnAddQuestion.setBounds(235, 355, 192, 50);
 		Qframe.getContentPane().add(btnAddQuestion);
 		
 		JButton btnRemovQuestion = new JButton("Remove Question");
 		btnRemovQuestion.setFont(new Font("Segoe Print", Font.PLAIN, 16));
 		btnRemovQuestion.setBackground(Color.WHITE);
-		btnRemovQuestion.setBounds(75, 159, 192, 50);
+		btnRemovQuestion.setBounds(100, 289, 192, 50);
 		Qframe.getContentPane().add(btnRemovQuestion);
 		
 		JButton btnUpdateQuestion = new JButton("Update Question");
 		btnUpdateQuestion.setFont(new Font("Segoe Print", Font.PLAIN, 16));
 		btnUpdateQuestion.setBackground(Color.WHITE);
-		btnUpdateQuestion.setBounds(75, 247, 192, 50);
+		btnUpdateQuestion.setBounds(340, 289, 192, 50);
 		Qframe.getContentPane().add(btnUpdateQuestion);
 		
 		JButton button = new JButton("");
@@ -67,8 +68,8 @@ public class QuestionsView {
 		Qframe.getContentPane().add(button);
 		
 		JLabel label = new JLabel("");
-		label.setIcon(new ImageIcon("D:\\Downloads\\think.png"));
-		label.setBounds(0, 0, 593, 409);
+		label.setIcon(new ImageIcon(QuestionsView.class.getResource("/images/Question.jpg")));
+		label.setBounds(520, 171, 452, 278);
 		Qframe.getContentPane().add(label);
 	}
 }
