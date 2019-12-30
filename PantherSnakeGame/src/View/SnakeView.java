@@ -185,6 +185,22 @@ public class SnakeView {
 		   timeLabel.setText(Integer.toString(Board.timer1));
 		   
 	}
+
+	public String getNewName() {
+		return newName;
+	}
+
+	public void setNewName(String newName) {
+		this.newName = newName;
+	}
+
+	public static JLabel getScorelabel() {
+		return scorelabel;
+	}
+
+	public static void setScorelabel(JLabel scorelabel) {
+		SnakeView.scorelabel = scorelabel;
+	}
 	
 	
 }
