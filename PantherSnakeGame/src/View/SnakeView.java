@@ -45,6 +45,7 @@ public class SnakeView {
 		if (Board.isGameOver) {
 			Board.setGameOver(false);
 			//Board.setInGame(false);
+			System.out.println("maha");
 			Board newBoard = new Board();
 			 newBoard.setBackground(new Color(204, 255, 204));
 			 newBoard.setBounds(0, 0, 600, 600);
@@ -67,7 +68,7 @@ public class SnakeView {
 		   
 		   JLabel lblScore = new JLabel("score:");
 		   lblScore.setFont(new Font("Segoe Print", Font.PLAIN, 19));
-		   lblScore.setBounds(628, 274, 69, 20);
+		   lblScore.setBounds(628, 229, 69, 20);
 		   Snakeframe.getContentPane().add(lblScore);
 		   
 		   JLabel lblLives = new JLabel("lives:");
@@ -127,7 +128,7 @@ public class SnakeView {
 		    
 		   scorelabel = new JLabel("");
 		   scorelabel.setFont(new Font("Segoe Print", Font.PLAIN, 19));
-		   scorelabel.setBounds(735, 272, 113, 24);
+		   scorelabel.setBounds(727, 227, 113, 24);
 		   Snakeframe.getContentPane().add(scorelabel);
 		   scorelabel.setText(Integer.toString(Board.playerScore));
 
@@ -147,6 +148,7 @@ public class SnakeView {
 		   	public void actionPerformed(ActionEvent arg0) {
 		   		MainScreen f = new MainScreen();
 				f.framefirst.setVisible(true);
+				Board.soundManger.stopSound();
 				Snakeframe.dispose();	   		
 		   	}
 		   });
@@ -154,19 +156,6 @@ public class SnakeView {
 		   btnPause.setBackground(SystemColor.menu);
 		   btnPause.setBounds(695, 549, 167, 37);
 		   Snakeframe.getContentPane().add(btnPause);
-		   
-		   JLabel lblTime = new JLabel("Time:");
-		   lblTime.setFont(new Font("Segoe Print", Font.PLAIN, 19));
-		   lblTime.setBounds(628, 210, 69, 20);
-		   Snakeframe.getContentPane().add(lblTime);
-		   
-		 //  int time1 = board;
-		  // String time2 = Integer.toString(time1);
-		   
-		   JLabel timelabel = new JLabel("");
-		   timelabel.setFont(new Font("Segoe Print", Font.PLAIN, 19));
-		   timelabel.setBounds(727, 211, 121, 27);
-		   Snakeframe.getContentPane().add(timelabel);
 	}
 	
 	public static void updatescore() {
@@ -177,8 +166,5 @@ public class SnakeView {
 		if(Board.numOFLifes>0)livelabel.setText(Integer.toString(Board.numOFLifes));
 		if(Board.numOFLifes==0)livelabel.setText(Integer.toString(0));
 	}
-	
-	public static void updateTime() {
-		
-	}
+ 
 }

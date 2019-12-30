@@ -39,7 +39,7 @@ public class Board extends JPanel implements ActionListener {
     
 	public static boolean isGameOver = false;
 
-	private int timer1 = 0;
+	public static int timer1 = 0;
 	private Timer timerT ;
 	
 	public static int playerScore = 0;
@@ -47,7 +47,7 @@ public class Board extends JPanel implements ActionListener {
 	
 	
 	private static String soundFilePath = "start.wav";
-	private static SoundManger soundManger = new SoundManger(soundFilePath);
+	public static SoundManger soundManger = new SoundManger(soundFilePath);
 
     
     /**
