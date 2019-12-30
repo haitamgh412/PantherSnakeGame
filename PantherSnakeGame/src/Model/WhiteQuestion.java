@@ -7,8 +7,8 @@ public class WhiteQuestion extends Question {
 	private final int rightAnswerPoints=1;
 	private final int wrongAnswerPoints=-10;
 
-	public WhiteQuestion(String question, int currectAnsw, QuestionLevel level, String team) {
-		super(question, currectAnsw, level, team);
+	public WhiteQuestion(String question, int currectAnsw, String team) {
+		super(question, currectAnsw, team);
 		generateQuestion();
 		// TODO Auto-generated constructor stub
 	}

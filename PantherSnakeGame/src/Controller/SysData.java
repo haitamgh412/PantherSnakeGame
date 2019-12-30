@@ -10,7 +10,9 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import Model.Question;
-import Model.QuestionLevel;
+import Model.RedQuestion;
+import Model.WhiteQuestion;
+import Model.YellowQuestion;
 import recources.*;
 
 
@@ -63,14 +65,20 @@ public class SysData {
 			for(Object o:jArr) {
 				Question question=new Question();
 				JSONObject jobject=(JSONObject) o;
-				question.setQuestion(jobject.get("question").toString());
+				
 				int level = Integer.parseInt(String.valueOf( jobject.get("level")));
-				if (level == 1)
-					question.setLevel(QuestionLevel.Easy);
-				else if (level == 2)
-					question.setLevel(QuestionLevel.Medium);
-				else
-					question.setLevel(QuestionLevel.Hard);
+				if (level == 1) {
+					question = new WhiteQuestion();
+					question.setQuestion(jobject.get("question").toString());
+				}
+				else if (level == 2) {
+					question = new YellowQuestion();
+					question.setQuestion(jobject.get("question").toString());
+				}
+				else {
+					question = new RedQuestion();
+					question.setQuestion(jobject.get("question").toString());
+				}
 				question.setCurrectAnsw(Integer.parseInt(String.valueOf(jobject.get("correct_ans"))));
 				question.setTeam(jobject.get("team").toString());        		 
 				JSONArray answers=(JSONArray) jobject.get("answers");
@@ -119,7 +127,6 @@ public class SysData {
 
 		JSONArray jsarray=new JSONArray();
 		JSONObject jobject=new JSONObject();
-
 		for(Question question: getQuestionsAfterRead())   {
 			JSONObject obj=new JSONObject();
 			obj.put("question",question.getQuestion()); 
@@ -129,9 +136,9 @@ public class SysData {
 			}
 			obj.put("answers", answers);
 			obj.put("correct_ans", question.getCurrectAnsw());
-			if(question.getLevel().equals(QuestionLevel.Easy))
+			if(question.getClass().getSimpleName().equals("WhiteQuestion"))
 				obj.put("level", 1);
-			else if(question.getLevel().equals(QuestionLevel.Medium))
+			else if(question.getClass().getSimpleName().equals("YellowQuestion"))
 				obj.put("level", 2);
 			else
 				obj.put("level", 3);

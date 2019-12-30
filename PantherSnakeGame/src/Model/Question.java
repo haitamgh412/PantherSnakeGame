@@ -9,7 +9,6 @@ public class Question {
 	String question;
 	ArrayList<String> answers;
 	int currectAnsw;
-	QuestionLevel level;
 	int question_x;
 	int question_y;
 	Image questionImage;
@@ -36,12 +35,11 @@ public class Question {
 	 * @param currectAnsw
 	 * @param level
 	 */
-	public Question(String question, int currectAnsw, QuestionLevel level, String team) {
+	public Question(String question, int currectAnsw, String team) {
 		super();
 		this.question = question;
 		this.answers = new ArrayList<String>();
 		this.currectAnsw = currectAnsw;
-		this.level = level;
 		this.team=team;
 	}
 
@@ -87,15 +85,6 @@ public class Question {
 		this.currectAnsw = currectAnsw;
 	}
 
-
-	public QuestionLevel getLevel() {
-		return level;
-	}
-
-
-	public void setLevel(QuestionLevel level) {
-		this.level = level;
-	}
 
 	public String getTeam() {
 		return team;
@@ -154,10 +143,12 @@ public class Question {
 			return false;
 		return true;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "Question [question=" + question + ", answers=" + answers + ", currectAnsw=" + currectAnsw + ", level="
-				+ level + ", question_x=" + question_x + ", question_y=" + question_y + ", team=" + team + "]";
+		return "Question [question=" + question + ", answers=" + answers + ", currectAnsw=" + currectAnsw + ", team="
+				+ team + "]";
 	}
+	
+	
 }

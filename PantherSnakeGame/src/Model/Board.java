@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 import Controller.InputManager;
+import Controller.SoundManger;
 import View.SnakeView;
 
 
@@ -36,18 +37,15 @@ public class Board extends JPanel implements ActionListener {
     
 	/** Creates a new instance of sysData */
     
-//	private InputManager inputManager;
-//	private SoundManger soundManger = null;
-//	private Timer gameThread;
-//	private Timer timerThread;
-//
 	public static boolean isGameOver = false;
 //
 //	private int timer1 = 0;
 	public static int playerScore = 0;
 	public static int numOFLifes = 3;
-//	 private String soundFilePath = "start.wav";
-
+	
+	
+	private static String soundFilePath = "start.wav";
+	private static SoundManger soundManger = new SoundManger(soundFilePath);
 
     
     /**
@@ -80,28 +78,27 @@ public class Board extends JPanel implements ActionListener {
     public Board() {
         
         initBoard();
+
     }
     
     private void initBoard() {
 
         addKeyListener(new InputManager());
-      //  setBackground(Color.WHITE);
         setFocusable(true);
-
+        
         setPreferredSize(new Dimension(B_WIDTH, B_HEIGHT));
         snake.initGame();
 
         timer = new Timer(DELAY, this);
         timer.stop();
-        
+     //   soundManger.startSound();
+
+
          leftDirection = false;
          rightDirection = true;
          upDirection = false;
          downDirection = false;
          inGame = true;
-         
-         numOFLifes=3;
-         playerScore=0;
     }
     
     public void resumeGame() {
@@ -355,14 +352,21 @@ public class Board extends JPanel implements ActionListener {
         
         if (!inGame) {
             timer.stop();
+            soundManger.stopSound();
             if(numOFLifes==0) setGameOver(true);
         }
     }
     
     public static void pause() {
     	
-    	if(timer.isRunning())timer.stop();
-    	else timer.start();
+    	if(timer.isRunning()) {
+    		timer.stop();
+    		soundManger.pauseSound();
+    		}
+    	else {
+    		timer.start();
+    	    soundManger.startSound();
+    	}
     }
 
 
@@ -404,8 +408,4 @@ public class Board extends JPanel implements ActionListener {
 	public static void setGameOver(boolean isGameOver) {
 		Board.isGameOver = isGameOver;
 	}
-	
-//	public static void setInGame(boolean isInGame) {
-//		Board.inGame = isInGame;
-//	}
 }

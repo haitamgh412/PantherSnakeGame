@@ -8,8 +8,8 @@ public class RedQuestion extends Question {
 	private final int rightAnswerPoints=3;
 	private final int wrongAnswerPoints=-30;
 	
-	public RedQuestion(String question, int currectAnsw, QuestionLevel level, String team) {
-		super(question, currectAnsw, level, team);
+	public RedQuestion(String question, int currectAnsw, String team) {
+		super(question, currectAnsw, team);
 		generateQuestion();
 		// TODO Auto-generated constructor stub
 	}

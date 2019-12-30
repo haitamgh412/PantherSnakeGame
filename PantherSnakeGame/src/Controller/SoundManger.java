@@ -57,8 +57,7 @@ public class SoundManger {
 
 			while (true) {
 				try {
-					audioInputStream = AudioSystem
-							.getAudioInputStream(soundFile);
+					audioInputStream = AudioSystem.getAudioInputStream(soundFile);
 					audioFormat = audioInputStream.getFormat();
 
 					DataLine.Info dataLineInfo = new DataLine.Info(
