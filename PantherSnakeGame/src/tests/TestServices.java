@@ -2,14 +2,12 @@ package tests;
 
 import java.util.ArrayList;
 import Model.Question;
-import Model.QuestionLevel;
 
 public class TestServices {
 
-	public Question GenrateQuestionDetials(String q, int currectAnsw, QuestionLevel level, String team) {
+	public Question GenrateQuestionDetials(String q, int currectAnsw, String team) {
 		Question question = new Question();
 		question.setQuestion(q);
-		question.setLevel(level);
 		question.setCurrectAnsw(currectAnsw);
 		question.setTeam(team); 
 		return question;

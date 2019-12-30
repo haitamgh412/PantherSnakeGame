@@ -10,7 +10,6 @@ import org.junit.Test;
 
 import Controller.sysData;
 import Model.Question;
-import Model.QuestionLevel;
 import Model.RedQuestion;
 import Model.WhiteQuestion;
 import Model.YellowQuestion;
@@ -21,7 +20,6 @@ import recources.Constants;
 public class GuestionsTests {
 	TestServices m_services;
 	String q = "Requirementss validation techniques are:";
-	QuestionLevel level = QuestionLevel.Medium;
 	int currectAnsw = 4;
 	String team = "Panther"; 
 	String ans1 = "Requirements reviews";
@@ -32,7 +30,7 @@ public class GuestionsTests {
 
 	private void TestAddQuestion() throws Exception{
 		setUp();
-		Question question = m_services.GenrateQuestionDetials(q, currectAnsw, level, team);
+		Question question = m_services.GenrateQuestionDetials(q, currectAnsw, team);
 		ArrayList<String> answers = m_services.generateQusAnswers(ans1, ans2, ans3, ans4);
 		question.setAnswers(answers);
 		boolean flag = sysData.getInstance().addQuestion(question);
@@ -51,7 +49,7 @@ public class GuestionsTests {
 	
 	private void TestupdateQuestion() throws Exception{
 		setUp();
-		Question question = m_services.GenrateQuestionDetials(q, 3, level, team);
+		Question question = m_services.GenrateQuestionDetials(q, 3, team);
 		ArrayList<String> answers = m_services.generateQusAnswers(ans1, ans2, ans4, ans3);
 		question.setAnswers(answers);
 		boolean flag = sysData.getInstance().updateQuestion(question);
