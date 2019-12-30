@@ -38,8 +38,10 @@ public class Board extends JPanel implements ActionListener {
 	/** Creates a new instance of sysData */
     
 	public static boolean isGameOver = false;
-//
-//	private int timer1 = 0;
+
+	private int timer1 = 0;
+	private Timer timerT ;
+	
 	public static int playerScore = 0;
 	public static int numOFLifes = 3;
 	
@@ -82,6 +84,19 @@ public class Board extends JPanel implements ActionListener {
     }
     
     private void initBoard() {
+    	
+    	timerT = new Timer(1000, new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(isGameOver) {
+					timer.stop();
+					timerT.stop();
+					soundManger.stopSound();
+				}
+				timer1++;
+			}
+		});
 
         addKeyListener(new InputManager());
         setFocusable(true);
@@ -91,7 +106,6 @@ public class Board extends JPanel implements ActionListener {
 
         timer = new Timer(DELAY, this);
         timer.stop();
-     //   soundManger.startSound();
 
 
          leftDirection = false;
@@ -99,6 +113,11 @@ public class Board extends JPanel implements ActionListener {
          upDirection = false;
          downDirection = false;
          inGame = true;
+         
+         numOFLifes=3;
+         playerScore=0;
+         soundManger = new SoundManger(soundFilePath);
+         
     }
     
     public void resumeGame() {
@@ -399,6 +418,10 @@ public class Board extends JPanel implements ActionListener {
 
 	public int getNumOFLifes() {
 		return numOFLifes;
+	}
+	
+	public int getTime() {
+		return timer1;
 	}
 
 	public boolean isGameOver() {
