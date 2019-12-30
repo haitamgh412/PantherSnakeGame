@@ -20,6 +20,7 @@ public class SnakeView {
     public String newName ; 
     public static JLabel scorelabel;
     public static JLabel livelabel;
+    public static JLabel timeLabel;
 	/**
 	 * Create the application.
 	 */
@@ -45,7 +46,6 @@ public class SnakeView {
 		if (Board.isGameOver) {
 			Board.setGameOver(false);
 			//Board.setInGame(false);
-			System.out.println("maha");
 			Board newBoard = new Board();
 			 newBoard.setBackground(new Color(204, 255, 204));
 			 newBoard.setBounds(0, 0, 600, 600);
@@ -68,7 +68,7 @@ public class SnakeView {
 		   
 		   JLabel lblScore = new JLabel("score:");
 		   lblScore.setFont(new Font("Segoe Print", Font.PLAIN, 19));
-		   lblScore.setBounds(628, 229, 69, 20);
+		   lblScore.setBounds(628, 195, 69, 20);
 		   Snakeframe.getContentPane().add(lblScore);
 		   
 		   JLabel lblLives = new JLabel("lives:");
@@ -128,12 +128,11 @@ public class SnakeView {
 		    
 		   scorelabel = new JLabel("");
 		   scorelabel.setFont(new Font("Segoe Print", Font.PLAIN, 19));
-		   scorelabel.setBounds(727, 227, 113, 24);
+		   scorelabel.setBounds(727, 193, 113, 24);
 		   Snakeframe.getContentPane().add(scorelabel);
 		   scorelabel.setText(Integer.toString(Board.playerScore));
 
-           
-		   
+          
 		   int live = board.getNumOFLifes();
 		   String live1 = Integer.toString(live);
 		   
@@ -156,6 +155,21 @@ public class SnakeView {
 		   btnPause.setBackground(SystemColor.menu);
 		   btnPause.setBounds(695, 549, 167, 37);
 		   Snakeframe.getContentPane().add(btnPause);
+		   
+		   JLabel lblTime = new JLabel("Time:");
+		   lblTime.setFont(new Font("Segoe Print", Font.PLAIN, 19));
+		   lblTime.setBounds(628, 258, 69, 20);
+		   Snakeframe.getContentPane().add(lblTime);
+		   
+		   int time = board.getTime();
+		   String time1 = Integer.toString(time);
+		   
+		   timeLabel = new JLabel("");
+		   timeLabel.setFont(new Font("Segoe Print", Font.PLAIN, 19));
+		   timeLabel.setBounds(727, 256, 113, 24);
+		   Snakeframe.getContentPane().add(timeLabel);
+		   timeLabel.setText(time1);
+
 	}
 	
 	public static void updatescore() {
@@ -166,5 +180,11 @@ public class SnakeView {
 		if(Board.numOFLifes>0)livelabel.setText(Integer.toString(Board.numOFLifes));
 		if(Board.numOFLifes==0)livelabel.setText(Integer.toString(0));
 	}
- 
+	
+	public static void updateTime() {
+		   timeLabel.setText(Integer.toString(Board.timer1));
+		   
+	}
+	
+	
 }
