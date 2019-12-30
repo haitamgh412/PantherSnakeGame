@@ -38,8 +38,7 @@ public class Board extends JPanel implements ActionListener {
     
 //	private InputManager inputManager;
 //	private SoundManger soundManger = null;
-//	private Timer gameThread;
-//	private Timer timerThread;
+
 //
 	public static boolean isGameOver = false;
 //
@@ -85,7 +84,6 @@ public class Board extends JPanel implements ActionListener {
     private void initBoard() {
 
         addKeyListener(new InputManager());
-      //  setBackground(Color.WHITE);
         setFocusable(true);
 
         setPreferredSize(new Dimension(B_WIDTH, B_HEIGHT));
@@ -99,9 +97,6 @@ public class Board extends JPanel implements ActionListener {
          upDirection = false;
          downDirection = false;
          inGame = true;
-         
-         numOFLifes=3;
-         playerScore=0;
     }
     
     public void resumeGame() {
@@ -404,8 +399,4 @@ public class Board extends JPanel implements ActionListener {
 	public static void setGameOver(boolean isGameOver) {
 		Board.isGameOver = isGameOver;
 	}
-	
-//	public static void setInGame(boolean isInGame) {
-//		Board.inGame = isInGame;
-//	}
 }
