@@ -85,18 +85,6 @@ public class Board extends JPanel implements ActionListener {
     
     private void initBoard() {
     	
-    	timerT = new Timer(1000, new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				if(isGameOver) {
-					timer.stop();
-					timerT.stop();
-					soundManger.stopSound();
-				}
-				timer1++;
-			}
-		});
 
         addKeyListener(new InputManager());
         setFocusable(true);
@@ -106,7 +94,7 @@ public class Board extends JPanel implements ActionListener {
 
         timer = new Timer(DELAY, this);
         timer.stop();
-
+        
 
          leftDirection = false;
          rightDirection = true;
@@ -407,6 +395,7 @@ public class Board extends JPanel implements ActionListener {
             checkCollision();
             move();
             movemouse();
+
         }
 
         repaint();
@@ -421,6 +410,20 @@ public class Board extends JPanel implements ActionListener {
 	}
 	
 	public int getTime() {
+		
+    	timerT = new Timer(1000, new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(isGameOver) {
+					timer.stop();
+					timerT.stop();
+					soundManger.stopSound();
+				}
+				timer1++;
+				SnakeView.updateTime();
+			}
+		});
 		return timer1;
 	}
 
