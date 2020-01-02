@@ -83,10 +83,7 @@ public class SnakeView {
 		  
 		  JButton btnNewGame = new JButton("new game"); 
 		   
-		  
-		   Snakeframe.getContentPane().add(Namelabel);
-		  // int score1 = Board.playerScore;  
-		   
+		   Snakeframe.getContentPane().add(Namelabel);		   
 		   
 		   btnNewGame.setBackground(SystemColor.menu);
 		   btnNewGame.addActionListener(new ActionListener() {
@@ -201,6 +198,5 @@ public class SnakeView {
 	public static void setScorelabel(JLabel scorelabel) {
 		SnakeView.scorelabel = scorelabel;
 	}
-	
 	
 }

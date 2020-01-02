@@ -51,13 +51,7 @@ public class InputManager implements KeyListener{
 	            }
 	             if (key == KeyEvent.VK_SPACE) {
 
-//	    			if (Board.isGameRunning()) {
-//	    				Board.pauseGame();
-//
-//	    			} else {
-//	    				Board.initGame();
-	            	 Board.pause();
-	            	 
+	            	 Board.pause();	 
 	    			}
 
 	    		 if (key == KeyEvent.VK_ESCAPE) {
@@ -80,5 +74,4 @@ public class InputManager implements KeyListener{
 				// TODO Auto-generated method stub
 				
 			}
-
 }

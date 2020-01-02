@@ -18,11 +18,8 @@ public class Snake {
     private int snake_y;
     
     
-
-
     public Snake() {
     	
-    	//initBoard();
     	ImageIcon iid = new ImageIcon(Board.class.getResource("/images/dot.png"));
         ball = iid.getImage();
         ImageIcon iih = new ImageIcon(Board.class.getResource("/images/headR.png"));

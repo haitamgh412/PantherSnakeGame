@@ -82,6 +82,7 @@ public class Board extends JPanel implements ActionListener {
         initBoard();
 
     }
+  
     
     private void initBoard() {
     	
@@ -148,8 +149,6 @@ public class Board extends JPanel implements ActionListener {
 //            g.drawImage(mouse.getImage(2), mouse.getX(), mouse.getY(), this);
 //            g.drawImage(mouse.getImage(3), mouse.getX(), mouse.getY(), this);
 //            g.drawImage(mouse.getImage(4), mouse.getX(), mouse.getY(), this);
-
-
 
             
             for (int z = 0; z < snake.dots; z++) {
@@ -222,8 +221,7 @@ public class Board extends JPanel implements ActionListener {
         }
     }
     
-    
-    
+     
     private void checkWQ() {
 
         if ((x[0] == whiteQuestion.getX()) && (y[0] == whiteQuestion.getY())) {
@@ -318,7 +316,7 @@ public class Board extends JPanel implements ActionListener {
             if ((z > 4) && (x[0] == x[z]) && (y[0] == y[z]) && numOFLifes >0) {
             	numOFLifes--;
             	SnakeView.updateLives();
-           //     inGame = false;
+            	SnakeView.updateTime();
             	resumeGame();
             }
         }
@@ -326,28 +324,24 @@ public class Board extends JPanel implements ActionListener {
         if (y[0] >= B_HEIGHT && numOFLifes >0) {
             numOFLifes--;
             SnakeView.updateLives();
-          //  inGame = false;
             resumeGame();
         }
 
         if (y[0] < 0 && numOFLifes >0) {
         	numOFLifes--;
         	SnakeView.updateLives();
-          //  inGame = false;
         	resumeGame();
         }
 
         if (x[0] >= B_WIDTH && numOFLifes >0) {
         	numOFLifes--;
         	SnakeView.updateLives();
-           // inGame = false;
         	resumeGame();
         }
 
         if (x[0] < 0 && numOFLifes >0) {
         	numOFLifes--;
         	SnakeView.updateLives();
-        //    inGame = false;
         	resumeGame();
         }
         
@@ -395,9 +389,9 @@ public class Board extends JPanel implements ActionListener {
             checkCollision();
             move();
             movemouse();
-
+            
         }
-
+        
         repaint();
     }
 
@@ -421,7 +415,6 @@ public class Board extends JPanel implements ActionListener {
 					soundManger.stopSound();
 				}
 				timer1++;
-				SnakeView.updateTime();
 			}
 		});
 		return timer1;

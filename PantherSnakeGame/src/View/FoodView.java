@@ -38,8 +38,6 @@ public class FoodView {
         mouse_up = iimu.getImage();
         
 	}
-
-	
 	
 	public Image GetApple() {
 		return apple;

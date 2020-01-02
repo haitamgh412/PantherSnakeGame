@@ -89,6 +89,5 @@ public class Banana implements Fruit{
 	public int addPoints() {
 		return (bananaPoints);
 	}
-	
-	
+		
 }

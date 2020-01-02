@@ -5,6 +5,9 @@ import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import java.awt.Font;
 import javax.swing.SwingConstants;
+
+import Model.Board;
+
 import javax.swing.JButton;
 import java.awt.Color;
 import javax.swing.JCheckBox;
@@ -56,6 +59,12 @@ public class Setting {
 		Settingframe.getContentPane().add(button);
 		
 		JCheckBox chckbxOnoff = new JCheckBox("On/Off");
+		chckbxOnoff.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Board.soundManger.stopSound();
+			}
+		});
+		chckbxOnoff.setSelected(true);
 		chckbxOnoff.setBackground(new Color(255, 255, 255));
 		chckbxOnoff.setFont(new Font("Segoe Print", Font.PLAIN, 19));
 		chckbxOnoff.setBounds(362, 200, 139, 29);

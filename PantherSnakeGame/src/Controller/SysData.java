@@ -5,10 +5,13 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.TreeSet;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+
+import Model.Player;
 import Model.Question;
 import Model.RedQuestion;
 import Model.WhiteQuestion;
@@ -22,9 +25,11 @@ public class SysData {
 	 * saving questions details 
 	 */
 	private static ArrayList<Question> questions ;
+	private static TreeSet<Player> players;
 
 	private SysData(){
 		questions=new ArrayList<Question>();
+		players = new TreeSet<Player>();
 	}
 
 	public static SysData getInstance() {
@@ -42,6 +47,128 @@ public class SysData {
 			questions=new ArrayList<Question>();
 		return questions;
 	}
+
+
+	public TreeSet<Player> getPlayers() {
+		if(players==null)
+			return new TreeSet<Player>();
+		return players;
+	}
+
+	/**
+	 * adding a player to the array of the players
+	 * @return true if the array not contains this player and added it else return false
+	 */
+	public boolean addPlayer(Player player){
+		if(player == null)
+			return false;
+
+		if(players.contains(player))
+			return false;
+
+		return players.add(player);
+
+	}
+
+	/**
+	 * 	writing a player to the json file 
+	 * @param question
+	 */	
+	@SuppressWarnings("unchecked")
+	public void writePlayers(Player p) {
+		JSONArray jsarray=new JSONArray();
+		JSONObject jobject=new JSONObject();
+		addPlayer(p);
+		for(Player player: getPlayers())   {
+			JSONObject obj=new JSONObject();
+			obj.put("userName",player.getUserName()); 
+			JSONArray scores = new JSONArray();
+			for(Integer s:player.getScores()) {
+				scores.add(s);	        			
+			}
+			obj.put("Scores", scores);
+			obj.put("HighScore", player.getHighScore());
+
+
+			jsarray.add(obj);
+		}
+		try {
+			removeAndCreateNewFile(Constants.PLAYERSILENAME);
+		}catch(Exception ex) {
+
+		}
+		try (FileWriter f = new FileWriter(Constants.PLAYERSILENAME)) {
+			jobject.put("players", jsarray);
+			f.write(jobject.toJSONString());
+		} 
+		catch(Exception ex) {
+		}
+	}
+
+
+	/**
+	 * 
+	 * @return list of players
+	 */
+	public TreeSet<Player> getPlayersAfterRead() {
+		readPlayers();		
+		return players;
+	}
+
+	/**
+	 * reading the players from json file 
+	 */
+	public boolean readPlayers(){  
+		try{
+			JSONParser jparser = new JSONParser();
+			Object object;
+			object = jparser.parse(new FileReader(new File(Constants.PLAYERSILENAME)));
+			JSONObject jo=(JSONObject) object;
+			JSONArray jArr=(JSONArray) jo.get("players");
+			for(Object o:jArr) {
+				Player player = new Player();
+				JSONObject jobject=(JSONObject) o;
+
+				player.setUserName(String.valueOf(jobject.get("userName")));
+
+				JSONArray scores=(JSONArray) jobject.get("Scores");
+				if(scores!=null) {
+					for(Object a: scores) {
+						player.addScore(Integer.parseInt((String.valueOf(a)))); 
+						player.setHighScore(Integer.parseInt(String.valueOf(jobject.get("HighScore"))));	
+					}
+
+					addPlayer(player);
+				}
+
+			}
+
+			return true;
+
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false; 
+	}
+
+
+	/**
+	 * update a Player
+	 * @param q
+	 * @return true if the Player updated successfully else return false
+	 */
+	public boolean updatePlayer(Player player) {
+		if(player==null)
+			return false;
+		if(!players.contains(player)) {
+			return false;
+		}
+		players.remove(player);
+		addPlayer(player);
+		writePlayers(player);
+		return true;
+	}
+
 
 	/**
 	 * 
@@ -65,7 +192,7 @@ public class SysData {
 			for(Object o:jArr) {
 				Question question=new Question();
 				JSONObject jobject=(JSONObject) o;
-				
+
 				int level = Integer.parseInt(String.valueOf( jobject.get("level")));
 				if (level == 1) {
 					question = new WhiteQuestion();
@@ -101,9 +228,6 @@ public class SysData {
 	}
 
 
-
-
-
 	/**
 	 * adding a question to the array of the questions
 	 * @return true if the array not contains this question and added it else return false
@@ -115,19 +239,20 @@ public class SysData {
 			return false;
 
 		return questions.add(question);
-
 	}
+
 
 	/**
 	 * 	writing a question to the json file 
 	 * @param question
 	 */	
 	@SuppressWarnings("unchecked")
-	public void writeQuestions() {
-
+	public void writeQuestions(Question q) {
+		if(!addQuestion(q))
+			System.out.println("yes");
 		JSONArray jsarray=new JSONArray();
 		JSONObject jobject=new JSONObject();
-		for(Question question: getQuestionsAfterRead())   {
+		for(Question question: getQuestionsssss())   {
 			JSONObject obj=new JSONObject();
 			obj.put("question",question.getQuestion()); 
 			JSONArray answers = new JSONArray();
@@ -164,18 +289,32 @@ public class SysData {
 	 * @return true if removed and created new successfully else return false
 	 */
 	public boolean removeAndCreateNewFile(String questionFileName) {
-		if(!questionFileName.equals(Constants.QUESTIONFILENAME)) {
+		if(!questionFileName.equals(Constants.QUESTIONFILENAME) && !questionFileName.equals(Constants.PLAYERSILENAME)) {
 			return false;
 		}
-		File f=null;
-		f=new File(Constants.QUESTIONFILENAME);
-		if(f.isFile())
-			f.delete();
-		try {
-			f.createNewFile();
-			return true;
-		} catch (IOException e) {
-			e.printStackTrace();
+		if(questionFileName.equals(Constants.QUESTIONFILENAME)) {
+			File f=null;
+			f=new File(Constants.QUESTIONFILENAME);
+			if(f.isFile())
+				f.delete();
+			try {
+				f.createNewFile();
+				return true;
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		else {
+			File f=null;
+			f=new File(Constants.PLAYERSILENAME);
+			if(f.isFile())
+				f.delete();
+			try {
+				f.createNewFile();
+				return true;
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 		return false;
 	}
@@ -194,9 +333,8 @@ public class SysData {
 		}
 		questions.remove(question);
 		addQuestion(question);
-		writeQuestions();
+		writeQuestions(question);
 		return true;
 	}
-	
 
 }

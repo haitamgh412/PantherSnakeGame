@@ -4,6 +4,9 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+
+import Controller.SysData;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Color;
@@ -25,6 +28,8 @@ public class MainScreen  extends JFrame implements ActionListener {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					SysData.getInstance().readQuestions();
+					SysData.getInstance().readPlayers();
 					MainScreen window = new MainScreen();
 					window.framefirst.setVisible(true);
 				} catch (Exception e) {

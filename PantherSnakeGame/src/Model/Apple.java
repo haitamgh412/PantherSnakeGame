@@ -22,11 +22,7 @@ public class Apple implements Fruit {
 	 * Create an new Apple in the the random coordinates x and y
 	 */
 	public void generateFood() {
-		
-		
-//		ImageIcon iia = new ImageIcon(Apple.class.getResource("/images/apple.png"));
-//        apple = iia.getImage();
-        
+		 
         int a = (int) (Math.random() * Board.RAND_POS);
         this.apple_x = ((a * Board.DOT_SIZE));
 
@@ -35,8 +31,7 @@ public class Apple implements Fruit {
         
 		FoodView foodView=new FoodView();
         this.apple=foodView.GetApple();
-        
-        
+             
 	}
 	
 	/*
@@ -94,6 +89,5 @@ public class Apple implements Fruit {
 	public int addPoints() {
 		return (applePoints);
 	}
-	
 	
 }

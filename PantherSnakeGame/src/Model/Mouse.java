@@ -28,9 +28,7 @@ public class Mouse {
 	 * Create an new Apple in the the random coordinates x and y
 	 */
 	public void generateFood() {
-		
-		
-        
+		      
         int a = (int) (Math.random() * Board.RAND_POS);
         this.mouse_x = ((a * Board.DOT_SIZE));
 
@@ -93,6 +91,5 @@ public class Mouse {
         60000 
         );
 	}
-	
-	
+		
 }

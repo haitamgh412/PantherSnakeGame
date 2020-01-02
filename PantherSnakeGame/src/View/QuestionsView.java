@@ -15,8 +15,6 @@ public class QuestionsView {
 
 	public JFrame Qframe;
 
-
-
 	/**
 	 * Create the application.
 	 */
