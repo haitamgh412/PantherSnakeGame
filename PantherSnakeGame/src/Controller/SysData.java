@@ -39,6 +39,18 @@ public class SysData {
 		return sysdata; 
 	}
 
+	public ArrayList<Player> getTopPlayers() {
+		int counter=0;
+		ArrayList<Player> top = new ArrayList<Player>();
+		for(Player p : players) {
+			if(counter<=10) {
+				top.add(p);
+				counter++;
+			}
+		}
+		return top;
+	}
+
 
 	public ArrayList<Question> getQuestionsssss() {
 		//		questions.clear();
@@ -55,6 +67,26 @@ public class SysData {
 		return players;
 	}
 
+	public Player getPlayer(String name) {
+		for (Player p : players) {
+			if(p.getUserName().equals(name))
+				return p;
+		}
+		return null;
+	}
+
+	public boolean checkIfPlayerExist(Player player) {
+		if (player==null) 
+			return false;
+
+		for (Player p : players) {
+			if(player.getUserName().equals(p.getUserName()))
+				return true;
+		}
+
+		return false;
+	}
+
 	/**
 	 * adding a player to the array of the players
 	 * @return true if the array not contains this player and added it else return false
@@ -63,8 +95,10 @@ public class SysData {
 		if(player == null)
 			return false;
 
-		if(players.contains(player))
-			return false;
+		for (Player p : players) {
+			if(player.getUserName().equals(p.getUserName()))
+				return false;
+		}
 
 		return players.add(player);
 
@@ -160,7 +194,13 @@ public class SysData {
 	public boolean updatePlayer(Player player) {
 		if(player==null)
 			return false;
-		if(!players.contains(player)) {
+		boolean flag = false;
+
+		for (Player p : players) {
+			if(player.getUserName().equals(p.getUserName()))
+				flag = true;
+		}
+		if(flag == false) {
 			return false;
 		}
 		players.remove(player);
@@ -235,8 +275,11 @@ public class SysData {
 	public boolean addQuestion(Question question){
 		if(question == null)
 			return false;
-		if(questions.contains(question))
-			return false;
+		
+		for (Question q : questions) {
+			if(q.getQuestion().equals(q.getQuestion()))
+				return false;
+		}
 
 		return questions.add(question);
 	}
@@ -328,7 +371,13 @@ public class SysData {
 	public boolean updateQuestion(Question question) {
 		if(question==null)
 			return false;
-		if(!questions.contains(question)) {
+		
+		boolean flag = false;
+		for (Question q : questions) {
+			if(q.getQuestion().equals(q.getQuestion()))
+				flag = true;
+		}
+		if(flag == false) {
 			return false;
 		}
 		questions.remove(question);

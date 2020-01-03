@@ -5,14 +5,14 @@ import java.util.Set;
 import java.util.TreeSet;
 
 public class Player implements Comparable<Player>{
-	
-	
+
+
 	private String userName;
 	// all the scores of the player from all the games he players
 	private TreeSet<Integer> scores;
 	// the high score of the playe from all the games he players
 	private int highScore;
-	
+
 
 	public Player() {
 		scores =  new TreeSet<Integer>(new Comparator<Integer>() {
@@ -25,7 +25,7 @@ public class Player implements Comparable<Player>{
 		});
 	}
 
-	
+
 	public Player(String userName) {
 		super();
 		this.userName = userName;
@@ -40,7 +40,7 @@ public class Player implements Comparable<Player>{
 		});
 	}
 
-	
+
 	// getters && setters
 
 
@@ -64,10 +64,11 @@ public class Player implements Comparable<Player>{
 
 	// get the first score (the highest) from sorted set
 	public void updateHighScore() {
-		this.highScore = scores.last();
+		if(!scores.isEmpty())
+			this.highScore = scores.last();
 	}
-	
-	
+
+
 	public void setHighScore(int highScore) {
 		this.highScore = highScore;
 		updateHighScore();
@@ -82,20 +83,20 @@ public class Player implements Comparable<Player>{
 	public void setScores(TreeSet<Integer> scores) {
 		this.scores = scores;
 	}
-	
-	
+
+
 	// method to add new score the tree set of the scores of the player
-	 public void addScore(int score) {
-			scores.add(score);
-			updateHighScore();
-		}
+	public void addScore(int score) {
+		scores.add(score);
+		updateHighScore();
+	}
 
 
-	 // method to compare the highest score between the players
+	// method to compare the highest score between the players
 	@Override
 	public int compareTo(Player o) {
 		// TODO Auto-generated method stub
-		return o.highScore>this.highScore ?-1:1;
+		return o.highScore>this.highScore ?1:-1;
 	}
 
 
@@ -127,10 +128,10 @@ public class Player implements Comparable<Player>{
 	}
 
 
-	
-	
+
+
 	//toString method
-	
+
 	@Override
 	public String toString() {
 		return "Player [userName=" + userName + ", scores=" + scores + ", highScore=" + highScore + "]";
@@ -139,5 +140,5 @@ public class Player implements Comparable<Player>{
 
 
 
-	
+
 }
