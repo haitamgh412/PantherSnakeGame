@@ -44,9 +44,9 @@ public class WhiteQuestion extends Question {
 	 * if the Answer is right returns getRightAnswerPoints()
 	 * if the Answer is wrong returns GetWrongAnswerPoints()
 	 */
-	public int getAnswerPoints() {
-		//TODO
-		return 0;
+	public int getAnswerPoints(boolean answer) {
+		if (answer)return rightAnswerPoints;
+		else return wrongAnswerPoints;
 	}
 	
 }

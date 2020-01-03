@@ -22,7 +22,7 @@ public class Board extends JPanel implements ActionListener {
 	
 	/**
 	 * The B_WIDTH and B_HEIGHT constants determine the size of the board.
-	 * The DOT_SIZE is the size of the apple and the dot of the snake.
+	 * The DOT_SIZE is the size of the dot of the snake.
 	 * The ALL_DOTS constant defines the maximum number of possible dots on the board (3600 = (600*600)/(10*10)).
 	 * The RAND_POS constant is used to calculate a random position for an apple 60 .
 	 * The DELAY constant determines the speed of the game.
@@ -35,7 +35,7 @@ public class Board extends JPanel implements ActionListener {
     public static final int RAND_POS = 58;
     public final static int DELAY = 140;
     
-	/** Creates a new instance of sysData */
+	/** Creates a new instance of Board */
     
 	public static boolean isGameOver = false;
 
@@ -109,6 +109,11 @@ public class Board extends JPanel implements ActionListener {
          
     }
     
+    /*
+     * the resumeGame used when the snake died and the game hasn't over 
+     * and the player resume the game with one less life and the same score .
+     * the snake return to the center of the screen with 0 length of body
+     */
     public void resumeGame() {
         setFocusable(true);
 
@@ -176,19 +181,98 @@ public class Board extends JPanel implements ActionListener {
         g.setColor(Color.RED);
         g.setFont(small);
         g.drawString(msg, (B_WIDTH - metr.stringWidth(msg)) / 2, B_HEIGHT / 2);
+        
+    //    Player player=new Player(SnakeView.getNewName());
     }
     
     
     private void movemouse() {
-    //TODO
     	
-//    	mouse.generateFood();
+    	int side=mouse.getCurrentSide();
+    	
+        if (side==0&&checkMouseCollision()) {
+            mouse.setY(mouse.getY()+DOT_SIZE);
+        }
+        if (side==1&&checkMouseCollision()) {
+            mouse.setY(mouse.getY()-DOT_SIZE);
+        }
+        if (side==2&&checkMouseCollision()) {
+            mouse.setX(mouse.getX()+DOT_SIZE);
+        }
+        if (side==3&&checkMouseCollision()) {
+            mouse.setX(mouse.getX()-DOT_SIZE);
+        }
+        
     }
+    
+    /*
+     * TODO need to edit
+     */
+    private boolean checkMouseCollision() {
+    	
+        if ((mouse.getX() == apple.getX()) && (mouse.getY() == apple.getY())) {
+        	mouse.setCurrentSide();
+        	return false;
+        }
+        if ((mouse.getX() == banana.getX()) && (mouse.getY() == banana.getY())) {
+        	mouse.setCurrentSide();
+        	return false;
+        }
+        if ((mouse.getX() == pear.getX()) && (mouse.getY() == pear.getY())) {
+        	mouse.setCurrentSide();
+        	return false;
+        }
+        if ((mouse.getX() == whiteQuestion.getX()) && (mouse.getY() == whiteQuestion.getY())) {
+        	mouse.setCurrentSide();
+        	return false;
+        }
+        if ((mouse.getX() == redQuestion.getX()) && (mouse.getY() == redQuestion.getY())) {
+        	mouse.setCurrentSide();
+        	return false;
+        }
+        if ((mouse.getX() == yellowQuestion.getX()) && (mouse.getY() == yellowQuestion.getY())) {
+        	mouse.setCurrentSide();
+        	return false;
+        }
+        
+        for (int z = snake.dots; z > 0; z--) {
+
+            if ((z > 4) && (mouse.getX() == x[z]) && (mouse.getY() == y[z])) {
+            	mouse.setCurrentSide();
+            	return false;
+            }
+        }
+
+        if (mouse.getY() >= B_HEIGHT) {
+        	mouse.setCurrentSide();
+        	return false;
+        }
+
+        if (mouse.getY() < 0 && numOFLifes >0) {
+        	mouse.setCurrentSide();
+        	return false;
+        }
+
+        if (mouse.getX() >= B_WIDTH && numOFLifes >0) {
+        	mouse.setCurrentSide();
+        	return false;
+        }
+
+        if (mouse.getX() < 0 && numOFLifes >0) {
+        	mouse.setCurrentSide();
+        	return false;
+        }
+        return true;
+        	
+        
+    }
+    
+
 
     /**
      * If the apple collides with the head,
        we increase the number of joints of the snake.
-        We call the locateApple() method which randomly positions a new apple object.
+        We call the Random() method in the apple which randomly positions a new apple object.
      */
     private void checkApple() {
 
@@ -226,7 +310,7 @@ public class Board extends JPanel implements ActionListener {
 
         if ((x[0] == whiteQuestion.getX()) && (y[0] == whiteQuestion.getY())) {
 
-        	playerScore+=whiteQuestion.getAnswerPoints();
+      //  	playerScore+=whiteQuestion.getAnswerPoints();
             SnakeView.updatescore();
             whiteQuestion.random();
         }
@@ -235,7 +319,7 @@ public class Board extends JPanel implements ActionListener {
 
         if ((x[0] == redQuestion.getX()) && (y[0] == redQuestion.getY())) {
 
-        	playerScore+=redQuestion.getAnswerPoints();
+    //    	playerScore+=redQuestion.getAnswerPoints();
             SnakeView.updatescore();
             redQuestion.random();
         }
@@ -244,7 +328,7 @@ public class Board extends JPanel implements ActionListener {
 
         if ((x[0] == yellowQuestion.getX()) && (y[0] == yellowQuestion.getY())) {
 
-        	playerScore+=redQuestion.getAnswerPoints();
+   //     	playerScore+=redQuestion.getAnswerPoints();
             SnakeView.updatescore();
             yellowQuestion.random();
         }
@@ -427,4 +511,5 @@ public class Board extends JPanel implements ActionListener {
 	public static void setGameOver(boolean isGameOver) {
 		Board.isGameOver = isGameOver;
 	}
+	
 }
