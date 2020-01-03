@@ -10,7 +10,9 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JTextField;
 
+import Controller.SysData;
 import Model.Board;
+import Model.Player;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -71,9 +73,13 @@ public class logIN {
 					JOptionPane.showMessageDialog(loginframe,"please enter your name !");
 				}
 				else {
+					Player p = new Player(Nametext.getText());
+					if(!SysData.getInstance().checkIfPlayerExist(p)) {
+						SysData.getInstance().writePlayers(p);
+					}
 					SnakeView S = new SnakeView(Nametext.getText());
 					S.Snakeframe.setVisible(true);
-				loginframe.dispose();
+					loginframe.dispose();
 				}
 			}
 		});

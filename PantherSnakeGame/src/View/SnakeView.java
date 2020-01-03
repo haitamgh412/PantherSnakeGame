@@ -4,9 +4,14 @@ package View;
 
 import javax.swing.JFrame;
 import Model.Board;
+import Model.Player;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
+
+import Controller.SysData;
+
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -88,6 +93,9 @@ public class SnakeView {
 		   btnNewGame.setBackground(SystemColor.menu);
 		   btnNewGame.addActionListener(new ActionListener() {
 		   	public void actionPerformed(ActionEvent arg0) {
+		   		Player p = SysData.getInstance().getPlayer(name);
+				p.addScore(Integer.parseInt(scorelabel.getText()));
+				SysData.getInstance().updatePlayer(p);
 		   		logIN log = new logIN();
 		   		log.loginframe.setVisible(true);
 		   		Snakeframe.dispose();
@@ -142,6 +150,9 @@ public class SnakeView {
 		   JButton btnPause = new JButton("back");
 		   btnPause.addActionListener(new ActionListener() {
 		   	public void actionPerformed(ActionEvent arg0) {
+		   		Player p = SysData.getInstance().getPlayer(name);
+				p.addScore(Integer.parseInt(scorelabel.getText()));
+				SysData.getInstance().updatePlayer(p);
 		   		MainScreen f = new MainScreen();
 				f.framefirst.setVisible(true);
 				Board.soundManger.stopSound();
