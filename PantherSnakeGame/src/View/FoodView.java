@@ -22,19 +22,19 @@ public class FoodView {
 		ImageIcon iia = new ImageIcon(Apple.class.getResource("/images/apple.png"));
 	    apple = iia.getImage();
 	    
-        ImageIcon iib = new ImageIcon(Board.class.getResource("/images/banana.png"));
+        ImageIcon iib = new ImageIcon(Board.class.getResource("/images/newBanana.png"));
         banana = iib.getImage();
         
         ImageIcon iip = new ImageIcon(Board.class.getResource("/images/pear.png"));
         pear = iip.getImage();
         
-        ImageIcon iimd = new ImageIcon(Board.class.getResource("/images/mouse_down.png"));
+        ImageIcon iimd = new ImageIcon(Board.class.getResource("/images/newMouse.png"));
         mouse_down = iimd.getImage();
-        ImageIcon iimr = new ImageIcon(Board.class.getResource("/images/mouse_right.png"));
+        ImageIcon iimr = new ImageIcon(Board.class.getResource("/images/mouseRight.png"));
         mouse_right = iimr.getImage();
-        ImageIcon iiml = new ImageIcon(Board.class.getResource("/images/mouse_left.png"));
+        ImageIcon iiml = new ImageIcon(Board.class.getResource("/images/mouseLeft.png"));
         mouse_left = iiml.getImage();
-        ImageIcon iimu = new ImageIcon(Board.class.getResource("/images/mouse_up.png"));
+        ImageIcon iimu = new ImageIcon(Board.class.getResource("/images/mouseUp.png"));
         mouse_up = iimu.getImage();
         
 	}

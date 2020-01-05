@@ -5,6 +5,10 @@ package View;
 import javax.swing.JFrame;
 import Model.Board;
 import Model.Player;
+import Model.Question;
+import Model.RedQuestion;
+import Model.WhiteQuestion;
+import Model.YellowQuestion;
 
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -39,13 +43,13 @@ public class SnakeView {
 	 */
 	private void initialize(String name) {
 		Snakeframe = new JFrame();
+		Snakeframe.setResizable(false);
 		Snakeframe.setForeground(new Color(204, 255, 204));
 		Snakeframe.setBackground(new Color(255, 255, 255));
 		Snakeframe.setIconImage(Toolkit.getDefaultToolkit().getImage(SnakeView.class.getResource("/images/icon.png")));
 		Snakeframe.getContentPane().setBackground(new Color(255, 255, 255));
 		Snakeframe.setTitle("SnakeGame_panther");
-		Snakeframe.setBounds(100, 100, 999, 658);
-		Snakeframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		Snakeframe.setBounds(100, 100, 999, 680);
 		Snakeframe.getContentPane().setLayout(null);
 		
 		if (Board.isGameOver) {
@@ -58,7 +62,7 @@ public class SnakeView {
 			   newBoard.setLayout(null);	
 		}
 		Board board = new Board();
-		 board.setBackground(new Color(204, 255, 204));
+		 board.setBackground(new Color(250, 235, 215));
 		 board.setBounds(0, 0, 610, 610);
 		   Snakeframe.getContentPane().add(board);
 		   board.setLayout(null);
@@ -105,19 +109,6 @@ public class SnakeView {
 		   btnNewGame.setFont(new Font("Segoe Print", Font.PLAIN, 18));
 		   btnNewGame.setBounds(693, 492, 169, 37);
 		   Snakeframe.getContentPane().add(btnNewGame);
-		   
-//		   JButton btnNewButton = new JButton("Instructions");
-//		   btnNewButton.setBackground(SystemColor.menu);
-//		 
-//		   
-//		   btnNewButton.setFont(new Font("Segoe Print", Font.PLAIN, 18));
-//		   btnNewButton.setBounds(693, 439, 169, 37);
-//		   Snakeframe.getContentPane().add(/
-		   
-		   JLabel lblPressSpaceFor = new JLabel("press space for start/pause the game !");
-		   lblPressSpaceFor.setFont(new Font("Segoe Print", Font.PLAIN, 16));
-		   lblPressSpaceFor.setBounds(628, 393, 334, 44);
-		   Snakeframe.getContentPane().add(lblPressSpaceFor);
 		   
 		   JLabel lblPressEscFor = new JLabel("press esc for exit !");
 		   lblPressEscFor.setFont(new Font("Segoe Print", Font.PLAIN, 16));
@@ -177,6 +168,20 @@ public class SnakeView {
 		   timeLabel.setBounds(727, 256, 113, 24);
 		   Snakeframe.getContentPane().add(timeLabel);
 		   timeLabel.setText(time1);
+		   
+//		   JButton btnNewButton = new JButton("Instructions");
+//		   btnNewButton.setBackground(SystemColor.menu);
+//		 
+//		   
+//		   btnNewButton.setFont(new Font("Segoe Print", Font.PLAIN, 18));
+//		   btnNewButton.setBounds(693, 439, 169, 37);
+//		   Snakeframe.getContentPane().add(/
+		   
+		   JLabel lblPressSpaceFor = new JLabel("press space for start/pause the game !");
+		   lblPressSpaceFor.setForeground(new Color(107, 142, 35));
+		   lblPressSpaceFor.setBounds(70, 596, 448, 44);
+		   Snakeframe.getContentPane().add(lblPressSpaceFor);
+		   lblPressSpaceFor.setFont(new Font("Segoe Print", Font.BOLD, 21));
 
 	}
 	
@@ -208,6 +213,19 @@ public class SnakeView {
 
 	public static void setScorelabel(JLabel scorelabel) {
 		SnakeView.scorelabel = scorelabel;
+	}
+	
+	public static void viewQuestion(Question Q) {
+		if(Q instanceof RedQuestion ) {
+		 	
+		}
+		if( Q instanceof YellowQuestion) {
+			
+		}
+		if(Q instanceof WhiteQuestion) {
+			
+		}
+		
 	}
 	
 }
