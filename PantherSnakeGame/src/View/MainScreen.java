@@ -51,6 +51,7 @@ public class MainScreen  extends JFrame implements ActionListener {
 	 */
 	private void initialize() {
 		framefirst = new JFrame();
+		framefirst.setResizable(false);
 		framefirst.setTitle("SnakeGame");
 		framefirst.setIconImage(Toolkit.getDefaultToolkit().getImage(MainScreen.class.getResource("/images/icon.png")));
 		framefirst.setBounds(100, 100, 669, 459);

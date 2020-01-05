@@ -28,6 +28,7 @@ public class Instructions1 {
 	 */
 	private void initialize() {
 		Iframe = new JFrame();
+		Iframe.setResizable(false);
 		Iframe.setTitle("instructons");
 		Iframe.setIconImage(Toolkit.getDefaultToolkit().getImage(Instructions1.class.getResource("/images/instructionss.png")));
 		Iframe.setBounds(100, 100, 952, 567);

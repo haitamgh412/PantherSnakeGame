@@ -22,7 +22,6 @@ import tables.ScoreTable;
 
 import javax.swing.JTable;
 import javax.swing.ScrollPaneConstants;
-import javax.swing.table.DefaultTableModel;
 
 public class HighScores {
 
@@ -40,8 +39,10 @@ public class HighScores {
 	/**
 	 * Initialize the contents of the frame.
 	 */
+	@SuppressWarnings("serial")
 	private void initialize() {
 		scoreframe = new JFrame();
+		scoreframe.setResizable(false);
 		scoreframe.getContentPane().setBackground(Color.WHITE);
 		scoreframe.setIconImage(Toolkit.getDefaultToolkit().getImage(HighScores.class.getResource("/images/icon.png")));
 		scoreframe.setTitle("high Scores");

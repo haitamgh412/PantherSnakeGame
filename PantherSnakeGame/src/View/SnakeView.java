@@ -43,6 +43,7 @@ public class SnakeView {
 	 */
 	private void initialize(String name) {
 		Snakeframe = new JFrame();
+		Snakeframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Snakeframe.setResizable(false);
 		Snakeframe.setForeground(new Color(204, 255, 204));
 		Snakeframe.setBackground(new Color(255, 255, 255));

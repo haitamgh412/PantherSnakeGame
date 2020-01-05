@@ -27,6 +27,7 @@ public class Instructions {
 	 */
 	private void initialize() {
 		JFrame Instructions = new JFrame();
+		Instructions.setResizable(false);
 		Instructions.setIconImage(Toolkit.getDefaultToolkit().getImage(Instructions.class.getResource("/images/instructionss.png")));
 		Instructions.setTitle("Instructions");
 		Instructionsframe = Instructions;

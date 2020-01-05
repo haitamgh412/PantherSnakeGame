@@ -43,6 +43,7 @@ public class AddQuestions {
 	 */
 	private void initialize() {
 		Addframe = new JFrame();
+		Addframe.setResizable(false);
 		Addframe.getContentPane().setBackground(Color.WHITE);
 		Addframe.getContentPane().setLayout(null);
 

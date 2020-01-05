@@ -20,7 +20,6 @@ import javax.swing.table.TableColumnModel;
 
 import Controller.SysData;
 import tables.QuestionTable;
-import tables.ScoreTable;
 
 import java.awt.Font;
 
@@ -38,8 +37,10 @@ public class QuestionsView {
 	/**
 	 * Initialize the contents of the frame.
 	 */
+	@SuppressWarnings("serial")
 	private void initialize() {
 		Qframe = new JFrame();
+		Qframe.setResizable(false);
 		Qframe.getContentPane().setBackground(Color.WHITE);
 		Qframe.setFont(new Font("Segoe Print", Font.PLAIN, 12));
 		Qframe.setTitle("Question");
@@ -91,11 +92,11 @@ public class QuestionsView {
 		Qframe.getContentPane().add(label);
 		
 		
-		QuestionTable score1 =  new QuestionTable(SysData.getInstance().getQuestionsssss());
-		score1.fireTableDataChanged();
+		QuestionTable question1 =  new QuestionTable(SysData.getInstance().getQuestionsssss());
+		question1.fireTableDataChanged();
 
 		  
-		  table= new JTable(score1)
+		  table= new JTable(question1)
 		  {
 			    @Override
 			       public Component prepareRenderer(TableCellRenderer renderer, int row, int column) {

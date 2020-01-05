@@ -31,6 +31,7 @@ public class Setting {
 	 */
 	private void initialize() {
 		Settingframe = new JFrame();
+		Settingframe.setResizable(false);
 		Settingframe.setTitle("Settings");
 		Settingframe.setIconImage(Toolkit.getDefaultToolkit().getImage(Setting.class.getResource("/images/settings.png")));
 		Settingframe.getContentPane().setBackground(Color.WHITE);

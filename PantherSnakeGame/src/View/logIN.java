@@ -36,6 +36,7 @@ public class logIN {
 	 */
 	private void initialize() {
 		loginframe = new JFrame();
+		loginframe.setResizable(false);
 		loginframe.setIconImage(Toolkit.getDefaultToolkit().getImage(logIN.class.getResource("/images/icon.png")));
 		loginframe.setTitle("SnakeGame");
 		loginframe.setBounds(100, 100, 676, 452);
