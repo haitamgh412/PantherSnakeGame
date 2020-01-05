@@ -32,7 +32,7 @@ public class Board extends JPanel implements ActionListener {
     private final int B_HEIGHT = 600;
     public static final int DOT_SIZE = 10;
     private final static int ALL_DOTS = 3600;
-    public static final int RAND_POS = 58;
+    public static final int RAND_POS = 59;
     public final static int DELAY = 140;
     
 	/** Creates a new instance of Board */
@@ -117,7 +117,7 @@ public class Board extends JPanel implements ActionListener {
     public void resumeGame() {
         setFocusable(true);
 
-        setPreferredSize(new Dimension(B_WIDTH, B_HEIGHT));
+     //   setPreferredSize(new Dimension(B_WIDTH, B_HEIGHT));
         snake.initGame();
         timer.stop();
         leftDirection = false;
@@ -156,7 +156,7 @@ public class Board extends JPanel implements ActionListener {
 //            g.drawImage(mouse.getImage(4), mouse.getX(), mouse.getY(), this);
 
             
-            for (int z = 0; z < snake.dots; z++) {
+            for (int z = 0; z < snake.getDots(); z++) {
                 if (z == 0) {
                     g.drawImage(snake.getImage(), x[z], y[z], this);
                 } else {
@@ -211,55 +211,55 @@ public class Board extends JPanel implements ActionListener {
     private boolean checkMouseCollision() {
     	
         if ((mouse.getX() == apple.getX()) && (mouse.getY() == apple.getY())) {
-        	mouse.setCurrentSide();
+        	mouse.changeSide();
         	return false;
         }
         if ((mouse.getX() == banana.getX()) && (mouse.getY() == banana.getY())) {
-        	mouse.setCurrentSide();
+        	mouse.changeSide();
         	return false;
         }
         if ((mouse.getX() == pear.getX()) && (mouse.getY() == pear.getY())) {
-        	mouse.setCurrentSide();
+        	mouse.changeSide();
         	return false;
         }
         if ((mouse.getX() == whiteQuestion.getX()) && (mouse.getY() == whiteQuestion.getY())) {
-        	mouse.setCurrentSide();
+        	mouse.changeSide();
         	return false;
         }
         if ((mouse.getX() == redQuestion.getX()) && (mouse.getY() == redQuestion.getY())) {
-        	mouse.setCurrentSide();
+        	mouse.changeSide();
         	return false;
         }
         if ((mouse.getX() == yellowQuestion.getX()) && (mouse.getY() == yellowQuestion.getY())) {
-        	mouse.setCurrentSide();
+        	mouse.changeSide();
         	return false;
         }
         
-        for (int z = snake.dots; z > 0; z--) {
+        for (int z = snake.getDots(); z > 0; z--) {
 
-            if ((z > 4) && (mouse.getX() == x[z]) && (mouse.getY() == y[z])) {
-            	mouse.setCurrentSide();
+            if ((z > 1) && (mouse.getX() == x[z]) && (mouse.getY() == y[z])) {
+            	mouse.changeSide();
             	return false;
             }
         }
 
         if (mouse.getY() >= B_HEIGHT) {
-        	mouse.setCurrentSide();
+        	mouse.changeSide();
         	return false;
         }
 
-        if (mouse.getY() < 0 && numOFLifes >0) {
-        	mouse.setCurrentSide();
+        if (mouse.getY() < 0) {
+        	mouse.changeSide();
         	return false;
         }
 
-        if (mouse.getX() >= B_WIDTH && numOFLifes >0) {
-        	mouse.setCurrentSide();
+        if (mouse.getX() >= B_WIDTH) {
+        	mouse.changeSide();
         	return false;
         }
 
-        if (mouse.getX() < 0 && numOFLifes >0) {
-        	mouse.setCurrentSide();
+        if (mouse.getX() < 0) {
+        	mouse.changeSide();
         	return false;
         }
         return true;
@@ -278,7 +278,7 @@ public class Board extends JPanel implements ActionListener {
 
         if ((x[0] == apple.getX()) && (y[0] == apple.getY())) {
 
-            snake.dots++;
+            snake.setDots(snake.getDots()+1);
             playerScore+=apple.addPoints();
             SnakeView.updatescore();
             apple.random();
@@ -288,7 +288,7 @@ public class Board extends JPanel implements ActionListener {
 
         if ((x[0] == banana.getX()) && (y[0] == banana.getY())) {
 
-            snake.dots++;
+        	snake.setDots(snake.getDots()+1);
             playerScore+=banana.addPoints();
             SnakeView.updatescore();
             banana.random();
@@ -298,7 +298,7 @@ public class Board extends JPanel implements ActionListener {
 
         if ((x[0] == pear.getX()) && (y[0] == pear.getY())) {
 
-            snake.dots++;
+        	snake.setDots(snake.getDots()+1);
             playerScore+=pear.addPoints();
             SnakeView.updatescore();
             pear.random();
@@ -345,7 +345,7 @@ public class Board extends JPanel implements ActionListener {
             SnakeView.updateLives();
             
             }
-        	snake.dots+=2;
+            snake.setDots(snake.getDots()+2);
             mouse.random();
         }
     }
@@ -362,7 +362,7 @@ public class Board extends JPanel implements ActionListener {
      */
     private void move() {
 
-        for (int z = snake.dots; z > 0; z--) {
+        for (int z = snake.getDots(); z > 0; z--) {
             x[z] = x[(z - 1)];
             y[z] = y[(z - 1)];
         }
@@ -395,7 +395,7 @@ public class Board extends JPanel implements ActionListener {
 
     private void checkCollision() {
 
-        for (int z = snake.dots; z > 0; z--) {
+        for (int z = snake.getDots(); z > 0; z--) {
 
             if ((z > 4) && (x[0] == x[z]) && (y[0] == y[z]) && numOFLifes >0) {
             	numOFLifes--;
@@ -472,8 +472,9 @@ public class Board extends JPanel implements ActionListener {
             
             checkCollision();
             move();
+            checkMouseCollision();
             movemouse();
-            
+
         }
         
         repaint();

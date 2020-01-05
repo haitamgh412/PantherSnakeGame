@@ -9,10 +9,10 @@ import javax.swing.ImageIcon;
 
 public class Snake {
 	
-    public int dots;
+    private int dots;
     private Image ball;
     public static Image head;
-    public Image resumeHead;
+    private Image resumeHead;
     
     private int snake_x;
     private int snake_y;
@@ -59,6 +59,15 @@ public class Snake {
 		return this.snake_y;
 	}
 	
+	
+	public int getDots() {
+		return dots;
+	}
+
+	public void setDots(int dots) {
+		this.dots = dots;
+	}
+
 	/*
 	 * return the image of the snake head
 	 */
@@ -71,7 +80,7 @@ public class Snake {
 	}
 	
 	/*
-	 * return the image of the snake ball
+	 * return the image of the snake ball (part of body)
 	 */
 	public Image getImage1() {
 		return this.ball;

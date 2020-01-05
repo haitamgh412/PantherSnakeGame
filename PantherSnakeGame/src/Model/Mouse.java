@@ -122,7 +122,7 @@ public class Mouse {
         );
 	}
 	
-	public void setCurrentSide() {
+	public void changeSide() {
 		
 //		new java.util.Timer().schedule( 
 //		        new java.util.TimerTask() {
@@ -138,7 +138,7 @@ public class Mouse {
 //		currentside=mouseside();
 		Runnable helloRunnable = new Runnable() {
 		    public void run() {
-		        currentside=mouseside();
+		        currentside=generateRandomside();
 		    }
 		};
 
@@ -148,11 +148,11 @@ public class Mouse {
 	}
 		
 	public int getCurrentSide() {
-		setCurrentSide();
+		changeSide();
 		return this.currentside;	
 	}
 	
-	private int mouseside() {
+	private int generateRandomside() {
         int a = (int) (Math.random() * 4);
         return a;
 	}

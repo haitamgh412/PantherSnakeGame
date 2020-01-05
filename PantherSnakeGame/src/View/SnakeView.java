@@ -59,7 +59,7 @@ public class SnakeView {
 		}
 		Board board = new Board();
 		 board.setBackground(new Color(204, 255, 204));
-		 board.setBounds(0, 0, 600, 600);
+		 board.setBounds(0, 0, 610, 610);
 		   Snakeframe.getContentPane().add(board);
 		   board.setLayout(null);
 		
