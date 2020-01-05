@@ -12,6 +12,9 @@ import Model.YellowQuestion;
 
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.FontMetrics;
+import java.awt.Graphics;
+
 import javax.swing.SwingConstants;
 
 import Controller.SysData;
@@ -25,11 +28,12 @@ import java.awt.Toolkit;
 
 public class SnakeView {
 
-	public JFrame Snakeframe;
+	public static JFrame Snakeframe;
     public String newName ; 
     public static JLabel scorelabel;
     public static JLabel livelabel;
     public static JLabel timeLabel;
+    public static String name1;
 	/**
 	 * Create the application.
 	 */
@@ -42,10 +46,11 @@ public class SnakeView {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize(String name) {
+		this.name1=name;
 		Snakeframe = new JFrame();
 		Snakeframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Snakeframe.setResizable(false);
-		Snakeframe.setForeground(new Color(204, 255, 204));
+		Snakeframe.setForeground(new Color(255, 255, 255));
 		Snakeframe.setBackground(new Color(255, 255, 255));
 		Snakeframe.setIconImage(Toolkit.getDefaultToolkit().getImage(SnakeView.class.getResource("/images/icon.png")));
 		Snakeframe.getContentPane().setBackground(new Color(255, 255, 255));
@@ -57,7 +62,7 @@ public class SnakeView {
 			Board.setGameOver(false);
 			//Board.setInGame(false);
 			Board newBoard = new Board();
-			 newBoard.setBackground(new Color(204, 255, 204));
+			 newBoard.setBackground(new Color(250, 235, 215));
 			 newBoard.setBounds(0, 0, 600, 600);
 			   Snakeframe.getContentPane().add(newBoard);
 			   newBoard.setLayout(null);	
@@ -185,6 +190,28 @@ public class SnakeView {
 		   lblPressSpaceFor.setFont(new Font("Segoe Print", Font.BOLD, 21));
 
 	}
+	
+    public static void gameOver(Graphics g) {
+        
+        String msg = "Game Over";
+        Font small = new Font("Helvetica", Font.BOLD, 28);
+   //     FontMetrics metr = getFontMetrics(small);
+
+        g.setColor(Color.RED);
+        g.setFont(small);
+        g.drawString(msg, (Board.B_WIDTH ) / 2, Board.B_HEIGHT / 2);
+        
+        
+   		Player p = SysData.getInstance().getPlayer(name1);
+		p.addScore(Integer.parseInt(scorelabel.getText()));
+		SysData.getInstance().updatePlayer(p);
+   		//MainScreen f = new MainScreen();
+	//	f.framefirst.setVisible(true);
+		Board.soundManger.stopSound();
+		//Snakeframe.dispose();	
+        
+    //    Player player=new Player(SnakeView.getNewName());
+    }
 	
 	public static void updatescore() {
 		   scorelabel.setText(Integer.toString(Board.playerScore));

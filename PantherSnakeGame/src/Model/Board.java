@@ -28,12 +28,12 @@ public class Board extends JPanel implements ActionListener {
 	 * The DELAY constant determines the speed of the game.
 	 */
 
-    private final int B_WIDTH = 600;
-    private final int B_HEIGHT = 600;
+    public static final int B_WIDTH = 600;
+    public static final int B_HEIGHT = 600;
     public static final int DOT_SIZE = 10;
     private final static int ALL_DOTS = 3600;
     public static final int RAND_POS = 59;
-    public final static int DELAY = 120;
+    public final static int DELAY = 40;
     
 	/** Creates a new instance of Board */
     
@@ -168,22 +168,11 @@ public class Board extends JPanel implements ActionListener {
 
         } else if(isGameOver) {
 
-            gameOver(g);
+           SnakeView.gameOver(g);
         }        
     }
 
-    private void gameOver(Graphics g) {
-        
-        String msg = "Game Over";
-        Font small = new Font("Helvetica", Font.BOLD, 28);
-        FontMetrics metr = getFontMetrics(small);
 
-        g.setColor(Color.RED);
-        g.setFont(small);
-        g.drawString(msg, (B_WIDTH - metr.stringWidth(msg)) / 2, B_HEIGHT / 2);
-        
-    //    Player player=new Player(SnakeView.getNewName());
-    }
     
     
     private void movemouse() {
