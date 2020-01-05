@@ -20,6 +20,8 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
+import java.awt.Toolkit;
+import javax.swing.ImageIcon;
 
 public class AddQuestions {
 
@@ -43,88 +45,92 @@ public class AddQuestions {
 	 */
 	private void initialize() {
 		Addframe = new JFrame();
+		Addframe.setBackground(Color.WHITE);
+		Addframe.setIconImage(Toolkit.getDefaultToolkit().getImage(AddQuestions.class.getResource("/images/write.png")));
+		Addframe.setTitle("addQuestion");
 		Addframe.setResizable(false);
 		Addframe.getContentPane().setBackground(Color.WHITE);
 		Addframe.getContentPane().setLayout(null);
 
-		JLabel lblAddQuistion = new JLabel("Add Question");
-		lblAddQuistion.setBounds(340, 24, 103, 28);
-		Addframe.getContentPane().add(lblAddQuistion);
-
-		JLabel lblQuestion = new JLabel("Question");
+		JLabel lblQuestion = new JLabel("Question :");
 		lblQuestion.setFont(new Font("Segoe Print", Font.BOLD | Font.ITALIC, 16));
-		lblQuestion.setBounds(28, 77, 103, 20);
+		lblQuestion.setBounds(28, 37, 103, 28);
 		Addframe.getContentPane().add(lblQuestion);
 
-		JLabel lblAnswer = new JLabel("Answer 1 ");
+		JLabel lblAnswer = new JLabel("Answer 1 : ");
 		lblAnswer.setFont(new Font("Segoe Print", Font.BOLD | Font.ITALIC, 16));
-		lblAnswer.setBounds(28, 122, 122, 21);
+		lblAnswer.setBounds(28, 93, 122, 21);
 		Addframe.getContentPane().add(lblAnswer);
 
-		JLabel lblAnswer_1 = new JLabel("Answer 2");
+		JLabel lblAnswer_1 = new JLabel("Answer 2 :");
 		lblAnswer_1.setFont(new Font("Segoe Print", Font.BOLD | Font.ITALIC, 16));
-		lblAnswer_1.setBounds(28, 166, 103, 21);
+		lblAnswer_1.setBounds(28, 145, 103, 21);
 		Addframe.getContentPane().add(lblAnswer_1);
 
-		JLabel lblAnswer_2 = new JLabel("Answer 3");
+		JLabel lblAnswer_2 = new JLabel("Answer 3 :");
 		lblAnswer_2.setFont(new Font("Segoe Print", Font.BOLD | Font.ITALIC, 16));
-		lblAnswer_2.setBounds(28, 216, 103, 21);
+		lblAnswer_2.setBounds(28, 204, 103, 21);
 		Addframe.getContentPane().add(lblAnswer_2);
 
-		JLabel lblAnswer_3 = new JLabel("Answer 4");
+		JLabel lblAnswer_3 = new JLabel("Answer 4 :");
 		lblAnswer_3.setFont(new Font("Segoe Print", Font.BOLD | Font.ITALIC, 16));
-		lblAnswer_3.setBounds(28, 263, 103, 21);
+		lblAnswer_3.setBounds(28, 256, 103, 21);
 		Addframe.getContentPane().add(lblAnswer_3);
 
-		JLabel lblCurrectAnswer = new JLabel("Currect answer");
+		JLabel lblCurrectAnswer = new JLabel("Currect answer :");
 		lblCurrectAnswer.setFont(new Font("Segoe Print", Font.BOLD | Font.ITALIC, 16));
 		lblCurrectAnswer.setBounds(28, 312, 147, 21);
 		Addframe.getContentPane().add(lblCurrectAnswer);
 
-		JLabel lblLevel = new JLabel("Difficulty level");
+		JLabel lblLevel = new JLabel("Difficulty level :");
 		lblLevel.setFont(new Font("Segoe Print", Font.BOLD | Font.ITALIC, 16));
-		lblLevel.setBounds(28, 342, 122, 21);
+		lblLevel.setBounds(28, 347, 147, 21);
 		Addframe.getContentPane().add(lblLevel);
 
 		queTxt = new JTextField();
-		queTxt.setBounds(143, 77, 185, 22);
+		queTxt.setFont(new Font("Segoe Print", Font.PLAIN, 16));
+		queTxt.setBounds(143, 29, 417, 36);
 		Addframe.getContentPane().add(queTxt);
 		queTxt.setColumns(10);
 
 		ans1 = new JTextField();
-		ans1.setBounds(143, 122, 185, 22);
+		ans1.setFont(new Font("Segoe Print", Font.PLAIN, 16));
+		ans1.setBounds(143, 85, 271, 36);
 		Addframe.getContentPane().add(ans1);
 		ans1.setColumns(10);
 
 		ans2 = new JTextField();
-		ans2.setBounds(143, 165, 185, 22);
+		ans2.setFont(new Font("Segoe Print", Font.PLAIN, 16));
+		ans2.setBounds(143, 137, 271, 36);
 		Addframe.getContentPane().add(ans2);
 		ans2.setColumns(10);
 
 		ans3 = new JTextField();
-		ans3.setBounds(143, 216, 185, 22);
+		ans3.setFont(new Font("Segoe Print", Font.PLAIN, 16));
+		ans3.setBounds(143, 196, 271, 36);
 		Addframe.getContentPane().add(ans3);
 		ans3.setColumns(10);
 
 		ans4 = new JTextField();
-		ans4.setBounds(143, 263, 185, 22);
+		ans4.setFont(new Font("Segoe Print", Font.PLAIN, 16));
+		ans4.setBounds(143, 248, 271, 36);
 		Addframe.getContentPane().add(ans4);
 		ans4.setColumns(10);
 
 		ButtonGroup G = new ButtonGroup();
 		JRadioButton level1 = new JRadioButton("1");
 		level1.setBackground(Color.WHITE);
-		level1.setBounds(163, 341, 47, 25);
+		level1.setBounds(173, 345, 47, 25);
 		Addframe.getContentPane().add(level1);
 
 		JRadioButton level2 = new JRadioButton("2");
 		level2.setBackground(Color.WHITE);
-		level2.setBounds(214, 341, 47, 25);
+		level2.setBounds(237, 345, 47, 25);
 		Addframe.getContentPane().add(level2);
 
 		JRadioButton level3 = new JRadioButton("3");
 		level3.setBackground(Color.WHITE);
-		level3.setBounds(262, 342, 47, 25);
+		level3.setBounds(291, 345, 47, 25);
 		Addframe.getContentPane().add(level3);
 		Addframe.setBounds(100, 100, 735, 477);
 		Addframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -136,22 +142,22 @@ public class AddQuestions {
 		ButtonGroup G2 = new ButtonGroup();
 		JRadioButton currect1 = new JRadioButton("1");
 		currect1.setBackground(Color.WHITE);
-		currect1.setBounds(163, 311, 47, 25);
+		currect1.setBounds(173, 310, 47, 25);
 		Addframe.getContentPane().add(currect1);
 
 		JRadioButton currect2 = new JRadioButton("2");
 		currect2.setBackground(Color.WHITE);
-		currect2.setBounds(207, 311, 47, 25);
+		currect2.setBounds(237, 310, 47, 25);
 		Addframe.getContentPane().add(currect2);
 
 		JRadioButton currect3 = new JRadioButton("3");
 		currect3.setBackground(Color.WHITE);
-		currect3.setBounds(262, 311, 47, 25);
+		currect3.setBounds(291, 310, 47, 25);
 		Addframe.getContentPane().add(currect3);
 
 		JRadioButton currect4 = new JRadioButton("4");
 		currect4.setBackground(Color.WHITE);
-		currect4.setBounds(311, 311, 47, 25);
+		currect4.setBounds(345, 310, 47, 25);
 		Addframe.getContentPane().add(currect4);
 
 		G2.add(currect1);
@@ -160,6 +166,7 @@ public class AddQuestions {
 		G2.add(currect4);
 
 		JButton btnAdd = new JButton("Add Question");
+		btnAdd.setBackground(Color.WHITE);
 		btnAdd.setFont(new Font("Segoe Print", Font.PLAIN, 16));
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -218,13 +225,32 @@ public class AddQuestions {
 						return;
 					}
 				}
-
+	      	 
 				JOptionPane.showMessageDialog(null, "Failed to add the question");
 				return;
-
+               
+			}
+		}); 
+	
+		btnAdd.setBounds(327, 382, 159, 42);
+		Addframe.getContentPane().add(btnAdd);
+		
+		JLabel label = new JLabel("");
+		label.setIcon(new ImageIcon(AddQuestions.class.getResource("/images/Question.jpg")));
+		label.setBounds(526, 216, 203, 221);
+		Addframe.getContentPane().add(label);
+		
+		JButton button = new JButton("");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				QuestionsView Q = new QuestionsView();
+				Q.Qframe.setVisible(true);
+				Addframe.dispose();
 			}
 		});
-		btnAdd.setBounds(120, 375, 159, 42);
-		Addframe.getContentPane().add(btnAdd);
+		button.setIcon(new ImageIcon(AddQuestions.class.getResource("/images/back.jpg")));
+		button.setBounds(35, 392, 56, 29);
+		Addframe.getContentPane().add(button);
 	}
 }
