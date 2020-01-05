@@ -87,6 +87,16 @@ public class SysData {
 		return false;
 	}
 
+	public boolean checkIfQuestionExist(Question question) {
+		if (question==null) 
+			return false;
+
+		if(questions.contains(question))
+			return true;
+
+		return false;
+	}
+
 	/**
 	 * adding a player to the array of the players
 	 * @return true if the array not contains this player and added it else return false
@@ -275,11 +285,16 @@ public class SysData {
 	public boolean addQuestion(Question question){
 		if(question == null)
 			return false;
-		
-		for (Question q : questions) {
-			if(q.getQuestion().equals(q.getQuestion()))
-				return false;
+
+		if(questions.contains(question)) {
+			return false;
 		}
+		//		for (Question q : questions) {
+		//			if(q.getQuestion().equals(q.getQuestion())) {
+		//				System.out.println("yeeees");
+		//				return false;
+		//			}
+		//		}
 
 		return questions.add(question);
 	}
@@ -291,8 +306,7 @@ public class SysData {
 	 */	
 	@SuppressWarnings("unchecked")
 	public void writeQuestions(Question q) {
-		if(!addQuestion(q))
-			System.out.println("yes");
+		addQuestion(q);
 		JSONArray jsarray=new JSONArray();
 		JSONObject jobject=new JSONObject();
 		for(Question question: getQuestionsssss())   {
@@ -325,6 +339,46 @@ public class SysData {
 		catch(Exception ex) {
 		}
 	}
+
+	/**
+	 * 	rewriting a question to the json file 
+	 * @param question
+	 */	
+	@SuppressWarnings("unchecked")
+	public void reWriteQuestions() {
+		JSONArray jsarray=new JSONArray();
+		JSONObject jobject=new JSONObject();
+		for(Question question: getQuestionsssss())   {
+			JSONObject obj=new JSONObject();
+			obj.put("question",question.getQuestion()); 
+			JSONArray answers = new JSONArray();
+			for(String ans:question.getAnswers()) {
+				answers.add(ans);	        			
+			}
+			obj.put("answers", answers);
+			obj.put("correct_ans", question.getCurrectAnsw());
+			if(question.getClass().getSimpleName().equals("WhiteQuestion"))
+				obj.put("level", 1);
+			else if(question.getClass().getSimpleName().equals("YellowQuestion"))
+				obj.put("level", 2);
+			else
+				obj.put("level", 3);
+			obj.put("team", question.getTeam());
+			jsarray.add(obj);
+		}
+		try {
+			removeAndCreateNewFile(Constants.QUESTIONFILENAME);
+		}catch(Exception ex) {
+
+		}
+		try (FileWriter f = new FileWriter(Constants.QUESTIONFILENAME)) {
+			jobject.put("questions", jsarray);
+			f.write(jobject.toJSONString());
+		} 
+		catch(Exception ex) {
+		}
+	}
+
 
 	/**
 	 * removing file and creating a new version of it
@@ -368,19 +422,53 @@ public class SysData {
 	 * @param q
 	 * @return true if the question updated successfully else return false
 	 */
+	public boolean RemoveQuestion(Question question) {
+		if(question==null)
+			return false;
+
+		Question temp = new Question();
+		boolean flag=false;
+		for(Question q : questions) {
+			if(q!=null)
+				if(question.getQuestion().equals(q.getQuestion())) {
+					temp = q;
+					flag = true;
+				}
+		}
+		if(flag==false) {
+			return false;
+		}
+
+
+		questions.remove(temp);
+		reWriteQuestions();
+		return true;
+	}
+
+
+	/**
+	 * update a question
+	 * @param q
+	 * @return true if the question updated successfully else return false
+	 */
 	public boolean updateQuestion(Question question) {
 		if(question==null)
 			return false;
-		
-		boolean flag = false;
-		for (Question q : questions) {
-			if(q.getQuestion().equals(q.getQuestion()))
-				flag = true;
+
+		Question temp = new Question();
+		boolean flag=false;
+		for(Question q : questions) {
+			if(q!=null)
+				if(question.getQuestion().equals(q.getQuestion())) {
+					temp = q;
+					flag = true;
+				}
 		}
-		if(flag == false) {
+		if(flag==false) {
 			return false;
 		}
-		questions.remove(question);
+
+		questions.remove(temp);
 		addQuestion(question);
 		writeQuestions(question);
 		return true;
