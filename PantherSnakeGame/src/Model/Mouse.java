@@ -91,8 +91,8 @@ public class Mouse {
 	}
 	
 	public void clear() {
-		mouse_x=-500;
-		mouse_y=-500;
+		mouse_x=-5000;
+		mouse_y=-5000;
 	}
 	
 	
@@ -123,38 +123,22 @@ public class Mouse {
 	}
 	
 	public void changeSide() {
-		
-//		new java.util.Timer().schedule( 
-//		        new java.util.TimerTask() {
-//					@Override
-//		            public void run() {
-//					currentside=mouseside();
-//		            }
-//		        }, 
-//		        1000 
-//				);
-		//currentside=mouseside();
-		
-//		currentside=mouseside();
-		Runnable helloRunnable = new Runnable() {
-		    public void run() {
-		        currentside=generateRandomside();
-		    }
-		};
-
-		ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
-		executor.scheduleAtFixedRate(helloRunnable, 2, 1000, TimeUnit.SECONDS);
-		
+			 this.currentside=generateRandomside();	
 	}
 		
 	public int getCurrentSide() {
-		changeSide();
+	//	changeSide();
 		return this.currentside;	
+	}
+	
+	public void setCurrentSide(int x) {
+		this.currentside=x;
 	}
 	
 	private int generateRandomside() {
         int a = (int) (Math.random() * 4);
         return a;
+        
 	}
 	
 }

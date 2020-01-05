@@ -33,7 +33,7 @@ public class Board extends JPanel implements ActionListener {
     public static final int DOT_SIZE = 10;
     private final static int ALL_DOTS = 3600;
     public static final int RAND_POS = 59;
-    public final static int DELAY = 140;
+    public final static int DELAY = 120;
     
 	/** Creates a new instance of Board */
     
@@ -45,8 +45,9 @@ public class Board extends JPanel implements ActionListener {
 	public static int playerScore = 0;
 	public static int numOFLifes = 3;
 	
+	public static int mousecounter=1;
 	
-	private static String soundFilePath = "start.wav";
+	private static String soundFilePath = "sound.wav";
 	public static SoundManger soundManger = new SoundManger(soundFilePath);
 
     
@@ -58,7 +59,6 @@ public class Board extends JPanel implements ActionListener {
     public final static int y[] = new int[ALL_DOTS];
     
     private Snake snake = new Snake();
-
     private Apple apple = new Apple();
     private Banana banana = new Banana();
     private Pear pear = new Pear();
@@ -188,26 +188,52 @@ public class Board extends JPanel implements ActionListener {
     
     private void movemouse() {
     	
+    	mousecounter++;
+    	if(mousecounter%6==0) {
+    		mouse.changeSide();
+    	}
+    	
     	int side=mouse.getCurrentSide();
     	
         if (side==0&&checkMouseCollision()) {
             mouse.setY(mouse.getY()+DOT_SIZE);
         }
-        if (side==1&&checkMouseCollision()) {
+        else if (side==1&&checkMouseCollision()) {
             mouse.setY(mouse.getY()-DOT_SIZE);
         }
-        if (side==2&&checkMouseCollision()) {
+        else if (side==2&&checkMouseCollision()) {
             mouse.setX(mouse.getX()+DOT_SIZE);
         }
-        if (side==3&&checkMouseCollision()) {
+        else if (side==3&&checkMouseCollision()) {
             mouse.setX(mouse.getX()-DOT_SIZE);
         }
+        else {
+        	if(side==0) {
+        		mouse.setY(mouse.getY()-DOT_SIZE);
+        		mouse.setCurrentSide(1);
+        	}
+        	else if(side==1) {
+        		mouse.setY(mouse.getY()+DOT_SIZE);
+        		mouse.setCurrentSide(0);
+        	}
+        	else if(side==2) {
+        		mouse.setX(mouse.getX()-DOT_SIZE);
+        		mouse.setCurrentSide(3);
+        	}
+        	else if(side==3) {
+        		mouse.setX(mouse.getX()+DOT_SIZE);
+        		mouse.setCurrentSide(2);
+        	}
+        	}
+        	//checkMouseCollision();
+        }
         
-    }
+    
     
     /*
      * TODO need to edit
      */
+    
     private boolean checkMouseCollision() {
     	
         if ((mouse.getX() == apple.getX()) && (mouse.getY() == apple.getY())) {
@@ -243,28 +269,27 @@ public class Board extends JPanel implements ActionListener {
             }
         }
 
-        if (mouse.getY() >= B_HEIGHT) {
+        if (mouse.getY() >= B_HEIGHT-DOT_SIZE) {
         	mouse.changeSide();
         	return false;
         }
 
-        if (mouse.getY() < 0) {
+        if (mouse.getY() <= 0+DOT_SIZE) {
         	mouse.changeSide();
         	return false;
         }
 
-        if (mouse.getX() >= B_WIDTH) {
+        if (mouse.getX() >= B_WIDTH-DOT_SIZE) {
         	mouse.changeSide();
         	return false;
         }
 
-        if (mouse.getX() < 0) {
+        if (mouse.getX() <= 0+DOT_SIZE) {
         	mouse.changeSide();
         	return false;
         }
         return true;
         	
-        
     }
     
 
@@ -343,7 +368,6 @@ public class Board extends JPanel implements ActionListener {
             if(numOFLifes<3) {
             numOFLifes+=mouse.addLives();
             SnakeView.updateLives();
-            
             }
             snake.setDots(snake.getDots()+2);
             mouse.random();
@@ -459,7 +483,8 @@ public class Board extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         if (inGame) {
-
+        	
+        	checkM();
             checkApple();
             checkBanana();
             checkPear();
@@ -468,13 +493,14 @@ public class Board extends JPanel implements ActionListener {
             checkWQ();
             checkYQ();
             
-            checkM();
+            
             
             checkCollision();
             move();
             checkMouseCollision();
             movemouse();
 
+            
         }
         
         repaint();
