@@ -59,6 +59,14 @@ public class SysData {
 			questions=new ArrayList<Question>();
 		return questions;
 	}
+	
+	public Question getSpecificQuestion(String question) {
+		for(Question q : questions) {
+			if(q.getQuestion().equals(question))
+				return q;
+		}
+		return null;
+	}
 
 
 	public TreeSet<Player> getPlayers() {
