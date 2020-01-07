@@ -12,7 +12,6 @@ import Model.YellowQuestion;
 
 import javax.swing.JLabel;
 import java.awt.Font;
-import java.awt.FontMetrics;
 import java.awt.Graphics;
 
 import javax.swing.SwingConstants;
@@ -21,6 +20,7 @@ import Controller.SysData;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.concurrent.TimeUnit;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 import java.awt.SystemColor;
@@ -34,6 +34,12 @@ public class SnakeView {
     public static JLabel livelabel;
     public static JLabel timeLabel;
     public static String name1;
+
+    
+    static int starttime=(int) System.currentTimeMillis();
+
+
+
 	/**
 	 * Create the application.
 	 */
@@ -166,14 +172,11 @@ public class SnakeView {
 		   lblTime.setBounds(628, 258, 69, 20);
 		   Snakeframe.getContentPane().add(lblTime);
 		   
-		   int time = board.getTime();
-		   String time1 = Integer.toString(time);
 		   
 		   timeLabel = new JLabel("");
 		   timeLabel.setFont(new Font("Segoe Print", Font.PLAIN, 19));
 		   timeLabel.setBounds(727, 256, 113, 24);
 		   Snakeframe.getContentPane().add(timeLabel);
-		   timeLabel.setText(time1);
 		   
 //		   JButton btnNewButton = new JButton("Instructions");
 //		   btnNewButton.setBackground(SystemColor.menu);
@@ -212,6 +215,7 @@ public class SnakeView {
         
     //    Player player=new Player(SnakeView.getNewName());
     }
+    
 	
 	public static void updatescore() {
 		   scorelabel.setText(Integer.toString(Board.playerScore));
@@ -222,8 +226,29 @@ public class SnakeView {
 		if(Board.numOFLifes==0)livelabel.setText(Integer.toString(0));
 	}
 	
-	public static void updateTime() {
-		   timeLabel.setText(Integer.toString(Board.timer1));
+	public static  void updateTime() {
+		int displayMinutes = 0;
+		
+      if (Board.timer.isRunning()) {
+        int timepassed=(int) (System.currentTimeMillis()-starttime);
+        int secondspassed=(timepassed/1000);
+
+        
+        if(secondspassed==60)
+        {
+            secondspassed=0;
+            starttime=(int) System.currentTimeMillis();
+        }
+        if((secondspassed%60)==0)
+        displayMinutes++;
+        
+        String view = Integer.toString(secondspassed);
+        String view1 = Integer.toString(displayMinutes);
+
+        
+		   timeLabel.setText(view1 + " : "+ view);
+      }
+		
 		   
 	}
 

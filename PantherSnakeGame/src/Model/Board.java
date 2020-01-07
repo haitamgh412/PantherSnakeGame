@@ -1,13 +1,11 @@
 package Model;
 
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 
 import javax.swing.JPanel;
 import javax.swing.Timer;
@@ -33,15 +31,13 @@ public class Board extends JPanel implements ActionListener {
     public static final int DOT_SIZE = 10;
     private final static int ALL_DOTS = 3600;
     public static final int RAND_POS = 59;
-    public final static int DELAY = 40;
+    public final static int DELAY = 140;
     
 	/** Creates a new instance of Board */
     
 	public static boolean isGameOver = false;
 
-	public static int timer1 = 0;
-	private Timer timerT ;
-	
+
 	public static int playerScore = 0;
 	public static int numOFLifes = 3;
 	
@@ -81,6 +77,7 @@ public class Board extends JPanel implements ActionListener {
         
         initBoard();
 
+
     }
   
     
@@ -96,6 +93,8 @@ public class Board extends JPanel implements ActionListener {
         timer = new Timer(DELAY, this);
         timer.stop();
         
+        
+
 
          leftDirection = false;
          rightDirection = true;
@@ -140,6 +139,8 @@ public class Board extends JPanel implements ActionListener {
         
         if (inGame) {
 
+        	SnakeView.updateTime();
+
             g.drawImage(apple.getImage(), apple.getX(), apple.getY(), this);
             g.drawImage(banana.getImage(), banana.getX(), banana.getY(), this);
             g.drawImage(pear.getImage(), pear.getX(), pear.getY(), this);
@@ -169,7 +170,8 @@ public class Board extends JPanel implements ActionListener {
         } else if(isGameOver) {
 
            SnakeView.gameOver(g);
-        }        
+        }    
+
     }
 
 
@@ -413,7 +415,7 @@ public class Board extends JPanel implements ActionListener {
             if ((z > 4) && (x[0] == x[z]) && (y[0] == y[z]) && numOFLifes >0) {
             	numOFLifes--;
             	SnakeView.updateLives();
-            	SnakeView.updateTime();
+            //	SnakeView.updateTime();
             	resumeGame();
             }
         }
@@ -457,13 +459,19 @@ public class Board extends JPanel implements ActionListener {
     
     public static void pause() {
     	
+
+    	
     	if(timer.isRunning()) {
     		timer.stop();
     		soundManger.pauseSound();
+
+
     		}
     	else {
     		timer.start();
     	    soundManger.startSound();
+
+
     	}
     }
 
@@ -482,15 +490,15 @@ public class Board extends JPanel implements ActionListener {
             checkWQ();
             checkYQ();
             
-            
-            
+
             checkCollision();
             move();
             checkMouseCollision();
             movemouse();
-
             
+
         }
+
         
         repaint();
     }
@@ -503,22 +511,6 @@ public class Board extends JPanel implements ActionListener {
 		return numOFLifes;
 	}
 	
-	public int getTime() {
-		
-    	timerT = new Timer(1000, new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				if(isGameOver) {
-					timer.stop();
-					timerT.stop();
-					soundManger.stopSound();
-				}
-				timer1++;
-			}
-		});
-		return timer1;
-	}
 
 	public boolean isGameOver() {
 		return isGameOver;
