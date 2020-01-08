@@ -6,7 +6,6 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -31,7 +30,7 @@ public class Board extends JPanel implements ActionListener {
     public static final int DOT_SIZE = 10;
     private final static int ALL_DOTS = 3600;
     public static final int RAND_POS = 59;
-    public final static int DELAY = 140;
+    public final static int DELAY = 100;
     
 	/** Creates a new instance of Board */
     
@@ -41,7 +40,7 @@ public class Board extends JPanel implements ActionListener {
 	public static int playerScore = 0;
 	public static int numOFLifes = 3;
 	
-	public static int mousecounter=1;
+	public static int mouseStepsCounter=0;
 	
 	private static String soundFilePath = "sound.wav";
 	public static SoundManger soundManger = new SoundManger(soundFilePath);
@@ -77,7 +76,6 @@ public class Board extends JPanel implements ActionListener {
         
         initBoard();
 
-
     }
   
     
@@ -93,8 +91,6 @@ public class Board extends JPanel implements ActionListener {
         timer = new Timer(DELAY, this);
         timer.stop();
         
-        
-
 
          leftDirection = false;
          rightDirection = true;
@@ -151,11 +147,7 @@ public class Board extends JPanel implements ActionListener {
             g.drawImage(redQuestion.getImage(), redQuestion.getX(), redQuestion.getY(), this);
             
             
-            g.drawImage(mouse.getImage(1), mouse.getX(), mouse.getY(), this);
-//            g.drawImage(mouse.getImage(2), mouse.getX(), mouse.getY(), this);
-//            g.drawImage(mouse.getImage(3), mouse.getX(), mouse.getY(), this);
-//            g.drawImage(mouse.getImage(4), mouse.getX(), mouse.getY(), this);
-
+            g.drawImage(mouse.getMouse(), mouse.getX(), mouse.getY(), this);
             
             for (int z = 0; z < snake.getDots(); z++) {
                 if (z == 0) {
@@ -170,8 +162,7 @@ public class Board extends JPanel implements ActionListener {
         } else if(isGameOver) {
 
            SnakeView.gameOver(g);
-        }    
-
+        }        
     }
 
 
@@ -179,23 +170,25 @@ public class Board extends JPanel implements ActionListener {
     
     private void movemouse() {
     	
-    	mousecounter++;
-    	if(mousecounter%6==0) {
+    	
+    	if(mouseStepsCounter%6==0&&!checkMouseCollision()) {
     		mouse.changeSide();
+    		mouseStepsCounter=0;
     	}
+    	mouseStepsCounter++;
     	
     	int side=mouse.getCurrentSide();
     	
-        if (side==0&&checkMouseCollision()) {
+        if (side==0&&!checkMouseCollision()) {
             mouse.setY(mouse.getY()+DOT_SIZE);
         }
-        else if (side==1&&checkMouseCollision()) {
+        else if (side==1&&!checkMouseCollision()) {
             mouse.setY(mouse.getY()-DOT_SIZE);
         }
-        else if (side==2&&checkMouseCollision()) {
+        else if (side==2&&!checkMouseCollision()) {
             mouse.setX(mouse.getX()+DOT_SIZE);
         }
-        else if (side==3&&checkMouseCollision()) {
+        else if (side==3&&!checkMouseCollision()) {
             mouse.setX(mouse.getX()-DOT_SIZE);
         }
         else {
@@ -216,7 +209,6 @@ public class Board extends JPanel implements ActionListener {
         		mouse.setCurrentSide(2);
         	}
         	}
-        	//checkMouseCollision();
         }
         
     
@@ -229,57 +221,57 @@ public class Board extends JPanel implements ActionListener {
     	
         if ((mouse.getX() == apple.getX()) && (mouse.getY() == apple.getY())) {
         	mouse.changeSide();
-        	return false;
+        	return true;
         }
         if ((mouse.getX() == banana.getX()) && (mouse.getY() == banana.getY())) {
         	mouse.changeSide();
-        	return false;
+        	return true;
         }
         if ((mouse.getX() == pear.getX()) && (mouse.getY() == pear.getY())) {
         	mouse.changeSide();
-        	return false;
+        	return true;
         }
         if ((mouse.getX() == whiteQuestion.getX()) && (mouse.getY() == whiteQuestion.getY())) {
         	mouse.changeSide();
-        	return false;
+        	return true;
         }
         if ((mouse.getX() == redQuestion.getX()) && (mouse.getY() == redQuestion.getY())) {
         	mouse.changeSide();
-        	return false;
+        	return true;
         }
         if ((mouse.getX() == yellowQuestion.getX()) && (mouse.getY() == yellowQuestion.getY())) {
         	mouse.changeSide();
-        	return false;
+        	return true;
         }
         
         for (int z = snake.getDots(); z > 0; z--) {
 
             if ((z > 1) && (mouse.getX() == x[z]) && (mouse.getY() == y[z])) {
             	mouse.changeSide();
-            	return false;
+            	return true;
             }
         }
 
-        if (mouse.getY() >= B_HEIGHT-DOT_SIZE) {
-        	mouse.changeSide();
-        	return false;
+        if (mouse.getY() >= B_HEIGHT) {
+        	//mouse.changeSide();
+        	return true;
         }
 
-        if (mouse.getY() <= 0+DOT_SIZE) {
-        	mouse.changeSide();
-        	return false;
+        if (mouse.getY() <= 0) {
+        	//mouse.changeSide();
+        	return true;
         }
 
-        if (mouse.getX() >= B_WIDTH-DOT_SIZE) {
-        	mouse.changeSide();
-        	return false;
+        if (mouse.getX() >= B_WIDTH) {
+        	//mouse.changeSide();
+        	return true;
         }
 
-        if (mouse.getX() <= 0+DOT_SIZE) {
-        	mouse.changeSide();
-        	return false;
+        if (mouse.getX() <= 0) {
+        	//mouse.changeSide();
+        	return true;
         }
-        return true;
+        return false;
         	
     }
     
@@ -400,6 +392,8 @@ public class Board extends JPanel implements ActionListener {
         if (downDirection) {
             y[0] += DOT_SIZE;
         }
+        
+        checkM();
     }
     
     /**
@@ -459,19 +453,13 @@ public class Board extends JPanel implements ActionListener {
     
     public static void pause() {
     	
-
-    	
     	if(timer.isRunning()) {
     		timer.stop();
     		soundManger.pauseSound();
-
-
     		}
     	else {
     		timer.start();
     	    soundManger.startSound();
-
-
     	}
     }
 
@@ -481,7 +469,7 @@ public class Board extends JPanel implements ActionListener {
 
         if (inGame) {
         	
-        	checkM();
+        	
             checkApple();
             checkBanana();
             checkPear();
@@ -490,15 +478,17 @@ public class Board extends JPanel implements ActionListener {
             checkWQ();
             checkYQ();
             
-
+            
+            
             checkCollision();
             move();
+            
             checkMouseCollision();
             movemouse();
             
+            checkM();
 
         }
-
         
         repaint();
     }

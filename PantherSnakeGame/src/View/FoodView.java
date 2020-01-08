@@ -12,10 +12,7 @@ public class FoodView {
 	private static Image apple;
     private static Image banana;
     private static Image pear;
-    private static Image mouse_down;
-    private static Image mouse_right;
-    private static Image mouse_left;
-    private static Image mouse_up;
+    private static Image mouse;
     
 	public FoodView(){
 		
@@ -29,13 +26,7 @@ public class FoodView {
         pear = iip.getImage();
         
         ImageIcon iimd = new ImageIcon(Board.class.getResource("/images/newMouse.png"));
-        mouse_down = iimd.getImage();
-        ImageIcon iimr = new ImageIcon(Board.class.getResource("/images/mouseRight.png"));
-        mouse_right = iimr.getImage();
-        ImageIcon iiml = new ImageIcon(Board.class.getResource("/images/mouseLeft.png"));
-        mouse_left = iiml.getImage();
-        ImageIcon iimu = new ImageIcon(Board.class.getResource("/images/mouseUp.png"));
-        mouse_up = iimu.getImage();
+        mouse = iimd.getImage();
         
 	}
 	
@@ -51,20 +42,8 @@ public class FoodView {
 		return pear;
 	}
 	
-	public Image Getmouse_down() {
-		return mouse_down;
-	}
-	
-	public Image Getmouse_right() {
-		return mouse_right;
-	}
-	
-	public Image Getmouse_left() {
-		return mouse_left;
-	}
-	
-	public Image Getmouse_up() {
-		return mouse_up;
+	public Image Getmouse() {
+		return mouse;
 	}
 	
 }
