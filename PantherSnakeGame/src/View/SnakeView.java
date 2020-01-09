@@ -11,6 +11,10 @@ import Model.WhiteQuestion;
 import Model.YellowQuestion;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+
 import java.awt.Font;
 import java.awt.Graphics;
 
@@ -18,6 +22,7 @@ import javax.swing.SwingConstants;
 
 import Controller.SysData;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.concurrent.TimeUnit;
@@ -34,10 +39,12 @@ public class SnakeView {
     public static JLabel livelabel;
     public static JLabel timeLabel;
     public static String name1;
-
-    
+    public static  JLabel lblQ;
+    public static JRadioButton choice1, choice2, choice3,choice4;
+    public static JPanel panel2;
+    public static ButtonGroup group ; 
     static int starttime=(int) System.currentTimeMillis();
-
+   
 
 
 	/**
@@ -191,6 +198,15 @@ public class SnakeView {
 		   lblPressSpaceFor.setBounds(70, 596, 448, 44);
 		   Snakeframe.getContentPane().add(lblPressSpaceFor);
 		   lblPressSpaceFor.setFont(new Font("Segoe Print", Font.BOLD, 21));
+		    
+		   lblQ = new JLabel("");
+		   panel2 = new JPanel(); 
+		   choice1 = new JRadioButton();
+		   choice2 = new JRadioButton();
+		   choice3 = new JRadioButton();
+		   choice4 = new JRadioButton();
+		   group = new ButtonGroup(); 
+
 
 	}
 	
@@ -202,7 +218,7 @@ public class SnakeView {
 
         g.setColor(Color.RED);
         g.setFont(small);
-        g.drawString(msg, (Board.B_WIDTH ) / 2, Board.B_HEIGHT / 2);
+        g.drawString(msg, (Board.B_WIDTH ) / 3, Board.B_HEIGHT / 2);
         
         
    		Player p = SysData.getInstance().getPlayer(name1);
@@ -267,17 +283,124 @@ public class SnakeView {
 	public static void setScorelabel(JLabel scorelabel) {
 		SnakeView.scorelabel = scorelabel;
 	}
+	static int i = 0;
+	static int k = 0;
+	static int g = 0;
 	
-	public static void viewQuestion(Question Q) {
-		if(Q instanceof RedQuestion ) {
-		 	
-		}
-		if( Q instanceof YellowQuestion) {
+	public static boolean viewQuestion(Question Q) {
+		if(Q instanceof RedQuestion ) {	
+			 lblQ.setText(SysData.getInstance().getRedQues().get(i).getQuestion());
+			   choice1.setText(SysData.getInstance().getRedQues().get(i).getAnswers().get(0));
+			   choice2.setText(SysData.getInstance().getRedQues().get(i).getAnswers().get(1));
+			   choice3.setText(SysData.getInstance().getRedQues().get(i).getAnswers().get(2));
+			   choice4.setText(SysData.getInstance().getRedQues().get(i).getAnswers().get(3));
+			   group.add(choice1);
+			   group.add(choice2);
+			   group.add(choice3);
+			   group.add(choice4);
+			   panel2.add(lblQ);
+			   panel2.add(choice1);
+			   panel2.add(choice2);
+			   panel2.add(choice3);
+			   panel2.add(choice4);
+			   JOptionPane.showConfirmDialog(null, panel2, "Question", JOptionPane.PLAIN_MESSAGE); 
+	      int answer = SysData.getInstance().getRedQues().get(i).getCurrectAnsw();
+	      String cAnswer = SysData.getInstance().getRedQues().get(i).getAnswers().get(answer);
+		   	 if (choice1.isSelected() && choice1.getText().equals(cAnswer)){
+		   			 System.out.println("true"); 
+		   			 return true;
+            }
+		   	 else if (choice2.isSelected() && choice2.getText().equals(cAnswer)) {
+		   		 System.out.println("choice2 is true");
+		   		return true;
+		   	 }
+		   	 else if (choice3.isSelected() && choice3.getText().equals(cAnswer)) {
+		   		 System.out.println("choice3 is true");
+		   		return true;
+		   	 }
+		   	 else if (choice4.isSelected() && choice4.getText().equals(cAnswer)) {
+		   		System.out.println("choice4 is true"); 		
+		   		return true;
+		   	 }
+			i++;
 			
 		}
-		if(Q instanceof WhiteQuestion) {
-			
+		else if( Q instanceof YellowQuestion) {
+			lblQ.setText(SysData.getInstance().getYelloweQues().get(k).getQuestion());
+			   choice1.setText(SysData.getInstance().getYelloweQues().get(k).getAnswers().get(0));
+			   choice2.setText(SysData.getInstance().getYelloweQues().get(k).getAnswers().get(1));
+			   choice3.setText(SysData.getInstance().getYelloweQues().get(k).getAnswers().get(2));
+			   choice4.setText(SysData.getInstance().getYelloweQues().get(k).getAnswers().get(3));
+			   group.add(choice1);
+			   group.add(choice2);
+			   group.add(choice3);
+			   group.add(choice4);
+			   panel2.add(lblQ);
+			   panel2.add(choice1);
+			   panel2.add(choice2);
+			   panel2.add(choice3);
+			   panel2.add(choice4);
+			   JOptionPane.showConfirmDialog(null, panel2, "Question", JOptionPane.PLAIN_MESSAGE); 
+	      int answer = SysData.getInstance().getYelloweQues().get(k).getCurrectAnsw();
+	      String cAnswer = SysData.getInstance().getYelloweQues().get(k).getAnswers().get(answer);
+		   	 if (choice1.isSelected() && choice1.getText().equals(cAnswer)){
+		   			 System.out.println("true"); 
+		   			return true;
+         }
+		   	 else if (choice2.isSelected() && choice2.getText().equals(cAnswer)) {
+		   		 System.out.println("choice2 is true");
+		   		return true;
+		   	 }
+		   	 else if (choice3.isSelected() && choice3.getText().equals(cAnswer)) {
+		   		 System.out.println("choice3 is true");
+		   		return true;
+		   	 }
+		   	 else if (choice4.isSelected() && choice4.getText().equals(cAnswer)) {
+		   		System.out.println("choice4 is true"); 		
+		   		return true;
+		   	 }	
+		   	 k++;
+		   
 		}
+		else if(Q instanceof WhiteQuestion) {
+			lblQ.setText(SysData.getInstance().getWhiteQues().get(g).getQuestion());
+			   choice1.setText(SysData.getInstance().getWhiteQues().get(g).getAnswers().get(0));
+			   choice2.setText(SysData.getInstance().getWhiteQues().get(g).getAnswers().get(1));
+			   choice3.setText(SysData.getInstance().getWhiteQues().get(g).getAnswers().get(2));
+			   choice4.setText(SysData.getInstance().getWhiteQues().get(g).getAnswers().get(3));
+			   group.add(choice1);
+			   group.add(choice2);
+			   group.add(choice3);
+			   group.add(choice4);
+			   panel2.add(lblQ);
+			   panel2.add(choice1);
+			   panel2.add(choice2);
+			   panel2.add(choice3);
+			   panel2.add(choice4);
+			   JOptionPane.showConfirmDialog(null, panel2, "Question", JOptionPane.PLAIN_MESSAGE); 
+	      int answer = SysData.getInstance().getWhiteQues().get(g).getCurrectAnsw();
+	      String cAnswer = SysData.getInstance().getWhiteQues().get(g).getAnswers().get(answer);
+		   	 if (choice1.isSelected() && choice1.getText().equals(cAnswer)){
+		   			 System.out.println("true"); 
+		   			return true;
+         }
+		   	 else if (choice2.isSelected() && choice2.getText().equals(cAnswer)) {
+		   		 System.out.println("choice2 is true");
+		   		return true;
+		   	 }
+		   	 else if (choice3.isSelected() && choice3.getText().equals(cAnswer)) {
+		   		 System.out.println("choice3 is true");
+		   		return true;
+		   	 }
+		   	 else if (choice4.isSelected() && choice4.getText().equals(cAnswer)) {
+		   		System.out.println("choice4 is true"); 		 
+		   		return true;
+		   	 }
+		   	 
+		   	 g++;
+		   	   	
+		}
+		return false; 
 		
 	}
 }
