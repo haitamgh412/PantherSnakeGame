@@ -2,6 +2,8 @@ package Model;
 
 import javax.swing.ImageIcon;
 
+import View.FoodView;
+
 public class RedQuestion extends Question {
 	
 
@@ -20,15 +22,15 @@ public class RedQuestion extends Question {
 	
 	public void generateQuestion() {
 		
-		
-		ImageIcon iia = new ImageIcon(Apple.class.getResource("/images/redQ.png"));
-        this.questionImage = iia.getImage();
         
         int a = (int) (Math.random() * Board.RAND_POS);
         this.question_x = ((a * Board.DOT_SIZE));
 
         a = (int) (Math.random() * Board.RAND_POS);
         this.question_y = ((a * Board.DOT_SIZE));
+        
+		FoodView foodView=new FoodView();
+        this.questionImage=foodView.getRedQuestion();
         
 	}
 

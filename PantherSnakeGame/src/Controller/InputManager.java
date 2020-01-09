@@ -9,6 +9,13 @@ import javax.swing.ImageIcon;
 import Model.Board;
 import Model.Snake;
 
+/*
+ * the KeyListener is the class that control the input the game get from the keyboard
+ * the class have 4 boolean variables , every variable is a direction 
+ * when one direction is on the other 3 is false   
+ * Space pause and resume the game
+ * esc exit the game
+ */
 public class InputManager implements KeyListener{
 	
 	

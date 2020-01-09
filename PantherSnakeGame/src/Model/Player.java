@@ -10,7 +10,7 @@ public class Player implements Comparable<Player>{
 	private String userName;
 	// all the scores of the player from all the games he players
 	private TreeSet<Integer> scores;
-	// the high score of the playe from all the games he players
+	// the high score of the player from all the games he players
 	private int highScore;
 
 

@@ -10,6 +10,9 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.SourceDataLine;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
+/*
+ * the class soundManager is for control the sounds in the game 
+ */
 public class SoundManger {
 
 	private PlayThread playThread;

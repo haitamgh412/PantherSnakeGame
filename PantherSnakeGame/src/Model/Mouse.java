@@ -36,14 +36,16 @@ public class Mouse {
         this.mouse=foodView.Getmouse();
 	}
 	
+	/*
+	 * getters and setters
+	 */
+	
 	public int getX() {
 		return this.mouse_x;
 	}
 	public int getY() {
 		return this.mouse_y;
 	}
-	
-	
 	
 	public void setX(int mouse_x) {
 		this.mouse_x = mouse_x;
@@ -58,21 +60,27 @@ public class Mouse {
 	}
 
 	public Image getMouse() {
-
 		return mouse;
-		
 	}
 	
+	/*
+	 * clear the mouse off the Board
+	 */
 	public void clear() {
 		mouse_x=-5000;
 		mouse_y=-5000;
 	}
 	
-	
+	/*
+	 * return the points that the mouse adds
+	 */
 	public int addPoints() {
 		return (mousePoints);
 	}
 	
+	/*
+	 * return the lives that the mouse adds
+	 */
 	public int addLives() {
 		return (mouseLives);
 	}
@@ -95,19 +103,31 @@ public class Mouse {
         );
 	}
 	
+	/*
+	 * change the current side the mouse moving to 
+	 */
 	public void changeSide() {
 			 this.currentside=generateRandomside();	
 	}
 		
+	/*
+	 * return the current side the mouse moving to 
+	 */
+	
 	public int getCurrentSide() {
-	//	changeSide();
 		return this.currentside;	
 	}
 	
+	/*
+	 * set current side the mouse moving to 
+	 */
 	public void setCurrentSide(int x) {
 		this.currentside=x;
 	}
 	
+	/*
+	 * generate number from 0 to 3 (directions)
+	 */
 	private int generateRandomside() {
         int a = (int) (Math.random() * 4);
         return a;
