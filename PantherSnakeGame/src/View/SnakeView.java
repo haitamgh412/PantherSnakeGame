@@ -304,7 +304,7 @@ public class SnakeView {
 			   panel2.add(choice4);
 			   JOptionPane.showConfirmDialog(null, panel2, "Question", JOptionPane.PLAIN_MESSAGE); 
 	      int answer = SysData.getInstance().getRedQues().get(i).getCurrectAnsw();
-	      String cAnswer = SysData.getInstance().getRedQues().get(i).getAnswers().get(answer);
+	      String cAnswer = SysData.getInstance().getRedQues().get(i).getAnswers().get(answer-1);
 		   	 if (choice1.isSelected() && choice1.getText().equals(cAnswer)){
 		   		i++;	
 		   		 return true;
@@ -341,7 +341,7 @@ public class SnakeView {
 			   panel2.add(choice4);
 			   JOptionPane.showConfirmDialog(null, panel2, "Question", JOptionPane.PLAIN_MESSAGE); 
 	      int answer = SysData.getInstance().getYelloweQues().get(k).getCurrectAnsw();
-	      String cAnswer = SysData.getInstance().getYelloweQues().get(k).getAnswers().get(answer);
+	      String cAnswer = SysData.getInstance().getYelloweQues().get(k).getAnswers().get(answer-1);
 		   	 if (choice1.isSelected() && choice1.getText().equals(cAnswer)){
 		   		k++;	
 		   		 return true;
@@ -379,7 +379,7 @@ public class SnakeView {
 			   panel2.add(choice4);
 			   JOptionPane.showConfirmDialog(null, panel2, "Question", JOptionPane.PLAIN_MESSAGE); 
 	      int answer = SysData.getInstance().getWhiteQues().get(g).getCurrectAnsw();
-	      String cAnswer = SysData.getInstance().getWhiteQues().get(g).getAnswers().get(answer);
+	      String cAnswer = SysData.getInstance().getWhiteQues().get(g).getAnswers().get(answer-1);
 		   	 if (choice1.isSelected() && choice1.getText().equals(cAnswer)){
 		   		g++;	
 		   		 return true;
