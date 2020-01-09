@@ -14,8 +14,6 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JRadioButton;
-import javax.swing.JTextField;
 
 import Controller.SysData;
 import Model.Question;
@@ -40,6 +38,7 @@ public class DeleteQuestions {
 	}
 
 
+	@SuppressWarnings("unchecked")
 	public void initialize() {
 		removeframe = new JFrame();
 		removeframe.setBackground(Color.WHITE);
@@ -108,10 +107,12 @@ public class DeleteQuestions {
 		removeframe.getContentPane().add(ans4);
 
 
+		@SuppressWarnings("unused")
 		ButtonGroup G = new ButtonGroup();
 		removeframe.setBounds(100, 100, 735, 477);
 		removeframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+		@SuppressWarnings("unused")
 		ButtonGroup G2 = new ButtonGroup();
 
 		JButton btnremove = new JButton("Remove Question");
@@ -141,6 +142,7 @@ public class DeleteQuestions {
 		button.setBounds(35, 392, 56, 29);
 		removeframe.getContentPane().add(button);
 
+		@SuppressWarnings("rawtypes")
 		JComboBox quesCombo = new JComboBox();
 		quesCombo.setBackground(Color.WHITE);
 		quesCombo.setBounds(143, 41, 422, 28);

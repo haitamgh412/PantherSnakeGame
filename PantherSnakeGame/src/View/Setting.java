@@ -6,9 +6,6 @@ import javax.swing.ImageIcon;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 
-import Controller.SoundManger;
-import Model.Board;
-
 import javax.swing.JButton;
 import java.awt.Color;
 import javax.swing.JCheckBox;

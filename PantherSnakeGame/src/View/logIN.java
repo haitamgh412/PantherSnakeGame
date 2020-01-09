@@ -69,6 +69,7 @@ public class logIN {
 		 
 		JButton btnPlay = new JButton("Play");
 		btnPlay.addActionListener(new ActionListener() {
+			@SuppressWarnings("static-access")
 			public void actionPerformed(ActionEvent arg0) {
 				if(Nametext.getText().equals("")) {
 					JOptionPane.showMessageDialog(loginframe,"please enter your name !");

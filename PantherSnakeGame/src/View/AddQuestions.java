@@ -8,8 +8,6 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-import com.sun.accessibility.internal.resources.accessibility;
-
 import Controller.SysData;
 import Model.Question;
 import Model.RedQuestion;

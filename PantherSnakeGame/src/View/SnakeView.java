@@ -1,7 +1,6 @@
 package View;
 
 
-
 import javax.swing.JFrame;
 import Model.Board;
 import Model.Player;
@@ -21,12 +20,10 @@ import java.awt.Graphics;
 import javax.swing.SwingConstants;
 
 import Controller.SysData;
-import Controller.sysData;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
-import java.util.concurrent.TimeUnit;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 import java.awt.SystemColor;
@@ -61,6 +58,7 @@ public class SnakeView {
 	/**
 	 * Initialize the contents of the frame.
 	 */
+	@SuppressWarnings("static-access")
 	private void initialize(String name) {
 		this.name1=name;
 		Snakeframe = new JFrame();
@@ -76,7 +74,6 @@ public class SnakeView {
 		
 		if (Board.isGameOver) {
 			Board.setGameOver(false);
-			//Board.setInGame(false);
 			Board newBoard = new Board();
 			 newBoard.setBackground(new Color(250, 235, 215));
 			 newBoard.setBounds(0, 0, 600, 600);
@@ -212,13 +209,6 @@ public class SnakeView {
 		   btnInstructions.setBounds(693, 454, 169, 37);
 		   Snakeframe.getContentPane().add(btnInstructions);
 		   
-//		   JButton btnNewButton = new JButton("Instructions");
-//		   btnNewButton.setBackground(SystemColor.menu);
-//		 
-//		   
-//		   btnNewButton.setFont(new Font("Segoe Print", Font.PLAIN, 18));
-//		   btnNewButton.setBounds(693, 439, 169, 37);
-//		   Snakeframe.getContentPane().add(/
 		   
 		   JLabel lblPressSpaceFor = new JLabel("press space for start/pause the game !");
 		   lblPressSpaceFor.setForeground(new Color(107, 142, 35));
@@ -234,14 +224,12 @@ public class SnakeView {
 		   choice4 = new JRadioButton();
 		   group = new ButtonGroup(); 
 
-
 	}
 	
     public static void gameOver(Graphics g) {
         
         String msg = "Game Over";
         Font small = new Font("Helvetica", Font.BOLD, 28);
-   //     FontMetrics metr = getFontMetrics(small);
 
         g.setColor(Color.RED);
         g.setFont(small);
@@ -251,12 +239,8 @@ public class SnakeView {
    		Player p = SysData.getInstance().getPlayer(name1);
 		p.addScore(Integer.parseInt(scorelabel.getText()));
 		SysData.getInstance().updatePlayer(p);
-   		//MainScreen f = new MainScreen();
-	//	f.framefirst.setVisible(true);
 		Board.soundManger.stopSound();
-		//Snakeframe.dispose();	
         
-    //    Player player=new Player(SnakeView.getNewName());
     }
     
 	
@@ -291,8 +275,7 @@ public class SnakeView {
         
 		   timeLabel.setText(view1 + " : "+ view);
       }
-		
-		   
+			   
 	}
 
 	public String getNewName() {
