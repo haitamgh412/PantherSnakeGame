@@ -334,21 +334,27 @@ public class SnakeView {
 	      String cAnswer = SysData.getInstance().getRedQues().get(i).getAnswers().get(answer-1);
 		   	 if (choice1.isSelected() && choice1.getText().equals(cAnswer)){
 		   		i++;	
+				JOptionPane.showMessageDialog(Snakeframe,"True answer!");
 		   		 return true;
             }
 		   	 else if (choice2.isSelected() && choice2.getText().equals(cAnswer)) {
 		   		 i++;
+					JOptionPane.showMessageDialog(Snakeframe,"True answer!");
 		   		return true;
 		   	 }
 		   	 else if (choice3.isSelected() && choice3.getText().equals(cAnswer)) {
 		   		i++;
+				JOptionPane.showMessageDialog(Snakeframe,"True answer!");
 		   		 return true;
 		   	 }
 		   	 else if (choice4.isSelected() && choice4.getText().equals(cAnswer)) {
 		   		i++;
+				JOptionPane.showMessageDialog(Snakeframe,"True answer!");
 		   		 return true;
 		   	 }
-		   	 else i++;
+		   	 else {i++;
+		   	JOptionPane.showMessageDialog(Snakeframe,"false answer!");
+		   	 }
 		   	
 			}
 			else {
@@ -376,22 +382,29 @@ public class SnakeView {
 	      int answer = SysData.getInstance().getYelloweQues().get(k).getCurrectAnsw();
 	      String cAnswer = SysData.getInstance().getYelloweQues().get(k).getAnswers().get(answer-1);
 		   	 if (choice1.isSelected() && choice1.getText().equals(cAnswer)){
-		   		k++;	
+		   		k++;
+		   		JOptionPane.showMessageDialog(Snakeframe,"True answer!");
 		   		 return true;
          }
 		   	 else if (choice2.isSelected() && choice2.getText().equals(cAnswer)) {
 		   		k++;
+		   		JOptionPane.showMessageDialog(Snakeframe,"True answer!");
 		   		 return true;
 		   	 }
 		   	 else if (choice3.isSelected() && choice3.getText().equals(cAnswer)) {
 		   		k++;
+		   		JOptionPane.showMessageDialog(Snakeframe,"True answer!");
 		   		 return true;
 		   	 }
 		   	 else if (choice4.isSelected() && choice4.getText().equals(cAnswer)) {
 		   		k++;
+		   		JOptionPane.showMessageDialog(Snakeframe,"True answer!");
 		   		 return true;
 		   	 }	
-		   	 else k++;
+		   	 else {k++;
+		   	JOptionPane.showMessageDialog(Snakeframe,"false answer!");
+		   	 
+		   	 }
 			}
 			else {
 				k=0;
@@ -419,21 +432,27 @@ public class SnakeView {
 	      String cAnswer = SysData.getInstance().getWhiteQues().get(g).getAnswers().get(answer-1);
 		   	 if (choice1.isSelected() && choice1.getText().equals(cAnswer)){
 		   		g++;	
+		   		JOptionPane.showMessageDialog(Snakeframe,"True answer!");
 		   		 return true;
          }
 		   	 else if (choice2.isSelected() && choice2.getText().equals(cAnswer)) {
 		   		g++;
+		   		JOptionPane.showMessageDialog(Snakeframe,"True answer!");
 		   		 return true;
 		   	 }
 		   	 else if (choice3.isSelected() && choice3.getText().equals(cAnswer)) {
 		   		g++;
+		   		JOptionPane.showMessageDialog(Snakeframe,"True answer!");
 		   		 return true;
 		   	 }
 		   	 else if (choice4.isSelected() && choice4.getText().equals(cAnswer)) {	 
 		   		g++;
+		   		JOptionPane.showMessageDialog(Snakeframe,"True answer!");
 		   		 return true;
 		   	 }
-		   	 else g++;
+		   	 else {g++;
+		   	JOptionPane.showMessageDialog(Snakeframe,"false answer!");
+		   	 }
 			}
 			else {
 				g=0;
