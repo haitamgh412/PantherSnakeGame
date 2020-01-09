@@ -383,8 +383,8 @@ public class Board extends JPanel implements ActionListener {
     private void checkWhiteQ() {
 
         if ((x[0] == whiteQuestion.getX()) && (y[0] == whiteQuestion.getY())) {
-
-      //  	playerScore+=whiteQuestion.getAnswerPoints();
+        	
+        	playerScore+=whiteQuestion.getAnswerPoints(SnakeView.viewQuestion(whiteQuestion));
             SnakeView.updatescore();
             whiteQuestion.random();
             
@@ -399,6 +399,7 @@ public class Board extends JPanel implements ActionListener {
     		        }, 
     		        500 
     				);
+    		pause();
 
         }
 
@@ -407,7 +408,7 @@ public class Board extends JPanel implements ActionListener {
 
         if ((x[0] == redQuestion.getX()) && (y[0] == redQuestion.getY())) {
 
-    //    	playerScore+=redQuestion.getAnswerPoints();
+        	playerScore+=redQuestion.getAnswerPoints(SnakeView.viewQuestion(redQuestion));
             SnakeView.updatescore();
             redQuestion.random();
             
@@ -422,6 +423,8 @@ public class Board extends JPanel implements ActionListener {
     		        }, 
     		        500 
     				);
+    		pause();
+
 
         }
 
@@ -430,7 +433,7 @@ public class Board extends JPanel implements ActionListener {
 
         if ((x[0] == yellowQuestion.getX()) && (y[0] == yellowQuestion.getY())) {
 
-   //     	playerScore+=redQuestion.getAnswerPoints();
+        	playerScore+=yellowQuestion.getAnswerPoints(SnakeView.viewQuestion(yellowQuestion));
             SnakeView.updatescore();
             yellowQuestion.random();
             
@@ -445,6 +448,8 @@ public class Board extends JPanel implements ActionListener {
     		        }, 
     		        500 
     				);
+    		pause();
+
 
         } 
 

@@ -45,7 +45,9 @@ public class SnakeView {
     public static ButtonGroup group ; 
     static int starttime=(int) System.currentTimeMillis();
    
-
+    public static int i = 0;
+	public static int k = 0;
+	public static int g = 0;
 
 	/**
 	 * Create the application.
@@ -283,9 +285,6 @@ public class SnakeView {
 	public static void setScorelabel(JLabel scorelabel) {
 		SnakeView.scorelabel = scorelabel;
 	}
-	static int i = 0;
-	static int k = 0;
-	static int g = 0;
 	
 	public static boolean viewQuestion(Question Q) {
 		if(Q instanceof RedQuestion ) {	
@@ -307,22 +306,22 @@ public class SnakeView {
 	      int answer = SysData.getInstance().getRedQues().get(i).getCurrectAnsw();
 	      String cAnswer = SysData.getInstance().getRedQues().get(i).getAnswers().get(answer);
 		   	 if (choice1.isSelected() && choice1.getText().equals(cAnswer)){
-		   			 System.out.println("true"); 
-		   			 return true;
+		   		i++;	
+		   		 return true;
             }
 		   	 else if (choice2.isSelected() && choice2.getText().equals(cAnswer)) {
-		   		 System.out.println("choice2 is true");
+		   		 i++;
 		   		return true;
 		   	 }
 		   	 else if (choice3.isSelected() && choice3.getText().equals(cAnswer)) {
-		   		 System.out.println("choice3 is true");
-		   		return true;
+		   		i++;
+		   		 return true;
 		   	 }
 		   	 else if (choice4.isSelected() && choice4.getText().equals(cAnswer)) {
-		   		System.out.println("choice4 is true"); 		
-		   		return true;
+		   		i++;
+		   		 return true;
 		   	 }
-			i++;
+		   	 else i++;
 			
 		}
 		else if( Q instanceof YellowQuestion) {
@@ -344,22 +343,23 @@ public class SnakeView {
 	      int answer = SysData.getInstance().getYelloweQues().get(k).getCurrectAnsw();
 	      String cAnswer = SysData.getInstance().getYelloweQues().get(k).getAnswers().get(answer);
 		   	 if (choice1.isSelected() && choice1.getText().equals(cAnswer)){
-		   			 System.out.println("true"); 
-		   			return true;
+		   		k++;	
+		   		 return true;
          }
 		   	 else if (choice2.isSelected() && choice2.getText().equals(cAnswer)) {
-		   		 System.out.println("choice2 is true");
-		   		return true;
+		   		k++;
+		   		 return true;
 		   	 }
 		   	 else if (choice3.isSelected() && choice3.getText().equals(cAnswer)) {
-		   		 System.out.println("choice3 is true");
-		   		return true;
+		   		k++;
+		   		 return true;
 		   	 }
 		   	 else if (choice4.isSelected() && choice4.getText().equals(cAnswer)) {
-		   		System.out.println("choice4 is true"); 		
-		   		return true;
+		   		k++;
+		   		 return true;
 		   	 }	
-		   	 k++;
+		   	 else k++;
+
 		   
 		}
 		else if(Q instanceof WhiteQuestion) {
@@ -381,23 +381,23 @@ public class SnakeView {
 	      int answer = SysData.getInstance().getWhiteQues().get(g).getCurrectAnsw();
 	      String cAnswer = SysData.getInstance().getWhiteQues().get(g).getAnswers().get(answer);
 		   	 if (choice1.isSelected() && choice1.getText().equals(cAnswer)){
-		   			 System.out.println("true"); 
-		   			return true;
+		   		g++;	
+		   		 return true;
          }
 		   	 else if (choice2.isSelected() && choice2.getText().equals(cAnswer)) {
-		   		 System.out.println("choice2 is true");
-		   		return true;
+		   		g++;
+		   		 return true;
 		   	 }
 		   	 else if (choice3.isSelected() && choice3.getText().equals(cAnswer)) {
-		   		 System.out.println("choice3 is true");
-		   		return true;
+		   		g++;
+		   		 return true;
 		   	 }
-		   	 else if (choice4.isSelected() && choice4.getText().equals(cAnswer)) {
-		   		System.out.println("choice4 is true"); 		 
-		   		return true;
+		   	 else if (choice4.isSelected() && choice4.getText().equals(cAnswer)) {	 
+		   		g++;
+		   		 return true;
 		   	 }
-		   	 
-		   	 g++;
+		   	 else g++;
+
 		   	   	
 		}
 		return false; 
