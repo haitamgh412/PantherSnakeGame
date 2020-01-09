@@ -44,7 +44,7 @@ public class DeleteQuestions {
 		removeframe = new JFrame();
 		removeframe.setBackground(Color.WHITE);
 		removeframe.setIconImage(Toolkit.getDefaultToolkit().getImage(AddQuestions.class.getResource("/images/write.png")));
-		removeframe.setTitle("addQuestion");
+		removeframe.setTitle("deleteQuestion");
 		removeframe.setResizable(false);
 		removeframe.getContentPane().setBackground(Color.WHITE);
 		removeframe.getContentPane().setLayout(null);
@@ -88,25 +88,25 @@ public class DeleteQuestions {
 		ans1.setFont(new Font("Segoe Print", Font.PLAIN, 16));
 		ans1.setBounds(143, 85, 422, 36);
 		removeframe.getContentPane().add(ans1);
-	//	ans1.setColumns(10);
+
 
 		ans2 = new JLabel();
 		ans2.setFont(new Font("Segoe Print", Font.PLAIN, 16));
 		ans2.setBounds(143, 137, 422, 36);
 		removeframe.getContentPane().add(ans2);
-//		ans2.setColumns(10);
+
 
 		ans3 = new JLabel();
 		ans3.setFont(new Font("Segoe Print", Font.PLAIN, 16));
 		ans3.setBounds(143, 196, 422, 36);
 		removeframe.getContentPane().add(ans3);
-	//	ans3.setColumns(10);
+
 
 		ans4 = new JLabel();
 		ans4.setFont(new Font("Segoe Print", Font.PLAIN, 16));
 		ans4.setBounds(143, 248, 422, 36);
 		removeframe.getContentPane().add(ans4);
-	//	ans4.setColumns(10);
+
 
 		ButtonGroup G = new ButtonGroup();
 		removeframe.setBounds(100, 100, 735, 477);
@@ -181,47 +181,10 @@ public class DeleteQuestions {
 			lblLevel.setText("3");
 		removeframe.getContentPane().add(quesCombo);
 		
-		JButton btnRefresh = new JButton("Refresh");
-		btnRefresh.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				quesCombo.removeAllItems();
-				for(Question q : SysData.getInstance().getQuestionsssss())
-					quesCombo.addItem(q.getQuestion());
-				Question question = SysData.getInstance().getSpecificQuestion(quesCombo.getSelectedItem().toString());
-				ans1.setText(question.getAnswers().get(0));
-				ans2.setText(question.getAnswers().get(1));
-				ans3.setText(question.getAnswers().get(2));
-				ans4.setText(question.getAnswers().get(3));
 
-				if(question.getCurrectAnsw()==1)
-					lblCurrectAnsw.setText("1"); 
-				else if(question.getCurrectAnsw()==2)
-					lblCurrectAnsw.setText("2");
-				else if(question.getCurrectAnsw()==3)
-					lblCurrectAnsw.setText("3");
-				else
-					lblCurrectAnsw.setText("4");
-
-				if(question.getClass().getSimpleName().equals("WhiteQuestion"))
-					lblLevel.setText("1");
-				else if(question.getClass().getSimpleName().equals("YellowQuestion"))
-					lblLevel.setText("2");
-				else
-					lblLevel.setText("3");
-			}
-			
-		});
-		btnRefresh.setFont(new Font("Segoe Print", Font.PLAIN, 16));
-		btnRefresh.setBackground(Color.WHITE);
-		btnRefresh.setBounds(301, 326, 185, 42);
-		removeframe.getContentPane().add(btnRefresh);
-		
 
 		quesCombo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				quesCombo.removeAllItems();
-				for(Question q : SysData.getInstance().getQuestionsssss())
-					quesCombo.addItem(q.getQuestion());
 				Question question = SysData.getInstance().getSpecificQuestion(quesCombo.getSelectedItem().toString());
 				ans1.setText(question.getAnswers().get(0));
 				ans2.setText(question.getAnswers().get(1));
@@ -275,8 +238,8 @@ public class DeleteQuestions {
 				arr.add(answer4);
 
 				q.setAnswers(arr);
-
 				if(SysData.getInstance().RemoveQuestion(q)) {
+					quesCombo.removeItem(quesCombo.getSelectedItem());
 					JOptionPane.showMessageDialog(null, "The question removed successfully");
 					return;
 				}

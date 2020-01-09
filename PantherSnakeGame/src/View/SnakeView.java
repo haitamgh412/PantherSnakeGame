@@ -187,6 +187,23 @@ public class SnakeView {
 		   timeLabel.setBounds(727, 256, 113, 24);
 		   Snakeframe.getContentPane().add(timeLabel);
 		   
+		   JButton btnInstructions = new JButton("Instructions");
+		   btnInstructions.setBackground(SystemColor.menu);
+		   btnInstructions.addActionListener(new ActionListener() {
+		   	public void actionPerformed(ActionEvent arg0) {
+		   		Instructions1 i = new Instructions1();
+		   		i.Iframe.setVisible(true);
+		   		Board.pause();
+		   		btnInstructions.setFocusable(false);
+		   		btnNewGame.setFocusable(false);
+		   		btnPause.setFocusable(false);
+		   		
+		   	}
+		   });
+		   btnInstructions.setFont(new Font("Segoe Print", Font.PLAIN, 18));
+		   btnInstructions.setBounds(693, 442, 169, 37);
+		   Snakeframe.getContentPane().add(btnInstructions);
+		   
 //		   JButton btnNewButton = new JButton("Instructions");
 //		   btnNewButton.setBackground(SystemColor.menu);
 //		 
