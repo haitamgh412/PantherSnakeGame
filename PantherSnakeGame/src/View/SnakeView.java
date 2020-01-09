@@ -80,7 +80,7 @@ public class SnakeView {
 			   newBoard.setLayout(null);	
 		}
 		Board board = new Board();
-		 board.setBackground(new Color(0, 51, 0));
+		 board.setBackground(new Color(51, 102, 51));
 		 board.setBounds(0, 0, 610, 610);
 		   Snakeframe.getContentPane().add(board);
 		   board.setLayout(null);
@@ -198,9 +198,9 @@ public class SnakeView {
 		   
 		   JLabel lblPressSpaceFor = new JLabel("press space for start/pause the game !");
 		   lblPressSpaceFor.setForeground(new Color(107, 142, 35));
-		   lblPressSpaceFor.setBounds(70, 596, 448, 44);
+		   lblPressSpaceFor.setBounds(59, 596, 459, 44);
 		   Snakeframe.getContentPane().add(lblPressSpaceFor);
-		   lblPressSpaceFor.setFont(new Font("Segoe Print", Font.BOLD, 21));
+		   lblPressSpaceFor.setFont(new Font("Segoe Print", Font.BOLD, 23));
 		   
 		   JLabel lblPanther = new JLabel("Panther");
 		   lblPanther.setForeground(new Color(107, 142, 35));
