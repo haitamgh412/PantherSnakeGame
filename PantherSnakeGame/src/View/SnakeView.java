@@ -129,13 +129,20 @@ public class SnakeView {
 		   	}
 		   });
 		   btnNewGame.setFont(new Font("Segoe Print", Font.PLAIN, 18));
-		   btnNewGame.setBounds(693, 492, 169, 37);
+		   btnNewGame.setBounds(693, 507, 169, 37);
 		   Snakeframe.getContentPane().add(btnNewGame);
 		   
 		   JLabel lblPressEscFor = new JLabel("press esc for exit !");
-		   lblPressEscFor.setFont(new Font("Segoe Print", Font.PLAIN, 16));
-		   lblPressEscFor.setBounds(628, 357, 273, 54);
+		   lblPressEscFor.setForeground(new Color(107, 142, 35));
+		   lblPressEscFor.setFont(new Font("Segoe Print", Font.BOLD, 16));
+		   lblPressEscFor.setBounds(625, 348, 273, 54);
 		   Snakeframe.getContentPane().add(lblPressEscFor);
+		   
+		   JLabel lblMaximumLives = new JLabel("maximum 3 lives !");
+		   lblMaximumLives.setForeground(new Color(102, 153, 0));
+		   lblMaximumLives.setFont(new Font("Segoe Print", Font.BOLD, 16));
+		   lblMaximumLives.setBounds(625, 393, 273, 54);
+		   Snakeframe.getContentPane().add(lblMaximumLives);
 		   
 		   JLabel lblName = new JLabel("Name:");
 		   lblName.setFont(new Font("Segoe Print", Font.PLAIN, 19));
@@ -174,7 +181,7 @@ public class SnakeView {
 		   });
 		   btnPause.setFont(new Font("Segoe Print", Font.PLAIN, 18));
 		   btnPause.setBackground(SystemColor.menu);
-		   btnPause.setBounds(695, 549, 167, 37);
+		   btnPause.setBounds(693, 560, 167, 37);
 		   Snakeframe.getContentPane().add(btnPause);
 		   
 		   JLabel lblTime = new JLabel("Time:");
@@ -202,7 +209,7 @@ public class SnakeView {
 		   	}
 		   });
 		   btnInstructions.setFont(new Font("Segoe Print", Font.PLAIN, 18));
-		   btnInstructions.setBounds(693, 442, 169, 37);
+		   btnInstructions.setBounds(693, 454, 169, 37);
 		   Snakeframe.getContentPane().add(btnInstructions);
 		   
 //		   JButton btnNewButton = new JButton("Instructions");
