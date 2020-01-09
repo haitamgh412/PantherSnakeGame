@@ -37,7 +37,6 @@ public class Board extends JPanel implements ActionListener {
     
 	public static boolean isGameOver = false;
 	
-
 	public static int playerScore = 0;
 	public static int numOFLifes = 3;
 	
@@ -55,13 +54,10 @@ public class Board extends JPanel implements ActionListener {
 	private static String soundFilePath2 = "mouseEat.wav";
 	private static String soundFilePath3 = "gameOver.wav";
 
-
-
 	public static SoundManger soundManger = new SoundManger(soundFilePath);
 	public static SoundManger soundManger1 = new SoundManger(soundFilePath1);
 	public static SoundManger soundManger2 = new SoundManger(soundFilePath2);
 	public static SoundManger soundManger3 = new SoundManger(soundFilePath3);
-
 
     
     /**
@@ -79,9 +75,7 @@ public class Board extends JPanel implements ActionListener {
     private WhiteQuestion whiteQuestion=new WhiteQuestion();
     private YellowQuestion yellowQuestion=new YellowQuestion();
     private RedQuestion redQuestion=new RedQuestion();
-    
-
-    
+     
     public static boolean leftDirection = false;
     public static boolean rightDirection = true;
     public static boolean upDirection = false;
@@ -93,7 +87,6 @@ public class Board extends JPanel implements ActionListener {
     public Board() {
         
         initBoard();
-
     }
   
     /*
@@ -115,7 +108,6 @@ public class Board extends JPanel implements ActionListener {
         timer = new Timer(DELAY, this);
         timer.stop();
         
-
          leftDirection = false;
          rightDirection = true;
          upDirection = false;
@@ -134,9 +126,7 @@ public class Board extends JPanel implements ActionListener {
           */
          if(Setting.sound == false) {
         	 soundManger.pauseSound();
-         }
-
-         
+         }      
     }
     
     /*
@@ -459,7 +449,6 @@ public class Board extends JPanel implements ActionListener {
         		        500 
         				);
         		}
-    		pause();
 
         }
 
@@ -491,8 +480,6 @@ public class Board extends JPanel implements ActionListener {
         		        500 
         				);
         		}
-    		pause();
-
 
         }
 
@@ -524,8 +511,6 @@ public class Board extends JPanel implements ActionListener {
         		        500 
         				);
         		}
-    		pause();
-
 
         } 
 
@@ -636,7 +621,6 @@ public class Board extends JPanel implements ActionListener {
             if ((z > 4) && (x[0] == x[z]) && (y[0] == y[z]) && numOFLifes >0) {
             	numOFLifes--;
             	SnakeView.updateLives();
-            //	SnakeView.updateTime();
             	resumeGame();
             }
         }
