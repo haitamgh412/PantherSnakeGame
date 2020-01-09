@@ -3,8 +3,6 @@ package View;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-import Model.Board;
-
 import javax.swing.ImageIcon;
 import java.awt.Toolkit;
 import javax.swing.JButton;
@@ -40,7 +38,6 @@ public class Instructions1 {
 		btnBackToGame.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Iframe.dispose();
-				Board.pause();
 			}
 		});
 		btnBackToGame.setBackground(Color.WHITE);

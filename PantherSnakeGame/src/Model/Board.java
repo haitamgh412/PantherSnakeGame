@@ -175,18 +175,14 @@ public class Board extends JPanel implements ActionListener {
         
         if (inGame) {
 
-        	//SnakeView.updateTime();
-
             g.drawImage(apple.getImage(), apple.getX(), apple.getY(), this);
             g.drawImage(banana.getImage(), banana.getX(), banana.getY(), this);
             g.drawImage(pear.getImage(), pear.getX(), pear.getY(), this);
-            
-            
+                
             g.drawImage(whiteQuestion.getImage(), whiteQuestion.getX(), whiteQuestion.getY(), this);
             g.drawImage(yellowQuestion.getImage(), yellowQuestion.getX(), yellowQuestion.getY(), this);
             g.drawImage(redQuestion.getImage(), redQuestion.getX(), redQuestion.getY(), this);
-            
-            
+                       
             g.drawImage(mouse.getMouse(), mouse.getX(), mouse.getY(), this);
             
             for (int z = 0; z < snake.getDots(); z++) {
@@ -548,6 +544,20 @@ public class Board extends JPanel implements ActionListener {
         	
         	playerScore+=mouse.addPoints();
             SnakeView.updatescore();
+            
+            if(Setting.sound1 == true) {
+            	soundManger1.startSound();
+        		new java.util.Timer().schedule( 
+        		        new java.util.TimerTask() {
+        					@Override
+        		            public void run() {
+                               soundManger1.pauseSound();
+        		            }
+        		        }, 
+        		        500 
+        				);
+        		}
+            
             if(numOFLifes<3) {
     		
             numOFLifes+=mouse.addLives();
@@ -672,15 +682,14 @@ public class Board extends JPanel implements ActionListener {
     }
     
     /*
-     * pause game and souds
+     * pause game and sounds
      */
     public static void pause() {
     	
     	if(timer.isRunning()) {
     		timer.stop();
     		soundManger.pauseSound();
-    	//	soundManger1.pauseSound();
-    	//	soundManger2.pauseSound();
+
     		}
     	else {
     		timer.start();

@@ -35,7 +35,6 @@ public class SnakeView {
     public String newName ; 
     public static JLabel scorelabel;
     public static JLabel livelabel;
-    public static JLabel timeLabel;
     public static String name1;
     public static  JLabel lblQ;
     public static JRadioButton choice1, choice2, choice3,choice4;
@@ -90,23 +89,23 @@ public class SnakeView {
 		   
 		   JLabel lblSnakeGame = new JLabel("Snake Game ");
 		   lblSnakeGame.setHorizontalAlignment(SwingConstants.CENTER);
-		   lblSnakeGame.setFont(new Font("Segoe Print", Font.PLAIN, 24));
-		   lblSnakeGame.setBounds(648, 35, 200, 60);
+		   lblSnakeGame.setFont(new Font("Segoe Print", Font.PLAIN, 33));
+		   lblSnakeGame.setBounds(648, 35, 285, 60);
 		   Snakeframe.getContentPane().add(lblSnakeGame);
 		   
 		   JLabel lblScore = new JLabel("score:");
 		   lblScore.setFont(new Font("Segoe Print", Font.PLAIN, 19));
-		   lblScore.setBounds(628, 195, 69, 20);
+		   lblScore.setBounds(628, 233, 69, 20);
 		   Snakeframe.getContentPane().add(lblScore);
 		   
 		   JLabel lblLives = new JLabel("lives:");
 		   lblLives.setFont(new Font("Segoe Print", Font.PLAIN, 19));
-		   lblLives.setBounds(628, 320, 69, 20);
+		   lblLives.setBounds(628, 292, 69, 20);
 		   Snakeframe.getContentPane().add(lblLives);
 		   
 		   JLabel Namelabel = new JLabel("");
 		   Namelabel.setFont(new Font("Segoe Print", Font.PLAIN, 19));
-		   Namelabel.setBounds(727, 133, 161, 27);
+		   Namelabel.setBounds(722, 179, 161, 27);
 		   Namelabel.setText(newName);
 		  
 		  JButton btnNewGame = new JButton("new game"); 
@@ -122,7 +121,6 @@ public class SnakeView {
 		   		logIN log = new logIN();
 		   		log.loginframe.setVisible(true);
 		   		Snakeframe.dispose();
-//		   		Board.playerScore=0;  		
 		   	}
 		   });
 		   btnNewGame.setFont(new Font("Segoe Print", Font.PLAIN, 18));
@@ -143,14 +141,14 @@ public class SnakeView {
 		   
 		   JLabel lblName = new JLabel("Name:");
 		   lblName.setFont(new Font("Segoe Print", Font.PLAIN, 19));
-		   lblName.setBounds(628, 130, 84, 30);
+		   lblName.setBounds(620, 177, 84, 30);
 		   Snakeframe.getContentPane().add(lblName);
 		
 
 		    
 		   scorelabel = new JLabel("");
 		   scorelabel.setFont(new Font("Segoe Print", Font.PLAIN, 19));
-		   scorelabel.setBounds(727, 193, 113, 24);
+		   scorelabel.setBounds(727, 231, 113, 24);
 		   Snakeframe.getContentPane().add(scorelabel);
 		   scorelabel.setText(Integer.toString(Board.playerScore));
 
@@ -160,7 +158,7 @@ public class SnakeView {
 		   
 		   livelabel = new JLabel("");
 		   livelabel.setFont(new Font("Segoe Print", Font.PLAIN, 19));
-		   livelabel.setBounds(734, 320, 69, 20);
+		   livelabel.setBounds(727, 292, 69, 20);
 		   Snakeframe.getContentPane().add(livelabel);
 		   livelabel.setText(live1);
 		   
@@ -181,24 +179,14 @@ public class SnakeView {
 		   btnPause.setBounds(693, 560, 167, 37);
 		   Snakeframe.getContentPane().add(btnPause);
 		   
-		   JLabel lblTime = new JLabel("Time:");
-		   lblTime.setFont(new Font("Segoe Print", Font.PLAIN, 19));
-		   lblTime.setBounds(628, 258, 69, 20);
-		   Snakeframe.getContentPane().add(lblTime);
-		   
-		   
-		   timeLabel = new JLabel("");
-		   timeLabel.setFont(new Font("Segoe Print", Font.PLAIN, 19));
-		   timeLabel.setBounds(727, 256, 113, 24);
-		   Snakeframe.getContentPane().add(timeLabel);
-		   
 		   JButton btnInstructions = new JButton("Instructions");
 		   btnInstructions.setBackground(SystemColor.menu);
 		   btnInstructions.addActionListener(new ActionListener() {
 		   	public void actionPerformed(ActionEvent arg0) {
+		   		board.soundManger.pauseSound();
+		   		board.timer.stop();
 		   		Instructions1 i = new Instructions1();
 		   		i.Iframe.setVisible(true);
-		   		Board.pause();
 		   		btnInstructions.setFocusable(false);
 		   		btnNewGame.setFocusable(false);
 		   		btnPause.setFocusable(false);
@@ -215,6 +203,12 @@ public class SnakeView {
 		   lblPressSpaceFor.setBounds(70, 596, 448, 44);
 		   Snakeframe.getContentPane().add(lblPressSpaceFor);
 		   lblPressSpaceFor.setFont(new Font("Segoe Print", Font.BOLD, 21));
+		   
+		   JLabel lblPanther = new JLabel("Panther");
+		   lblPanther.setForeground(new Color(107, 142, 35));
+		   lblPanther.setFont(new Font("Segoe Print", Font.BOLD, 22));
+		   lblPanther.setBounds(739, 100, 113, 54);
+		   Snakeframe.getContentPane().add(lblPanther);
 		    
 		   lblQ = new JLabel("");
 		   panel2 = new JPanel(); 
@@ -225,6 +219,12 @@ public class SnakeView {
 		   group = new ButtonGroup(); 
 
 	}
+	
+	/**
+	 * prints game over in the center if the player used all the 3 lives
+	 * and adds the name of the player to the json file
+	 * @param g
+	 */
 	
     public static void gameOver(Graphics g) {
         
@@ -243,40 +243,24 @@ public class SnakeView {
         
     }
     
+    /**
+     * update the score of the player in the board
+     */
+    
 	
 	public static void updatescore() {
 		   scorelabel.setText(Integer.toString(Board.playerScore));
 	}
+	
+	/**
+	 * update the lives in the board
+	 */
 	
 	public static void updateLives() {
 		if(Board.numOFLifes>0)livelabel.setText(Integer.toString(Board.numOFLifes));
 		if(Board.numOFLifes==0)livelabel.setText(Integer.toString(0));
 	}
 	
-	public static  void updateTime() {
-		int displayMinutes = 0;
-		
-      if (Board.timer.isRunning()) {
-        int timepassed=(int) (System.currentTimeMillis()-starttime);
-        int secondspassed=(timepassed/1000);
-
-        
-        if(secondspassed==60)
-        {
-            secondspassed=0;
-            starttime=(int) System.currentTimeMillis();
-        }
-        if((secondspassed%60)==0)
-        displayMinutes++;
-        
-        String view = Integer.toString(secondspassed);
-        String view1 = Integer.toString(displayMinutes);
-
-        
-		   timeLabel.setText(view1 + " : "+ view);
-      }
-			   
-	}
 
 	public String getNewName() {
 		return newName;
@@ -293,6 +277,14 @@ public class SnakeView {
 	public static void setScorelabel(JLabel scorelabel) {
 		SnakeView.scorelabel = scorelabel;
 	}
+	
+	/**
+	 * view the question in the board when the player eat the question icon (red/white/yellow)
+	 * make a comparison to the answers of the question
+	 * @param Q
+	 * @return true answer in dialog if true
+	 * else false answer dialog
+	 */
 	
 	public static boolean viewQuestion(Question Q) {
 		if(Q instanceof RedQuestion ) {	
