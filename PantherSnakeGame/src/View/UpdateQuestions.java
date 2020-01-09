@@ -1,11 +1,6 @@
 package View;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 
 import Controller.SysData;
 import Model.Question;
@@ -48,6 +43,7 @@ public class UpdateQuestions{
 	/**
 	 * Create the frame.
 	 */
+	@SuppressWarnings("unchecked")
 	public void initialize() {
 		updateframe = new JFrame();
 		updateframe.setBackground(Color.WHITE);
@@ -190,6 +186,7 @@ public class UpdateQuestions{
 		button.setBounds(35, 392, 56, 29);
 		updateframe.getContentPane().add(button);
 
+		@SuppressWarnings("rawtypes")
 		JComboBox quesCombo = new JComboBox();
 		quesCombo.setBackground(Color.WHITE);
 		quesCombo.setBounds(143, 41, 422, 28);
