@@ -74,18 +74,16 @@ public class SnakeView {
 		if (Board.isGameOver) {
 			Board.setGameOver(false);
 			Board newBoard = new Board();
-			 newBoard.setBackground(new Color(250, 235, 215));
+			 newBoard.setBackground(new Color(0, 51, 0));
 			 newBoard.setBounds(0, 0, 600, 600);
 			   Snakeframe.getContentPane().add(newBoard);
 			   newBoard.setLayout(null);	
 		}
 		Board board = new Board();
-		 board.setBackground(new Color(250, 235, 215));
+		 board.setBackground(new Color(0, 51, 0));
 		 board.setBounds(0, 0, 610, 610);
 		   Snakeframe.getContentPane().add(board);
 		   board.setLayout(null);
-		
-		
 		   
 		   JLabel lblSnakeGame = new JLabel("Snake Game ");
 		   lblSnakeGame.setHorizontalAlignment(SwingConstants.CENTER);
