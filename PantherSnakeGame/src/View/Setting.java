@@ -6,6 +6,7 @@ import javax.swing.ImageIcon;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 
+import Controller.SoundManger;
 import Model.Board;
 
 import javax.swing.JButton;
@@ -18,6 +19,8 @@ import java.awt.Toolkit;
 public class Setting {
 
 	public JFrame Settingframe;
+	public static boolean sound = true;
+	public static boolean sound1 = true;
 
 	/**
 	 * Create the application.
@@ -62,9 +65,10 @@ public class Setting {
 		JCheckBox chckbxOnoff = new JCheckBox("On/Off");
 		chckbxOnoff.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Board.soundManger.stopSound();
+				 sound = false;
 			}
 		});
+		sound = true;
 		chckbxOnoff.setSelected(true);
 		chckbxOnoff.setBackground(new Color(255, 255, 255));
 		chckbxOnoff.setFont(new Font("Segoe Print", Font.PLAIN, 19));
@@ -72,6 +76,13 @@ public class Setting {
 		Settingframe.getContentPane().add(chckbxOnoff);
 		
 		JCheckBox checkBox = new JCheckBox("On/Off");
+		checkBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				 sound1 = false;
+			}
+		});
+		sound1 = true;
+		checkBox.setSelected(true);
 		checkBox.setBackground(new Color(255, 255, 255));
 		checkBox.setFont(new Font("Segoe Print", Font.PLAIN, 19));
 		checkBox.setBounds(362, 270, 139, 29);

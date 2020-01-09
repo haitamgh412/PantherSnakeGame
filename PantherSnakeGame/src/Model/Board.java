@@ -11,6 +11,7 @@ import javax.swing.Timer;
 
 import Controller.InputManager;
 import Controller.SoundManger;
+import View.Setting;
 import View.SnakeView;
 
 
@@ -35,7 +36,7 @@ public class Board extends JPanel implements ActionListener {
 	/** Creates a new instance of Board */
     
 	public static boolean isGameOver = false;
-
+	
 
 	public static int playerScore = 0;
 	public static int numOFLifes = 3;
@@ -114,6 +115,10 @@ public class Board extends JPanel implements ActionListener {
          soundManger1 = new SoundManger(soundFilePath1);
          soundManger2 = new SoundManger(soundFilePath2);
          soundManger3 = new SoundManger(soundFilePath3);
+         
+         if(Setting.sound == false) {
+        	 soundManger.pauseSound();
+         }
 
          
     }
@@ -127,6 +132,10 @@ public class Board extends JPanel implements ActionListener {
         setFocusable(true);
 
      //   setPreferredSize(new Dimension(B_WIDTH, B_HEIGHT));
+        
+        if(Setting.sound == false) {
+       	 soundManger.pauseSound();
+        }
         snake.initGame();
         timer.stop();
         leftDirection = false;
@@ -316,16 +325,20 @@ public class Board extends JPanel implements ActionListener {
             SnakeView.updatescore();
             apple.random();
             
-            soundManger1.startSound();
-    		new java.util.Timer().schedule( 
-    		        new java.util.TimerTask() {
-    					@Override
-    		            public void run() {
-                           soundManger1.pauseSound();
-    		            }
-    		        }, 
-    		        500 
-    				);
+            if(Setting.sound1 == true) {
+            	soundManger1.startSound();
+        		new java.util.Timer().schedule( 
+        		        new java.util.TimerTask() {
+        					@Override
+        		            public void run() {
+                               soundManger1.pauseSound();
+        		            }
+        		        }, 
+        		        500 
+        				);
+        		}
+            
+            
 
         }
         
@@ -340,17 +353,18 @@ public class Board extends JPanel implements ActionListener {
             SnakeView.updatescore();
             banana.random();
             
-            soundManger1.startSound();
-            
-    		new java.util.Timer().schedule( 
-    		        new java.util.TimerTask() {
-    					@Override
-    		            public void run() {
-                           soundManger1.pauseSound();
-    		            }
-    		        }, 
-    		        500 
-    				);
+            if(Setting.sound1 == true) {
+            	soundManger1.startSound();
+        		new java.util.Timer().schedule( 
+        		        new java.util.TimerTask() {
+        					@Override
+        		            public void run() {
+                               soundManger1.pauseSound();
+        		            }
+        		        }, 
+        		        500 
+        				);
+        		}
 
         }
     }
@@ -364,17 +378,18 @@ public class Board extends JPanel implements ActionListener {
             SnakeView.updatescore();
             pear.random();
             
-            soundManger1.startSound();
-            
-    		new java.util.Timer().schedule( 
-    		        new java.util.TimerTask() {
-    					@Override
-    		            public void run() {
-                           soundManger1.pauseSound();
-    		            }
-    		        }, 
-    		        500 
-    				);
+            if(Setting.sound1 == true) {
+            	soundManger1.startSound();
+        		new java.util.Timer().schedule( 
+        		        new java.util.TimerTask() {
+        					@Override
+        		            public void run() {
+                               soundManger1.pauseSound();
+        		            }
+        		        }, 
+        		        500 
+        				);
+        		}
 
         }
     }
@@ -388,17 +403,18 @@ public class Board extends JPanel implements ActionListener {
             SnakeView.updatescore();
             whiteQuestion.random();
             
-            soundManger1.startSound();
-            
-    		new java.util.Timer().schedule( 
-    		        new java.util.TimerTask() {
-    					@Override
-    		            public void run() {
-                           soundManger1.pauseSound();
-    		            }
-    		        }, 
-    		        500 
-    				);
+            if(Setting.sound1 == true) {
+            	soundManger1.startSound();
+        		new java.util.Timer().schedule( 
+        		        new java.util.TimerTask() {
+        					@Override
+        		            public void run() {
+                               soundManger1.pauseSound();
+        		            }
+        		        }, 
+        		        500 
+        				);
+        		}
     		pause();
 
         }
@@ -412,17 +428,18 @@ public class Board extends JPanel implements ActionListener {
             SnakeView.updatescore();
             redQuestion.random();
             
-            soundManger1.startSound();
-            
-    		new java.util.Timer().schedule( 
-    		        new java.util.TimerTask() {
-    					@Override
-    		            public void run() {
-                           soundManger1.pauseSound();
-    		            }
-    		        }, 
-    		        500 
-    				);
+            if(Setting.sound1 == true) {
+            	soundManger1.startSound();
+        		new java.util.Timer().schedule( 
+        		        new java.util.TimerTask() {
+        					@Override
+        		            public void run() {
+                               soundManger1.pauseSound();
+        		            }
+        		        }, 
+        		        500 
+        				);
+        		}
     		pause();
 
 
@@ -437,17 +454,18 @@ public class Board extends JPanel implements ActionListener {
             SnakeView.updatescore();
             yellowQuestion.random();
             
-            soundManger1.startSound();
-            
-    		new java.util.Timer().schedule( 
-    		        new java.util.TimerTask() {
-    					@Override
-    		            public void run() {
-                           soundManger1.pauseSound();
-    		            }
-    		        }, 
-    		        500 
-    				);
+            if(Setting.sound1 == true) {
+            	soundManger1.startSound();
+        		new java.util.Timer().schedule( 
+        		        new java.util.TimerTask() {
+        					@Override
+        		            public void run() {
+                               soundManger1.pauseSound();
+        		            }
+        		        }, 
+        		        500 
+        				);
+        		}
     		pause();
 
 
@@ -467,17 +485,18 @@ public class Board extends JPanel implements ActionListener {
             numOFLifes+=mouse.addLives();
             SnakeView.updateLives();
             
-            soundManger2.startSound();
-            
-    		new java.util.Timer().schedule( 
-    		        new java.util.TimerTask() {
-    					@Override
-    		            public void run() {
-                           soundManger2.pauseSound();
-    		            }
-    		        }, 
-    		        500 
-    				);
+            if(Setting.sound1 == true) {
+            	soundManger2.startSound();
+        		new java.util.Timer().schedule( 
+        		        new java.util.TimerTask() {
+        					@Override
+        		            public void run() {
+                               soundManger2.pauseSound();
+        		            }
+        		        }, 
+        		        500 
+        				);
+        		}
             
             }
 
@@ -595,6 +614,9 @@ public class Board extends JPanel implements ActionListener {
     	else {
     		timer.start();
     	    soundManger.startSound();
+            if(Setting.sound == false) {
+           	 soundManger.pauseSound();
+            }
     	}
     }
 
