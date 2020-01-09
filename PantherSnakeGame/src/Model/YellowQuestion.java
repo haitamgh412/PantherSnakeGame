@@ -1,6 +1,5 @@
 package Model;
 
-import javax.swing.ImageIcon;
 
 import View.FoodView;
 
@@ -19,6 +18,7 @@ public class YellowQuestion extends Question{
 		generateQuestion();
 	}
 	
+	@SuppressWarnings("static-access")
 	public void generateQuestion() {
         
         int a = (int) (Math.random() * Board.RAND_POS);

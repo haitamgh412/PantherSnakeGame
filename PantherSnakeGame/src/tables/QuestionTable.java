@@ -1,6 +1,5 @@
 package tables;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -9,13 +8,15 @@ import javax.swing.table.AbstractTableModel;
 import Model.Question;
 
 
+@SuppressWarnings("serial")
 public class QuestionTable  extends AbstractTableModel {
 	
 
 	protected final List<Question> questionTable;
 	  
     private final String[] columnNames = new String[] { "Question", "answer1" , "answer2","answer3","answer4"};
-    private final Class[] columnClass = new Class[] {
+    @SuppressWarnings("rawtypes")
+	private final Class[] columnClass = new Class[] {
         String.class, String.class , String.class ,String.class , String.class
     };
  

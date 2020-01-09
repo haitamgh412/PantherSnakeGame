@@ -1,7 +1,5 @@
 package Model;
 
-import javax.swing.ImageIcon;
-
 import View.FoodView;
 
 public class RedQuestion extends Question {
@@ -20,6 +18,7 @@ public class RedQuestion extends Question {
 		generateQuestion();
 	}
 	
+	@SuppressWarnings("static-access")
 	public void generateQuestion() {
 		
         

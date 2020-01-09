@@ -127,18 +127,11 @@ public class Player implements Comparable<Player>{
 		return true;
 	}
 
-
-
-
 	//toString method
 
 	@Override
 	public String toString() {
 		return "Player [userName=" + userName + ", scores=" + scores + ", highScore=" + highScore + "]";
 	}
-
-
-
-
 
 }

@@ -8,13 +8,15 @@ import javax.swing.table.AbstractTableModel;
 import Model.Player;
 
 
+@SuppressWarnings("serial")
 public class ScoreTable  extends AbstractTableModel {
 	
 
 	protected final List<Player> scoresTable;
 	  
     private final String[] columnNames = new String[] { "UserName", "Score"};
-    private final Class[] columnClass = new Class[] {
+    @SuppressWarnings("rawtypes")
+	private final Class[] columnClass = new Class[] {
         String.class, Integer.class
     };
  

@@ -41,8 +41,6 @@ public class Snake {
             Board.x[z] = 310 - z * 10;
             Board.y[z] = 300;
         }
-        
-
     }
 
 	/*
