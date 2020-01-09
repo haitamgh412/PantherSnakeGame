@@ -22,7 +22,7 @@ public class Snake {
     	
     	ImageIcon iid = new ImageIcon(Board.class.getResource("/images/dot.png"));
         ball = iid.getImage();
-        ImageIcon iih = new ImageIcon(Board.class.getResource("/images/headR.png"));
+        ImageIcon iih = new ImageIcon(Board.class.getResource("/images/headR1.png"));
         head = iih.getImage();
         resumeHead=iih.getImage();
     }
