@@ -26,10 +26,20 @@ public class SysData {
 	 */
 	private static ArrayList<Question> questions ;
 	private static TreeSet<Player> players;
+	private static ArrayList<RedQuestion> redQuestions ;
+	private static ArrayList<WhiteQuestion> WhiteQuestions ;
+	private static ArrayList<YellowQuestion> yellowQuestions ;
+
+
+
 
 	private SysData(){
 		questions=new ArrayList<Question>();
 		players = new TreeSet<Player>();
+		redQuestions = new ArrayList<RedQuestion>();
+		WhiteQuestions = new ArrayList<WhiteQuestion>();
+		yellowQuestions = new ArrayList<YellowQuestion>();
+
 	}
 
 	public static SysData getInstance() {
@@ -67,6 +77,25 @@ public class SysData {
 		}
 		return null;
 	}
+	
+	public ArrayList<RedQuestion> getRedQues() {
+		if(redQuestions==null)
+			redQuestions = new ArrayList<RedQuestion>();
+		return redQuestions;
+	}
+	
+	public ArrayList<WhiteQuestion> getWhiteQues() {
+		if(WhiteQuestions==null)
+			WhiteQuestions = new ArrayList<WhiteQuestion>();
+		return WhiteQuestions;
+	}
+	
+	public ArrayList<YellowQuestion> getYelloweQues() {
+		if(yellowQuestions==null)
+			yellowQuestions = new ArrayList<YellowQuestion>();
+		return yellowQuestions;
+	}
+
 
 
 	public TreeSet<Player> getPlayers() {
@@ -277,6 +306,8 @@ public class SysData {
 			//			System.out.println(questions.size());
 
 
+
+
 			return true;
 
 		}catch (Exception e) {
@@ -303,6 +334,13 @@ public class SysData {
 		//				return false;
 		//			}
 		//		}
+
+		if(question.getClass().getSimpleName().equals("RedQuestion"))
+			redQuestions.add((RedQuestion) question);
+		else if(question.getClass().getSimpleName().equals("WhiteQuestion"))
+			WhiteQuestions.add((WhiteQuestion) question);
+		else
+			yellowQuestions.add((YellowQuestion) question);
 
 		return questions.add(question);
 	}
@@ -449,6 +487,13 @@ public class SysData {
 
 
 		questions.remove(temp);
+		if(question.getClass().getSimpleName().equals("RedQuestion"))
+			redQuestions.remove((RedQuestion) question);
+		else if(question.getClass().getSimpleName().equals("WhiteQuestion"))
+			WhiteQuestions.remove((WhiteQuestion) question);
+		else
+			yellowQuestions.remove((YellowQuestion) question);
+		
 		reWriteQuestions();
 		return true;
 	}
@@ -477,6 +522,13 @@ public class SysData {
 		}
 
 		questions.remove(temp);
+		if(question.getClass().getSimpleName().equals("RedQuestion"))
+			redQuestions.remove((RedQuestion) question);
+		else if(question.getClass().getSimpleName().equals("WhiteQuestion"))
+			WhiteQuestions.remove((WhiteQuestion) question);
+		else
+			yellowQuestions.remove((YellowQuestion) question);
+		
 		addQuestion(question);
 		writeQuestions(question);
 		return true;

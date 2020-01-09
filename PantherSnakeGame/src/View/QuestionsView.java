@@ -63,6 +63,13 @@ public class QuestionsView {
 		Qframe.getContentPane().add(btnAddQuestion);
 		
 		JButton btnRemovQuestion = new JButton("Remove Question");
+		btnRemovQuestion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			DeleteQuestions d = new DeleteQuestions();
+			d.removeframe.setVisible(true);
+			Qframe.dispose();
+			}
+		});
 		btnRemovQuestion.setFont(new Font("Segoe Print", Font.PLAIN, 16));
 		btnRemovQuestion.setBackground(Color.WHITE);
 		btnRemovQuestion.setBounds(99, 348, 192, 50);
