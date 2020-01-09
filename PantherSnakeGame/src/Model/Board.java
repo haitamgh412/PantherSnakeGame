@@ -41,8 +41,15 @@ public class Board extends JPanel implements ActionListener {
 	public static int playerScore = 0;
 	public static int numOFLifes = 3;
 	
+	/*
+	 * count for the mouse to change direction
+	 */
 	public static int mouseStepsCounter=0;
 	
+	
+	/*
+	 * the sounds files
+	 */
 	private static String soundFilePath = "sound.wav";
 	private static String soundFilePath1 = "eatSound.wav";
 	private static String soundFilePath2 = "mouseEat.wav";
@@ -74,7 +81,7 @@ public class Board extends JPanel implements ActionListener {
     private RedQuestion redQuestion=new RedQuestion();
     
 
-
+    
     public static boolean leftDirection = false;
     public static boolean rightDirection = true;
     public static boolean upDirection = false;
@@ -89,7 +96,13 @@ public class Board extends JPanel implements ActionListener {
 
     }
   
-    
+    /*
+     * the game start while the snake in the center of the board
+     * the default direction is right
+     * the snake is paused till the user press space 
+     * num of lives equal to 3 
+     * the score is 0
+     */
     private void initBoard() {
     	
 
@@ -116,6 +129,9 @@ public class Board extends JPanel implements ActionListener {
          soundManger2 = new SoundManger(soundFilePath2);
          soundManger3 = new SoundManger(soundFilePath3);
          
+         /*
+          * if in the setting the music is off then the board start without sound
+          */
          if(Setting.sound == false) {
         	 soundManger.pauseSound();
          }
@@ -127,12 +143,11 @@ public class Board extends JPanel implements ActionListener {
      * the resumeGame used when the snake died and the game hasn't over 
      * and the player resume the game with one less life and the same score .
      * the snake return to the center of the screen with 0 length of body
+     * if in the setting the music is off then resumes the game without sound
      */
     public void resumeGame() {
         setFocusable(true);
 
-     //   setPreferredSize(new Dimension(B_WIDTH, B_HEIGHT));
-        
         if(Setting.sound == false) {
        	 soundManger.pauseSound();
         }
@@ -150,15 +165,17 @@ public class Board extends JPanel implements ActionListener {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-
         doDrawing(g);
     }
     
+    /*
+     * this method draw all the images on the board
+     */
     private void doDrawing(Graphics g) {
         
         if (inGame) {
 
-        	SnakeView.updateTime();
+        	//SnakeView.updateTime();
 
             g.drawImage(apple.getImage(), apple.getX(), apple.getY(), this);
             g.drawImage(banana.getImage(), banana.getX(), banana.getY(), this);
@@ -181,12 +198,19 @@ public class Board extends JPanel implements ActionListener {
             }
 
             Toolkit.getDefaultToolkit().sync();
-
+            /*
+             * if the user finished the 3 lives then it draws Game over page and start the voice 
+             * of game over
+             */
         } else if(isGameOver) {
 
            SnakeView.gameOver(g);
            
            soundManger3.startSound();
+           
+           /*
+            * the timer is to stop the sound , without timer the sound will repeat 
+            */
    		new java.util.Timer().schedule( 
    		        new java.util.TimerTask() {
    					@Override
@@ -198,18 +222,21 @@ public class Board extends JPanel implements ActionListener {
    				);
         }        
     }
-
-
     
-    
+    /*
+     * move mouse is the method control the movement of the mouse 
+     */
     private void movemouse() {
     	
+    	//the mouse change direction every 6 steps if he is not on the border
     	
     	if(mouseStepsCounter%6==0&&!checkMouseCollision()) {
     		mouse.changeSide();
     		mouseStepsCounter=0;
     	}
     	mouseStepsCounter++;
+    	
+    	// if the the mouse is not on collision with any object or border the mouse moves 
     	
     	int side=mouse.getCurrentSide();
     	
@@ -226,6 +253,7 @@ public class Board extends JPanel implements ActionListener {
             mouse.setX(mouse.getX()-DOT_SIZE);
         }
         else {
+        	//if there is collision with any object the mouse get go back to the opposite side 
         	if(side==0) {
         		mouse.setY(mouse.getY()-DOT_SIZE);
         		mouse.setCurrentSide(1);
@@ -248,7 +276,7 @@ public class Board extends JPanel implements ActionListener {
     
     
     /*
-     * TODO need to edit
+     * the method check if there is collision between the mouse and any another object ( fruit snake body or border) 
      */
     
     private boolean checkMouseCollision() {
@@ -311,10 +339,10 @@ public class Board extends JPanel implements ActionListener {
     
 
 
-    /**
+    /*
      * If the apple collides with the head,
-       we increase the number of joints of the snake.
-        We call the Random() method in the apple which randomly positions a new apple object.
+     * we increase the number of dots of the snake, add the score and play the sound of eating.
+     * We call the Random() method in the apple which randomly positions a new apple object.
      */
     private void checkApple() {
 
@@ -344,6 +372,13 @@ public class Board extends JPanel implements ActionListener {
         
     }
     
+
+    /*
+     * If the banana collides with the head,
+     * we increase the number of dots of the snake, add the score and play the sound of eating.
+     * We call the Random() method in the banana which randomly positions a new banana object.
+     */
+    
     private void checkBanana() {
 
         if ((x[0] == banana.getX()) && (y[0] == banana.getY())) {
@@ -368,6 +403,13 @@ public class Board extends JPanel implements ActionListener {
 
         }
     }
+    
+
+    /*
+     * If the pear collides with the head,
+     * we increase the number of dots of the snake, add the score and play the sound of eating.
+     * We call the Random() method in the pear which randomly positions a new pear object.
+     */
     
     private void checkPear() {
 
@@ -394,7 +436,13 @@ public class Board extends JPanel implements ActionListener {
         }
     }
     
-     
+
+    /*
+     * If the question collides with the head,
+     * we show the question, add the score and play the sound of eating.
+     * We call the Random() method in the question which randomly positions a new question object.
+     */
+    
     private void checkWhiteQ() {
 
         if ((x[0] == whiteQuestion.getX()) && (y[0] == whiteQuestion.getY())) {
@@ -420,6 +468,13 @@ public class Board extends JPanel implements ActionListener {
         }
 
     }
+    
+    /*
+     * If the question collides with the head,
+     * we show the question, add the score and play the sound of eating.
+     * We call the Random() method in the question which randomly positions a new question object.
+     */
+    
     private void checkRedQ() {
 
         if ((x[0] == redQuestion.getX()) && (y[0] == redQuestion.getY())) {
@@ -446,6 +501,13 @@ public class Board extends JPanel implements ActionListener {
         }
 
     }
+    
+    /*
+     * If the question collides with the head,
+     * we show the question, add the score and play the sound of eating.
+     * We call the Random() method in the question which randomly positions a new question object.
+     */
+    
     private void checkYellowQ() {
 
         if ((x[0] == yellowQuestion.getX()) && (y[0] == yellowQuestion.getY())) {
@@ -473,6 +535,12 @@ public class Board extends JPanel implements ActionListener {
 
 
     }
+    
+    /*
+     * If the mouse collides with the head,
+     * we increase the dots of the snake by 2 add the score and play the sound of adding life if the eatins adds life.
+     * We call the Random() method in the mouse which randomly positions a new mouse object.
+     */
     
     private void checkMouse() {
 
@@ -507,14 +575,13 @@ public class Board extends JPanel implements ActionListener {
     }
 
 
-    /**
+    /*
      * In the move() method we have the key algorithm of the game.
-     *  To understand it, look at how the snake is moving.
-     *   We control the head of the snake.
-     *    We can change its direction with the cursor keys.
-     *    The rest of the joints move one position up the chain.
-     *     The second joint moves where the first was, the third joint where the second was etc.
-     * 
+     * To understand it, look at how the snake is moving.
+     * We control the head of the snake.
+     * We can change its direction with the cursor keys.
+     * The rest of the joints move one position up the chain.
+     * The second joint moves where the first was, the third joint where the second was etc.
      */
     private void move() {
 
@@ -545,10 +612,11 @@ public class Board extends JPanel implements ActionListener {
         checkMouse();
     }
     
-    /**
+    /*
      * In the checkCollision() method, 
      * we determine if the snake has hit itself or one of the walls.
-     * If the snake hits one of its joints with its head the game is over.
+     * If the snake hits one of its joints with its head if the player have more lives we minus one 
+     * life if its the last life then the game is over
      */
 
     private void checkCollision() {
@@ -603,13 +671,16 @@ public class Board extends JPanel implements ActionListener {
         }
     }
     
+    /*
+     * pause game and souds
+     */
     public static void pause() {
     	
     	if(timer.isRunning()) {
     		timer.stop();
     		soundManger.pauseSound();
-    		soundManger1.pauseSound();
-    		soundManger2.pauseSound();
+    	//	soundManger1.pauseSound();
+    	//	soundManger2.pauseSound();
     		}
     	else {
     		timer.start();
