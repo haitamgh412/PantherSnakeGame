@@ -43,7 +43,17 @@ public class Board extends JPanel implements ActionListener {
 	public static int mouseStepsCounter=0;
 	
 	private static String soundFilePath = "sound.wav";
+	private static String soundFilePath1 = "eatSound.wav";
+	private static String soundFilePath2 = "mouseEat.wav";
+	private static String soundFilePath3 = "gameOver.wav";
+
+
+
 	public static SoundManger soundManger = new SoundManger(soundFilePath);
+	public static SoundManger soundManger1 = new SoundManger(soundFilePath1);
+	public static SoundManger soundManger2 = new SoundManger(soundFilePath2);
+	public static SoundManger soundManger3 = new SoundManger(soundFilePath3);
+
 
     
     /**
@@ -101,6 +111,10 @@ public class Board extends JPanel implements ActionListener {
          numOFLifes=3;
          playerScore=0;
          soundManger = new SoundManger(soundFilePath);
+         soundManger1 = new SoundManger(soundFilePath1);
+         soundManger2 = new SoundManger(soundFilePath2);
+         soundManger3 = new SoundManger(soundFilePath3);
+
          
     }
     
@@ -162,6 +176,17 @@ public class Board extends JPanel implements ActionListener {
         } else if(isGameOver) {
 
            SnakeView.gameOver(g);
+           
+           soundManger3.startSound();
+   		new java.util.Timer().schedule( 
+   		        new java.util.TimerTask() {
+   					@Override
+   		            public void run() {
+                          soundManger3.pauseSound();
+   		            }
+   		        }, 
+   		        7000 
+   				);
         }        
     }
 
@@ -290,8 +315,22 @@ public class Board extends JPanel implements ActionListener {
             playerScore+=apple.addPoints();
             SnakeView.updatescore();
             apple.random();
+            
+            soundManger1.startSound();
+    		new java.util.Timer().schedule( 
+    		        new java.util.TimerTask() {
+    					@Override
+    		            public void run() {
+                           soundManger1.pauseSound();
+    		            }
+    		        }, 
+    		        500 
+    				);
+
         }
+        
     }
+    
     private void checkBanana() {
 
         if ((x[0] == banana.getX()) && (y[0] == banana.getY())) {
@@ -300,8 +339,22 @@ public class Board extends JPanel implements ActionListener {
             playerScore+=banana.addPoints();
             SnakeView.updatescore();
             banana.random();
+            
+            soundManger1.startSound();
+            
+    		new java.util.Timer().schedule( 
+    		        new java.util.TimerTask() {
+    					@Override
+    		            public void run() {
+                           soundManger1.pauseSound();
+    		            }
+    		        }, 
+    		        500 
+    				);
+
         }
     }
+    
     private void checkPear() {
 
         if ((x[0] == pear.getX()) && (y[0] == pear.getY())) {
@@ -310,51 +363,123 @@ public class Board extends JPanel implements ActionListener {
             playerScore+=pear.addPoints();
             SnakeView.updatescore();
             pear.random();
+            
+            soundManger1.startSound();
+            
+    		new java.util.Timer().schedule( 
+    		        new java.util.TimerTask() {
+    					@Override
+    		            public void run() {
+                           soundManger1.pauseSound();
+    		            }
+    		        }, 
+    		        500 
+    				);
+
         }
     }
     
      
-    private void checkWQ() {
+    private void checkWhiteQ() {
 
         if ((x[0] == whiteQuestion.getX()) && (y[0] == whiteQuestion.getY())) {
 
       //  	playerScore+=whiteQuestion.getAnswerPoints();
             SnakeView.updatescore();
             whiteQuestion.random();
+            
+            soundManger1.startSound();
+            
+    		new java.util.Timer().schedule( 
+    		        new java.util.TimerTask() {
+    					@Override
+    		            public void run() {
+                           soundManger1.pauseSound();
+    		            }
+    		        }, 
+    		        500 
+    				);
+
         }
+
     }
-    private void checkRQ() {
+    private void checkRedQ() {
 
         if ((x[0] == redQuestion.getX()) && (y[0] == redQuestion.getY())) {
 
     //    	playerScore+=redQuestion.getAnswerPoints();
             SnakeView.updatescore();
             redQuestion.random();
+            
+            soundManger1.startSound();
+            
+    		new java.util.Timer().schedule( 
+    		        new java.util.TimerTask() {
+    					@Override
+    		            public void run() {
+                           soundManger1.pauseSound();
+    		            }
+    		        }, 
+    		        500 
+    				);
+
         }
+
     }
-    private void checkYQ() {
+    private void checkYellowQ() {
 
         if ((x[0] == yellowQuestion.getX()) && (y[0] == yellowQuestion.getY())) {
 
    //     	playerScore+=redQuestion.getAnswerPoints();
             SnakeView.updatescore();
             yellowQuestion.random();
-        }
+            
+            soundManger1.startSound();
+            
+    		new java.util.Timer().schedule( 
+    		        new java.util.TimerTask() {
+    					@Override
+    		            public void run() {
+                           soundManger1.pauseSound();
+    		            }
+    		        }, 
+    		        500 
+    				);
+
+        } 
+
+
     }
     
-    private void checkM() {
+    private void checkMouse() {
 
         if ((x[0] == mouse.getX()) && (y[0] == mouse.getY())) {
         	
         	playerScore+=mouse.addPoints();
             SnakeView.updatescore();
             if(numOFLifes<3) {
+    		
             numOFLifes+=mouse.addLives();
             SnakeView.updateLives();
+            
+            soundManger2.startSound();
+            
+    		new java.util.Timer().schedule( 
+    		        new java.util.TimerTask() {
+    					@Override
+    		            public void run() {
+                           soundManger2.pauseSound();
+    		            }
+    		        }, 
+    		        500 
+    				);
+            
             }
+
             snake.setDots(snake.getDots()+2);
             mouse.random();
         }
+
     }
 
 
@@ -393,7 +518,7 @@ public class Board extends JPanel implements ActionListener {
             y[0] += DOT_SIZE;
         }
         
-        checkM();
+        checkMouse();
     }
     
     /**
@@ -447,6 +572,9 @@ public class Board extends JPanel implements ActionListener {
         if (!inGame) {
             timer.stop();
             soundManger.stopSound();
+    		soundManger1.pauseSound();
+    		soundManger2.pauseSound();
+
             if(numOFLifes==0) setGameOver(true);
         }
     }
@@ -456,6 +584,8 @@ public class Board extends JPanel implements ActionListener {
     	if(timer.isRunning()) {
     		timer.stop();
     		soundManger.pauseSound();
+    		soundManger1.pauseSound();
+    		soundManger2.pauseSound();
     		}
     	else {
     		timer.start();
@@ -474,9 +604,9 @@ public class Board extends JPanel implements ActionListener {
             checkBanana();
             checkPear();
             
-            checkRQ();
-            checkWQ();
-            checkYQ();
+            checkRedQ();
+            checkWhiteQ();
+            checkYellowQ();
             
             
             
@@ -486,7 +616,7 @@ public class Board extends JPanel implements ActionListener {
             checkMouseCollision();
             movemouse();
             
-            checkM();
+            checkMouse();
 
         }
         
