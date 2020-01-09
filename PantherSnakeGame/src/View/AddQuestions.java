@@ -8,6 +8,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+import com.sun.accessibility.internal.resources.accessibility;
+
 import Controller.SysData;
 import Model.Question;
 import Model.RedQuestion;
@@ -222,6 +224,10 @@ public class AddQuestions {
 				for(Question qqq : SysData.getInstance().getQuestionsAfterRead()) {
 					if(qqq.getQuestion().equals(q.getQuestion())) {
 						JOptionPane.showMessageDialog(null, "The question added successfully");
+			            Addframe.dispose();
+						AddQuestions a = new AddQuestions();
+						a.Addframe.setVisible(true);
+						
 						return;
 					}
 				}
@@ -230,6 +236,8 @@ public class AddQuestions {
 				return;
                
 			}
+			
+		   
 		}); 
 	
 		btnAdd.setBounds(327, 382, 159, 42);

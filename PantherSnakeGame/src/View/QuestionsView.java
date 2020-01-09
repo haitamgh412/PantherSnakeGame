@@ -45,7 +45,7 @@ public class QuestionsView {
 		Qframe.setFont(new Font("Segoe Print", Font.PLAIN, 12));
 		Qframe.setTitle("Question");
 		Qframe.setIconImage(Toolkit.getDefaultToolkit().getImage(QuestionsView.class.getResource("/images/write.png")));
-		Qframe.setBounds(100, 100, 856, 536);
+		Qframe.setBounds(100, 100, 1209, 612);
 		Qframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Qframe.getContentPane().setLayout(null);
 		
@@ -59,7 +59,7 @@ public class QuestionsView {
 		});
 		btnAddQuestion.setFont(new Font("Segoe Print", Font.PLAIN, 16));
 		btnAddQuestion.setBackground(Color.WHITE);
-		btnAddQuestion.setBounds(235, 414, 192, 50);
+		btnAddQuestion.setBounds(428, 439, 192, 50);
 		Qframe.getContentPane().add(btnAddQuestion);
 		
 		JButton btnRemovQuestion = new JButton("Remove Question");
@@ -72,7 +72,7 @@ public class QuestionsView {
 		});
 		btnRemovQuestion.setFont(new Font("Segoe Print", Font.PLAIN, 16));
 		btnRemovQuestion.setBackground(Color.WHITE);
-		btnRemovQuestion.setBounds(99, 348, 192, 50);
+		btnRemovQuestion.setBounds(270, 373, 192, 50);
 		Qframe.getContentPane().add(btnRemovQuestion);
 		
 		JButton btnUpdateQuestion = new JButton("Update Question");
@@ -85,7 +85,7 @@ public class QuestionsView {
 		});
 		btnUpdateQuestion.setFont(new Font("Segoe Print", Font.PLAIN, 16));
 		btnUpdateQuestion.setBackground(Color.WHITE);
-		btnUpdateQuestion.setBounds(402, 348, 192, 50);
+		btnUpdateQuestion.setBounds(593, 373, 192, 50);
 		Qframe.getContentPane().add(btnUpdateQuestion);
 		
 		JButton button = new JButton("");
@@ -97,12 +97,12 @@ public class QuestionsView {
 			}
 		});
 		button.setIcon(new ImageIcon(QuestionsView.class.getResource("/images/back.jpg")));
-		button.setBounds(15, 435, 60, 29);
+		button.setBounds(32, 527, 60, 29);
 		Qframe.getContentPane().add(button);
 		
 		JLabel label = new JLabel("");
 		label.setIcon(new ImageIcon(QuestionsView.class.getResource("/images/Question.jpg")));
-		label.setBounds(636, 225, 452, 278);
+		label.setBounds(988, 306, 311, 278);
 		Qframe.getContentPane().add(label);
 		
 		
@@ -123,7 +123,7 @@ public class QuestionsView {
 			    };
 			    table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 			    JScrollPane scrollPane = new JScrollPane(table);
-			    scrollPane.setBounds(15, 16, 626, 278);
+			    scrollPane.setBounds(15, 16, 1126, 316);
 			    scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 			    Qframe.getContentPane().add(scrollPane);
 			 table.getTableHeader().setFont(new Font("Segoe Print", Font.ITALIC, 18));

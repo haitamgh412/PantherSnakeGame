@@ -3,6 +3,7 @@ package View;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+import Model.Board;
 
 import javax.swing.ImageIcon;
 import java.awt.Toolkit;
@@ -38,9 +39,8 @@ public class Instructions1 {
 		JButton btnBackToGame = new JButton("back to game ");
 		btnBackToGame.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Iframe.setVisible(false);
-				logIN N = new logIN();
-				N.loginframe.setVisible(true);
+				Iframe.dispose();
+				Board.pause();
 			}
 		});
 		btnBackToGame.setBackground(Color.WHITE);

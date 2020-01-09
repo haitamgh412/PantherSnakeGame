@@ -46,11 +46,11 @@ public class HighScores {
 		scoreframe.getContentPane().setBackground(Color.WHITE);
 		scoreframe.setIconImage(Toolkit.getDefaultToolkit().getImage(HighScores.class.getResource("/images/icon.png")));
 		scoreframe.setTitle("high Scores");
-		scoreframe.setBounds(100, 100, 674, 443);
+		scoreframe.setBounds(100, 100, 674, 451);
 		scoreframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JButton button = new JButton("");
-		button.setBounds(15, 348, 62, 29);
+		button.setBounds(15, 364, 62, 29);
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				MainScreen f = new MainScreen();
@@ -68,8 +68,8 @@ public class HighScores {
 		label.setIcon(new ImageIcon(HighScores.class.getResource("/images/score.jpg")));
 		scoreframe.getContentPane().add(label);
 		
-		JLabel lblTop = new JLabel("Top 10");
-		lblTop.setBounds(364, 16, 162, 56);
+		JLabel lblTop = new JLabel("Top score");
+		lblTop.setBounds(358, 16, 179, 56);
 		lblTop.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTop.setFont(new Font("Segoe Print", Font.PLAIN, 30));
 		scoreframe.getContentPane().add(lblTop);
@@ -92,7 +92,7 @@ public class HighScores {
 			    };
 			    table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 			    JScrollPane scrollPane = new JScrollPane(table);
-			    scrollPane.setBounds(305, 87, 299, 284);
+			    scrollPane.setBounds(301, 111, 299, 284);
 			    scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 				scoreframe.getContentPane().add(scrollPane);
 			 table.getTableHeader().setFont(new Font("Segoe Print", Font.ITALIC, 24));
@@ -102,6 +102,12 @@ public class HighScores {
 			       scrollPane.setViewportView(table);
 			      
 			       scoreframe.getContentPane().add(scrollPane);
+			       
+			       JLabel lblForTheBest = new JLabel("for the best 10 players");
+			       lblForTheBest.setHorizontalAlignment(SwingConstants.CENTER);
+			       lblForTheBest.setFont(new Font("Segoe Print", Font.PLAIN, 26));
+			       lblForTheBest.setBounds(291, 58, 326, 56);
+			       scoreframe.getContentPane().add(lblForTheBest);
 
 	}
 }

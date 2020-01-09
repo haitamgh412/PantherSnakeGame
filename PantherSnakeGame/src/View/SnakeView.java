@@ -21,6 +21,7 @@ import java.awt.Graphics;
 import javax.swing.SwingConstants;
 
 import Controller.SysData;
+import Controller.sysData;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -305,6 +306,8 @@ public class SnakeView {
 	
 	public static boolean viewQuestion(Question Q) {
 		if(Q instanceof RedQuestion ) {	
+		 int redSize = SysData.getInstance().getRedQues().size();
+			if(i!=redSize) {
 			 lblQ.setText(SysData.getInstance().getRedQues().get(i).getQuestion());
 			   choice1.setText(SysData.getInstance().getRedQues().get(i).getAnswers().get(0));
 			   choice2.setText(SysData.getInstance().getRedQues().get(i).getAnswers().get(1));
@@ -339,9 +342,15 @@ public class SnakeView {
 		   		 return true;
 		   	 }
 		   	 else i++;
-			
+		   	
+			}
+			else {
+				i=0;
+			}
 		}
 		else if( Q instanceof YellowQuestion) {
+			int yellowSize = SysData.getInstance().getYelloweQues().size();
+			if(k!=yellowSize) {
 			lblQ.setText(SysData.getInstance().getYelloweQues().get(k).getQuestion());
 			   choice1.setText(SysData.getInstance().getYelloweQues().get(k).getAnswers().get(0));
 			   choice2.setText(SysData.getInstance().getYelloweQues().get(k).getAnswers().get(1));
@@ -376,10 +385,14 @@ public class SnakeView {
 		   		 return true;
 		   	 }	
 		   	 else k++;
-
-		   
+			}
+			else {
+				k=0;
+			}
 		}
 		else if(Q instanceof WhiteQuestion) {
+			int whiteSize = SysData.getInstance().getWhiteQues().size();
+			if(g!= whiteSize) {
 			lblQ.setText(SysData.getInstance().getWhiteQues().get(g).getQuestion());
 			   choice1.setText(SysData.getInstance().getWhiteQues().get(g).getAnswers().get(0));
 			   choice2.setText(SysData.getInstance().getWhiteQues().get(g).getAnswers().get(1));
@@ -414,7 +427,10 @@ public class SnakeView {
 		   		 return true;
 		   	 }
 		   	 else g++;
-
+			}
+			else {
+				g=0;
+			}
 		   	   	
 		}
 		return false; 
