@@ -74,7 +74,7 @@ public class SnakeView {
 		if (Board.isGameOver) {
 			Board.setGameOver(false);
 			Board newBoard = new Board();
-			 newBoard.setBackground(new Color(0, 51, 0));
+			 newBoard.setBackground(new Color(51, 102, 51));
 			 newBoard.setBounds(0, 0, 600, 600);
 			   Snakeframe.getContentPane().add(newBoard);
 			   newBoard.setLayout(null);	
