@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.TreeSet;
 
 import org.json.simple.JSONArray;
@@ -50,9 +51,11 @@ public class SysData {
 	}
 
 	public ArrayList<Player> getTopPlayers() {
+		ArrayList<Player> temp = new ArrayList<>(players);
+		Collections.sort(temp);
 		int counter=0;
 		ArrayList<Player> top = new ArrayList<Player>();
-		for(Player p : players) {
+		for(Player p : temp) {
 			if(counter<=10) {
 				top.add(p);
 				counter++;
