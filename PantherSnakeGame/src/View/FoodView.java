@@ -13,6 +13,7 @@ public class FoodView {
     private static Image banana;
     private static Image pear;
     private static Image mouse;
+    private static Image strawberry;
     
     private static Image RedQuestion;
     private static Image WhiteQuestion;
@@ -32,6 +33,9 @@ public class FoodView {
         
         ImageIcon iimd = new ImageIcon(Board.class.getResource("/images/newMouse.png"));
         mouse = iimd.getImage();
+        
+        ImageIcon iis = new ImageIcon(Apple.class.getResource("/images/strawberry.png"));
+        strawberry = iis.getImage();
         
 		ImageIcon iiaa = new ImageIcon(Apple.class.getResource("/images/redQ.png"));
 		RedQuestion = iiaa.getImage();
@@ -59,6 +63,10 @@ public class FoodView {
 		return mouse;
 	}
 
+	public Image Getstrawberry() {
+		return strawberry;
+	}
+	
 	public static Image getRedQuestion() {
 		return RedQuestion;
 	}

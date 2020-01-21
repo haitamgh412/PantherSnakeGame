@@ -72,6 +72,7 @@ public class Board extends JPanel implements ActionListener {
     private Banana banana = new Banana();
     private Pear pear = new Pear();
     private Mouse mouse = new Mouse();
+    private Strawberry strawberry = new Strawberry();
     private WhiteQuestion whiteQuestion=new WhiteQuestion();
     private YellowQuestion yellowQuestion=new YellowQuestion();
     private RedQuestion redQuestion=new RedQuestion();
@@ -168,6 +169,9 @@ public class Board extends JPanel implements ActionListener {
             g.drawImage(apple.getImage(), apple.getX(), apple.getY(), this);
             g.drawImage(banana.getImage(), banana.getX(), banana.getY(), this);
             g.drawImage(pear.getImage(), pear.getX(), pear.getY(), this);
+            
+            g.drawImage(strawberry.getImage(), strawberry.getX(), strawberry.getY(), this);
+
                 
             g.drawImage(whiteQuestion.getImage(), whiteQuestion.getX(), whiteQuestion.getY(), this);
             g.drawImage(yellowQuestion.getImage(), yellowQuestion.getX(), yellowQuestion.getY(), this);
@@ -405,6 +409,42 @@ public class Board extends JPanel implements ActionListener {
             playerScore+=pear.addPoints();
             SnakeView.updatescore();
             pear.random();
+            
+            if(Setting.sound1 == true) {
+            	soundManger1.startSound();
+        		new java.util.Timer().schedule( 
+        		        new java.util.TimerTask() {
+        					@Override
+        		            public void run() {
+                               soundManger1.pauseSound();
+        		            }
+        		        }, 
+        		        500 
+        				);
+        		}
+
+        }
+    }
+    
+    /*
+     * If the banana collides with the head,
+     * we increase the number of dots of the snake, add the score and play the sound of eating.
+     * We call the Random() method in the banana which randomly positions a new banana object.
+     */
+    
+    private void checkStrawberry() {
+
+        if ((x[0] == strawberry.getX()) && (y[0] == strawberry.getY())) {
+        	
+        	if(snake.getDots()>2) {
+
+        	snake.setDots(snake.getDots()-2);
+        	}
+        	if(snake.getDots()==2) {
+
+            	snake.setDots(snake.getDots()-1);
+            	}
+            strawberry.random();
             
             if(Setting.sound1 == true) {
             	soundManger1.startSound();
@@ -698,6 +738,7 @@ public class Board extends JPanel implements ActionListener {
             checkRedQ();
             checkWhiteQ();
             checkYellowQ();
+            checkStrawberry();
             
             
             
