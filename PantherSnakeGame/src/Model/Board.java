@@ -440,7 +440,7 @@ public class Board extends JPanel implements ActionListener {
 
         	snake.setDots(snake.getDots()-2);
         	}
-        	if(snake.getDots()==2) {
+        	else if(snake.getDots()==2) {
 
             	snake.setDots(snake.getDots()-1);
             	}
